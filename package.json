@@ -1,0 +1,35 @@
+{
+  "name": "sarthakagrawal",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sarthak Agrawal — AI Infrastructure Engineer. Personal site & portfolio.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.2.6",
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/sitemap": "^3.4.0",
+    "@fontsource-variable/geist": "^5.2.5",
+    "@fontsource-variable/geist-mono": "^5.2.6",
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.8.0",
+    "cmdk": "^1.1.1",
+    "motion": "^12.15.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@types/react": "^19.1.4",
+    "@types/react-dom": "^19.1.5",
+    "typescript": "^5.8.3"
+  }
+}

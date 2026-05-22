@@ -1,0 +1,65 @@
+---
+title: Vector-Powered Personalized Feeds
+tagline: embeddings · vector search · ranking
+role: Software Engineer · Front.Page
+year: '2024'
+summary: >-
+  A home feed that actually learns what you like. Content gets embedded with
+  BERT, ranked by similarity in Milvus, and the user vector keeps updating from
+  live events. Engagement went up 40%.
+stack: ['Go', 'Milvus', 'BERT', 'OpenAI / GPT', 'BigQuery']
+metrics:
+  - { value: '+40%', label: 'home-feed engagement' }
+  - { value: 'Real-time', label: 'user vectors' }
+  - { value: 'Milvus', label: 'ANN vector search' }
+featured: true
+order: 1
+---
+
+## The problem
+
+Front.Page's home feed showed everyone roughly the same thing. For a fintech
+social product that is a real cost: the user who follows small-cap biotech and
+the user who only watches index funds have nothing in common, but the feed
+treated them identically.
+
+Personalization is easy to describe and hard to ship: it needs a representation
+of *content*, a representation of *each user*, a fast way to match them, and —
+the part most attempts skip — a way to stay current as behaviour changes.
+
+## Architecture
+
+The feed is a vector-matching system with four moving parts:
+
+- **Content embeddings** — posts and news are embedded with BERT into a shared
+  vector space, so "similarity" becomes a geometric question instead of a
+  keyword one.
+- **Vector search** — embeddings live in **Milvus**, which serves
+  approximate-nearest-neighbour queries fast enough to rank a feed on request.
+- **User vectors** — each user is represented by a vector derived from what they
+  actually engage with, not what they signed up claiming to like.
+- **Real-time enrichment** — a pipeline streams live behavioural events out of
+  **BigQuery** and folds them back into the user vector, so the representation
+  tracks the user instead of going stale.
+
+GPT calls handle the language-shaped parts of the pipeline where a model is
+genuinely the right tool, rather than being the whole design.
+
+## Engineering decisions
+
+The decision that made this work was treating the **user vector as a living
+object**. A personalization system that embeds you once at signup is wrong within
+a week. Wiring real-time events from BigQuery back into the vector meant the feed
+adapted continuously — the same day a user's interests shifted, not the next
+sprint.
+
+Putting embeddings in a purpose-built vector database, rather than bolting
+similarity onto the primary store, kept ranking latency low enough to compute the
+feed at request time.
+
+## Outcome
+
+Home-feed engagement rose **40%**. More importantly, the system improved on its
+own as users used it — the architecture, not a one-off model, was the product.
+It is the clearest example of what I mean by *AI infrastructure*: the model is a
+component; the pipeline around it is the engineering.

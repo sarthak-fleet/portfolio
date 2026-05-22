@@ -1,0 +1,90 @@
+---
+import { site } from '@/data/site';
+import { socials } from '@/data/socials';
+
+const year = new Date().getFullYear();
+---
+
+<footer id="contact" class="scroll-mt-20 border-t border-line">
+  <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+    <p class="kicker">// contact</p>
+
+    <div class="mt-6 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+      <div>
+        <h2
+          class="text-balance text-3xl font-semibold tracking-tight text-fg sm:text-5xl"
+        >
+          Let's build something
+          <span class="text-accent">that holds up at scale.</span>
+        </h2>
+        <p class="mt-5 max-w-md text-pretty text-muted">
+          Have an infrastructure problem, a backend that needs to go faster, or
+          an AI system that needs to become dependable? I'd like to hear about
+          it.
+        </p>
+
+        <a
+          href={`mailto:${site.email}`}
+          class="group mt-8 inline-flex items-center gap-3 font-mono text-lg text-fg sm:text-2xl"
+        >
+          <span
+            class="text-accent transition-transform group-hover:translate-x-0.5"
+            >→</span
+          >
+          <span class="link-underline">{site.email}</span>
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-1 lg:items-end">
+        <p class="kicker mb-3">// elsewhere</p>
+        {
+          socials.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex w-full items-center justify-between gap-6 border-b border-line py-3 transition-colors hover:border-line-strong lg:w-72"
+            >
+              <span class="flex items-center gap-3">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 text-faint transition-colors group-hover:text-accent"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d={s.icon} />
+                </svg>
+                <span class="text-sm text-muted transition-colors group-hover:text-fg">
+                  {s.label}
+                </span>
+              </span>
+              <span class="font-mono text-xs text-faint transition-colors group-hover:text-muted">
+                {s.handle}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div
+      class="mt-20 flex flex-col gap-3 border-t border-line pt-6 font-mono text-xs text-faint sm:flex-row sm:items-center sm:justify-between"
+    >
+      <span>© {year} {site.name}. All systems operational.</span>
+      <span class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5">
+          <span class="relative flex h-1.5 w-1.5">
+            <span
+              class="absolute inline-flex h-full w-full rounded-full bg-accent"
+              style="animation: pulse-ring 2.4s var(--ease-out-expo) infinite;"
+            ></span>
+            <span class="inline-flex h-1.5 w-1.5 rounded-full bg-accent"></span>
+          </span>
+          Built with Astro
+        </span>
+        <span class="text-line-strong">·</span>
+        <span>Deployed on Cloudflare</span>
+      </span>
+    </div>
+  </div>
+</footer>

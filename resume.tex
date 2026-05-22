@@ -1,0 +1,178 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5} % Load fontawesome5 for icons
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\footnotesize{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+% Define some styling for the icons
+\newcommand{\icon}[3]{\href{#1}{\faIcon{#2} #3}}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item[]
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item[]
+    \begin{tabular*}{0.99\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item[]
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% Adjusted margins for list items (with bullet points)
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Sarthak Agrawal} \\ \vspace{1pt}
+    \icon{tel:+919792972971}{phone}{+919792972971} \quad
+    \icon{https://github.com/sarthakagrawal927}{github}{sarthakagrawal927} \quad
+    \icon{https://www.linkedin.com/in/sarthakagrawal927}{linkedin}{sarthakagrawal927} \quad
+    \icon{mailto:sarthakagrawal927@gmail.com}{envelope}{sarthakagrawal927@gmail.com}
+\end{center}
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Software Engineer}{Feb 2025 -- Present}
+      {VaultWealth (Peak XV)}{}
+\resumeItemListStart
+\resumeItem{
+Created a Financial Planning Service (\textbf{Go}, \textbf{MySQL}) \& wrote proprietary logic to calculate clients' financial health score.}
+ \resumeItem{Migrated multiple workflows to \textbf{Temporal}, eliminating 90 \% of unexpected failures \& freeing engineering 3 hrs/day.}
+ \resumeItem{Transitioned webapp from \textbf{MUI} to \textbf{Tailwind}. Built multiple responsive frontend components using React.}
+\resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineer}{Jan 2022 -- Jan 2025}
+      {Front.Page (YC  S'21)}{}
+\resumeItemListStart
+\resumeItem{Developed real-time pipeline for stock data using \textbf{Go}, \textbf{Kafka}, \textbf{ProtoBuffers}, helped DAU going from 15k to 200k in 14 weeks.}
+  \resumeItem{Integrated vector-powered personalized feeds using \textbf{BERT} Embeddings, \textbf{GPT} calls, \textbf{Milvus} as vector DB, resulting in 40\% more engagement in home feed. Created a pipeline with real-time events from \textbf{BigQuery} for richer user vector.}
+    \resumeItem{Built multiple (support, learning, assistant) \textbf{RAG} based chatbots using \textbf{OpenAI} APIs. Moderation bot ended up reducing human intervention in support queries by 90\%.}
+  \resumeItem{Wrote microservice in \textbf{Node.js} with \textbf{MySQL}(Prisma) for complete stock fundamental data lifecycle management.}
+  \resumeItem{Built hot news with read/unread tracking, last visit tracking, \textbf{tripled} avg. news scroll count in 3 weeks. Used \textbf{Clickhouse} as data aggregator with \textbf{Rudderstack} as the pipeline.}
+  \resumeItem{Implemented O(1) space/time complexity for retrieval of user's unread news \& global notifications count using \textbf{Redis}.}
+  \resumeItem{Integrated the \textbf{Razorpay} payment gateway with Node.js, resulting in new revenue source \& 50\% increase in overall revenue.}
+  \resumeItem{Implemented queue-based batching, improving database efficiency and reducing load. Optimized user session handling with granular controls, reducing session refresh DB calls by 92\%.}
+  \resumeItem{Improved SEO performance by reducing HTML build \& load time from 600ms to 60ms by caching using Redis.}
+  \resumeItem{Incorporated \textbf{FCM topic-based notification}, reducing delivery time by 90\% \& increasing delivery rate by 30\%.}
+  \resumeItem{Planned \& integrated real-time stock ticks using \textbf{Socket.io} with 3 modes: a) room-based architecture, b) in-memory or c) Redis for user subscription management. Connected with the web via window events.}
+\resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+  %-----------SKILLS-----------
+\section{Skills}
+\resumeSubHeadingListStart
+  \resumeSubItem{\textbf{Languages:} JavaScript/TypeScript, Golang, Python}
+  \resumeSubItem{\textbf{Databases \& Data Tools:} MySQL, PostgreSQL, Redis, Elasticsearch, Kafka,  Clickhouse, Milvus, Bigquery}
+  \resumeSubItem{\textbf{Cloud \& DevOps:} AWS, GCP, Docker, Kubernetes, Prometheus, Temporal, GenAI}
+\resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Stumble - Social App} $|$ \emph{Node.js, PostgreSQL (with PostGIS), Redis, Docker, AWS, Flutter, Astro, Python}}{}
+      \resumeItemListStart
+        \resumeItem{Launched a platform to help users connect with people nearby, encouraging meaningful in-person interactions.}
+        \resumeItem{App supported real-time chat, location-based profile filtering, face recognition, google auth, push notifications}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+{\textbf{SignificantHobbies - Life Management App} $|$ \emph{Next.js, Golang, PostgreSQL, Docker, AWS, Tailwind}}{}
+\resumeItemListStart
+  \resumeItem{Launched a personal productivity app to manage tasks, habits, food logs, journals, and schedules.}
+  \resumeItem{Designed custom form validation, schedule generation based on user preferences \& efficient CRUD operations.}
+\resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{PlayWordle - CLI Puzzle Solver} $|$ \emph{Golang}}{}
+      \resumeItemListStart
+        \resumeItem{Devised a CLI application to solve \emph{New York Times} Wordle puzzles with over 97\% success rate.}
+      \resumeItemListEnd
+
+
+  \resumeSubHeadingListEnd
+
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Manipal Institute of Technology}{Aug 2018 -- July 2022}
+      {B.Tech in Computer Science Engineering}{}
+    \resumeItemListStart
+      \resumeItem{Relevant Coursework: Algorithms, Data Structures, DBMS, OOP, Operating Systems, Computer Networks}
+      \resumeItem{Projects: Multiple internal portals including Letter of Recommendation, Placement, College Fest \& Library Management.}
+      \resumeItem{Technologies Used: HTML, React.js, Next.js, SCSS, Chakra UI, Node.js, GraphQL, Prisma, MongoDB, PostgreSQL, AWS S3}
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\end{document}

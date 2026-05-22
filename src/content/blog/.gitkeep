@@ -1,0 +1,14 @@
+# Blog posts live here.
+#
+# Drop a .mdx file in this folder to publish a post. Required frontmatter:
+#
+# ---
+# title: 'Your post title'
+# description: 'One-line summary for SEO and the index page.'
+# date: 2026-06-01
+# tags: ['systems', 'infra']
+# draft: false
+# ---
+#
+# The /blog index automatically switches from the "coming soon" state to a
+# real post list as soon as the first non-draft post exists.

@@ -1,0 +1,175 @@
+---
+import { existsSync } from 'node:fs';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
+import {
+  resumeExperience,
+  resumeSkills,
+  resumeProjects,
+  resumeEducation,
+} from '@/data/resume';
+
+// The PDF is produced by the LaTeX GitHub Action (.github/workflows/resume.yml).
+// Until the first build runs, fall back to a gentle note.
+const hasPdf = existsSync('public/resume.pdf');
+
+const contacts = [
+  { label: 'Email', value: site.email, href: `mailto:${site.email}` },
+  {
+    label: 'GitHub',
+    value: site.githubUser,
+    href: `https://github.com/${site.githubUser}`,
+  },
+  {
+    label: 'LinkedIn',
+    value: site.githubUser,
+    href: `https://www.linkedin.com/in/${site.githubUser}`,
+  },
+];
+---
+
+<BaseLayout
+  title="Résumé"
+  description={`Résumé of ${site.name} — ${site.role}.`}
+>
+  <section class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-20">
+    {/* Header */}
+    <header
+      class="flex flex-col gap-6 border-b border-line pb-8 sm:flex-row sm:items-end sm:justify-between"
+    >
+      <div>
+        <p class="kicker">// résumé</p>
+        <h1
+          class="mt-3 text-3xl font-semibold tracking-tight text-fg sm:text-4xl"
+        >
+          {site.name}
+        </h1>
+        <p class="mt-1 font-mono text-sm text-accent">{site.role}</p>
+
+        <div class="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
+          {
+            contacts.map((c) => (
+              <a
+                href={c.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-mono text-xs text-muted transition-colors hover:text-accent"
+              >
+                {c.label}: <span class="text-faint">{c.value}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      {
+        hasPdf ? (
+          <a
+            href={site.resumePdf}
+            download
+            class="shrink-0 self-start rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-base transition-opacity hover:opacity-90 sm:self-auto"
+          >
+            ↓ Download PDF
+          </a>
+        ) : (
+          <span class="shrink-0 self-start rounded-md border border-line px-4 py-2.5 font-mono text-xs text-faint">
+            PDF builds on next deploy
+          </span>
+        )
+      }
+    </header>
+
+    {/* Experience */}
+    <div class="mt-10">
+      <h2 class="kicker">// experience</h2>
+      <div class="mt-5 space-y-8">
+        {
+          resumeExperience.map((job) => (
+            <div>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+                <h3 class="font-semibold text-fg">
+                  {job.role}
+                  <span class="text-muted"> · </span>
+                  <span class="text-accent">{job.company}</span>
+                  {job.note && (
+                    <span class="ml-2 inline-block rounded border border-line bg-panel-2 px-1.5 py-0.5 align-middle font-mono text-[10px] font-normal text-faint">
+                      {job.note}
+                    </span>
+                  )}
+                </h3>
+                <span class="font-mono text-xs text-faint">{job.period}</span>
+              </div>
+              <ul class="mt-3 space-y-2">
+                {job.bullets.map((b) => (
+                  <li class="flex gap-2.5 text-sm leading-relaxed text-muted">
+                    <span class="mt-2 h-px w-2.5 shrink-0 bg-accent" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    {/* Skills */}
+    <div class="mt-12">
+      <h2 class="kicker">// skills</h2>
+      <dl class="mt-5 space-y-3">
+        {
+          resumeSkills.map((s) => (
+            <div class="grid gap-1 sm:grid-cols-[180px_1fr]">
+              <dt class="font-mono text-xs text-faint">{s.label}</dt>
+              <dd class="text-sm text-muted">{s.items}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    {/* Projects */}
+    <div class="mt-12">
+      <h2 class="kicker">// projects</h2>
+      <div class="mt-5 space-y-6">
+        {
+          resumeProjects.map((p) => (
+            <div>
+              <h3 class="text-sm font-semibold text-fg">{p.name}</h3>
+              <p class="mt-0.5 font-mono text-[11px] text-faint">{p.stack}</p>
+              <ul class="mt-2 space-y-1.5">
+                {p.bullets.map((b) => (
+                  <li class="flex gap-2.5 text-sm leading-relaxed text-muted">
+                    <span class="mt-2 h-px w-2.5 shrink-0 bg-accent" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <a
+        href="/projects"
+        class="link-underline mt-4 inline-block font-mono text-xs text-accent"
+      >
+        + 50 more on the projects page →
+      </a>
+    </div>
+
+    {/* Education */}
+    <div class="mt-12">
+      <h2 class="kicker">// education</h2>
+      <div class="mt-5 flex flex-wrap items-baseline justify-between gap-x-3">
+        <h3 class="font-semibold text-fg">{resumeEducation.school}</h3>
+        <span class="font-mono text-xs text-faint">
+          {resumeEducation.period}
+        </span>
+      </div>
+      <p class="mt-1 text-sm text-accent">{resumeEducation.degree}</p>
+      <p class="mt-2 text-sm leading-relaxed text-muted">
+        {resumeEducation.detail}
+      </p>
+    </div>
+  </section>
+</BaseLayout>

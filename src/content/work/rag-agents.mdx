@@ -1,0 +1,59 @@
+---
+title: RAG Agents for Support & Learning
+tagline: retrieval · openai · moderation
+role: Software Engineer · Front.Page
+year: '2024'
+summary: >-
+  A set of RAG chatbots — support, learning, assistant — built on OpenAI APIs
+  and grounded in real product docs. The support one cut human replies by 90%.
+stack: ['Node.js', 'OpenAI APIs', 'RAG', 'Vector retrieval']
+metrics:
+  - { value: '-90%', label: 'human support load' }
+  - { value: '3', label: 'agent surfaces' }
+  - { value: 'Grounded', label: 'retrieval-backed answers' }
+featured: true
+order: 3
+---
+
+## The problem
+
+A raw LLM is confidently wrong about your product. It has never seen your docs,
+your edge cases, or last week's feature — so a support bot built on prompting
+alone either hallucinates or hedges, and both erode trust.
+
+The goal was a set of assistants that were genuinely *useful*: a support agent, a
+learning agent and a general assistant, each answering from what was actually
+true about the product rather than what the model guessed.
+
+## Architecture
+
+Every agent follows the same retrieval-augmented shape:
+
+- **Knowledge retrieval** — the relevant product knowledge for a question is
+  retrieved first, so the model answers *from* sources instead of from memory.
+- **Grounded generation** — OpenAI APIs generate the response over retrieved
+  context, which keeps answers specific and current and makes them auditable.
+- **Three surfaces, one core** — support, learning and assistant agents share
+  the same retrieval-and-generation core, differing in their knowledge scope and
+  tone rather than being three separate builds.
+- **A moderation agent** — a dedicated agent triages incoming support queries,
+  resolving the routine ones and escalating only what genuinely needs a human.
+
+## Engineering decisions
+
+The principle throughout: **retrieval is not optional.** Grounding every answer
+in retrieved knowledge is what separates an assistant people rely on from a demo
+that embarrasses you in week two. It also made the system improvable — better
+answers came from better knowledge, not from prompt-wrangling.
+
+Framing the moderation bot as a triage layer, not a replacement, was the other
+key call. It handled the bulk of routine load and *escalated* the rest, so the
+failure mode was "a human looks at it", never "a user gets a wrong answer with
+confidence".
+
+## Outcome
+
+Human intervention in support queries dropped **90%**. The team spent its time on
+the hard, genuinely novel tickets while the routine majority resolved
+themselves — and because every answer was retrieval-backed, the bots got better
+simply by keeping the knowledge base current.

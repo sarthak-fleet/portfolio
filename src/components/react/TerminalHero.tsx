@@ -1,0 +1,265 @@
+import { useEffect, useRef, useState } from 'react';
+import { site } from '@/data/site';
+
+/**
+ * Interactive terminal — the hero centrepiece.
+ * Plays a short boot sequence on load, then accepts real commands.
+ * Try: help · whoami · stack · work · contact · resume · goto · clear
+ */
+
+type Kind = 'cmd' | 'out' | 'ok' | 'dim' | 'accent' | 'err';
+type Line = { kind: Kind; text: string };
+
+const PROMPT = 'guest@sarthak';
+
+const BOOT: Line[] = [
+  { kind: 'cmd', text: 'whoami' },
+  { kind: 'out', text: 'sarthak agrawal — ai infrastructure engineer' },
+  { kind: 'cmd', text: 'cat focus.txt' },
+  { kind: 'accent', text: 'real-time pipelines · vector search · durable workflows' },
+  { kind: 'cmd', text: './status --check' },
+  { kind: 'ok', text: '✓ shipping 4+ yrs    ✓ systems at scale    ✓ open to hard problems' },
+  { kind: 'dim', text: "type 'help' for commands — or press ⌘K to navigate" },
+];
+
+const HELP: Line[] = [
+  { kind: 'dim', text: 'available commands' },
+  { kind: 'out', text: '  whoami     who I am and what I do' },
+  { kind: 'out', text: '  stack      languages & infrastructure I work with' },
+  { kind: 'out', text: '  work       production systems I have built' },
+  { kind: 'out', text: '  projects   open-source repositories' },
+  { kind: 'out', text: '  contact    how to reach me' },
+  { kind: 'out', text: '  resume     view my résumé' },
+  { kind: 'out', text: '  goto       jump to: about · work · projects · writing' },
+  { kind: 'out', text: '  clear      reset the terminal' },
+];
+
+const lineClass: Record<Kind, string> = {
+  cmd: 'text-fg',
+  out: 'text-muted',
+  ok: 'text-accent',
+  dim: 'text-faint',
+  accent: 'text-fg',
+  err: 'text-[#f5736b]',
+};
+
+export default function TerminalHero() {
+  const [lines, setLines] = useState<Line[]>([]);
+  const [input, setInput] = useState('');
+  const [ready, setReady] = useState(false);
+  const [history, setHistory] = useState<string[]>([]);
+  const [histIdx, setHistIdx] = useState(-1);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // Boot sequence.
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) {
+      setLines(BOOT);
+      setReady(true);
+      return;
+    }
+    let i = 0;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const step = () => {
+      if (i >= BOOT.length) {
+        setReady(true);
+        return;
+      }
+      setLines((prev) => [...prev, BOOT[i]]);
+      i += 1;
+      timers.push(setTimeout(step, BOOT[i - 1]?.kind === 'cmd' ? 220 : 380));
+    };
+    timers.push(setTimeout(step, 320));
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
+  // Keep the view pinned to the latest output.
+  useEffect(() => {
+    bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight });
+  }, [lines]);
+
+  const print = (out: Line[]) => setLines((prev) => [...prev, ...out]);
+
+  const run = (raw: string) => {
+    const cmd = raw.trim();
+    print([{ kind: 'cmd', text: cmd || '' }]);
+    if (!cmd) return;
+    setHistory((h) => [...h, cmd]);
+    setHistIdx(-1);
+
+    const [name, ...args] = cmd.toLowerCase().split(/\s+/);
+
+    switch (name) {
+      case 'help':
+        print(HELP);
+        break;
+      case 'whoami':
+      case 'about':
+        print([
+          { kind: 'out', text: `${site.name.toLowerCase()} · ${site.role.toLowerCase()}` },
+          { kind: 'out', text: 'I build backend & infrastructure for AI systems —' },
+          { kind: 'out', text: 'the serving, orchestration and reliability layers.' },
+          { kind: 'dim', text: '↳ run: goto about' },
+        ]);
+        break;
+      case 'stack':
+      case 'ls':
+        print([
+          { kind: 'accent', text: 'languages   go · typescript · python' },
+          { kind: 'accent', text: 'systems     kafka · temporal · kubernetes · prometheus' },
+          { kind: 'accent', text: 'data        mysql · redis · clickhouse · milvus' },
+          { kind: 'accent', text: 'ai          rag · embeddings · openai apis' },
+        ]);
+        break;
+      case 'work':
+        print([
+          { kind: 'out', text: 'selected work — production systems:' },
+          { kind: 'out', text: '  · vector-feeds        personalized feeds · +40% engagement' },
+          { kind: 'out', text: '  · realtime-pipeline   market data · 15k → 200k dau' },
+          { kind: 'out', text: '  · rag-agents          support agents · -90% human load' },
+          { kind: 'out', text: '  · durable-workflows   temporal · -90% failures' },
+          { kind: 'dim', text: '↳ run: goto work' },
+        ]);
+        break;
+      case 'projects':
+      case 'repos':
+        print([
+          { kind: 'out', text: '50+ open-source repos — tools, apps, games & experiments' },
+          { kind: 'dim', text: '↳ run: goto projects' },
+        ]);
+        break;
+      case 'contact':
+        print([
+          { kind: 'accent', text: site.email },
+          { kind: 'out', text: 'github.com/sarthakagrawal927 · x.com/sarthakcodes' },
+          { kind: 'dim', text: '↳ run: goto contact' },
+        ]);
+        break;
+      case 'resume':
+      case 'cv':
+        print([{ kind: 'ok', text: '→ /resume' }]);
+        setTimeout(() => window.location.assign(site.resumeUrl), 220);
+        break;
+      case 'goto':
+      case 'cd': {
+        const map: Record<string, string> = {
+          about: '/about',
+          work: '/#work',
+          projects: '/projects',
+          resume: '/resume',
+          writing: '/blog',
+          blog: '/blog',
+          contact: '/#contact',
+          home: '/',
+        };
+        const dest = map[args[0]];
+        if (dest) {
+          print([{ kind: 'ok', text: `→ ${dest}` }]);
+          setTimeout(() => window.location.assign(dest), 220);
+        } else {
+          print([{ kind: 'err', text: `goto: unknown target '${args[0] ?? ''}'` }]);
+        }
+        break;
+      }
+      case 'cmdk':
+      case 'menu':
+        window.dispatchEvent(new CustomEvent('cmdk:open'));
+        break;
+      case 'clear':
+        setLines([]);
+        break;
+      case 'sudo':
+        print([{ kind: 'err', text: 'permission denied — nice try :)' }]);
+        break;
+      case 'echo':
+        print([{ kind: 'out', text: args.join(' ') }]);
+        break;
+      default:
+        print([{ kind: 'err', text: `command not found: ${name} — type 'help'` }]);
+    }
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      run(input);
+      setInput('');
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (!history.length) return;
+      const next = histIdx < 0 ? history.length - 1 : Math.max(0, histIdx - 1);
+      setHistIdx(next);
+      setInput(history[next]);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (histIdx < 0) return;
+      const next = histIdx + 1;
+      if (next >= history.length) {
+        setHistIdx(-1);
+        setInput('');
+      } else {
+        setHistIdx(next);
+        setInput(history[next]);
+      }
+    } else if (e.key === 'l' && e.ctrlKey) {
+      e.preventDefault();
+      setLines([]);
+    }
+  };
+
+  return (
+    <div
+      className="panel overflow-hidden font-mono text-[13px] shadow-2xl shadow-black/40"
+      onClick={() => inputRef.current?.focus()}
+    >
+      {/* window chrome */}
+      <div className="flex items-center gap-2 border-b border-line bg-panel-2 px-3.5 py-2.5">
+        <span className="chrome-dot bg-[#ff5f57]" />
+        <span className="chrome-dot bg-[#febc2e]" />
+        <span className="chrome-dot bg-[#28c840]" />
+        <span className="ml-2 text-xs text-faint">sarthak@infra — zsh — 80×24</span>
+      </div>
+
+      {/* body */}
+      <div
+        ref={bodyRef}
+        className="h-72 space-y-1 overflow-y-auto px-4 py-3.5 leading-relaxed sm:h-80"
+      >
+        {lines.map((line, idx) => (
+          <div key={idx} className={lineClass[line.kind]}>
+            {line.kind === 'cmd' ? (
+              <>
+                <span className="text-accent">{PROMPT}</span>
+                <span className="text-faint">:~$</span>{' '}
+                <span>{line.text}</span>
+              </>
+            ) : (
+              <span className="whitespace-pre-wrap">{line.text}</span>
+            )}
+          </div>
+        ))}
+
+        {ready && (
+          <div className="flex items-center text-fg">
+            <span className="text-accent">{PROMPT}</span>
+            <span className="text-faint">:~$</span>
+            <span className="ml-2 whitespace-pre">{input}</span>
+            <span className="ml-px inline-block h-[1.05em] w-[7px] translate-y-[2px] bg-accent [animation:var(--animate-blink)]" />
+            <input
+              ref={inputRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={onKeyDown}
+              spellCheck={false}
+              autoCapitalize="off"
+              autoCorrect="off"
+              aria-label="Terminal command input"
+              className="absolute h-px w-px opacity-0"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

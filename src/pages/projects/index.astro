@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeader from '@/components/astro/SectionHeader.astro';
+import RepoCard from '@/components/astro/RepoCard.astro';
+import { getProjectGroups, getRepos } from '@/lib/github';
+import { site } from '@/data/site';
+
+const groups = await getProjectGroups();
+const allRepos = await getRepos();
+const curatedCount = groups.reduce((n, g) => n + g.repos.length, 0);
+const totalCount = allRepos.length;
+const rest = Math.max(totalCount - curatedCount, 0);
+---
+
+<BaseLayout
+  title="Projects"
+  description={`Selected open-source projects by ${site.name} — AI infrastructure, developer tools and shipped products.`}
+>
+  <section class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+    <SectionHeader
+      kicker="// open source"
+      title="The work worth your time."
+      intro="I've got 100-plus public repos. Most are experiments or learning projects, so instead of dumping the lot, here are the ones worth a look — picked by reading the code, not the README."
+    />
+
+    {
+      groups.length > 0 ? (
+        <>
+          {groups.map((group) => (
+            <div class="mt-14 first:mt-12">
+              <div class="flex items-baseline gap-3">
+                <h2 class="kicker">// {group.label}</h2>
+                <span class="font-mono text-xs text-faint">
+                  {group.repos.length}
+                </span>
+              </div>
+              <p class="mt-2 max-w-xl text-sm text-muted">{group.intro}</p>
+              <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {group.repos.map((repo) => (
+                  <RepoCard repo={repo} />
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <div class="panel mt-14 flex flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p class="font-medium text-fg">That's the good stuff.</p>
+              <p class="mt-1 text-sm text-muted">
+                {rest > 0 ? `Another ${rest}+ repos` : 'The rest'} — experiments,
+                half-built ideas and old contest solutions — are on GitHub if you
+                feel like digging.
+              </p>
+            </div>
+            <a
+              href={`https://github.com/${site.githubUser}?tab=repositories`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="shrink-0 rounded-md border border-line-strong px-4 py-2.5 text-sm font-medium text-fg transition-colors hover:border-faint hover:bg-panel-2"
+            >
+              Browse all on GitHub →
+            </a>
+          </div>
+        </>
+      ) : (
+        <div class="panel mt-10 p-8 text-center">
+          <p class="text-muted">
+            The live project list couldn't be fetched at build time.
+          </p>
+          <a
+            href={`https://github.com/${site.githubUser}?tab=repositories`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 inline-block font-mono text-sm text-accent link-underline"
+          >
+            Browse everything on GitHub →
+          </a>
+        </div>
+      )
+    }
+  </section>
+</BaseLayout>

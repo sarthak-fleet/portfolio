@@ -1,0 +1,61 @@
+---
+title: Durable Financial Workflows
+tagline: temporal · reliability · go
+role: Software Engineer · VaultWealth
+year: '2025'
+summary: >-
+  Financial planning can't run on workflows that quietly break. Moving them to
+  Temporal killed 90% of the random failures and gave the team back about three
+  hours a day.
+stack: ['Go', 'Temporal', 'MySQL']
+metrics:
+  - { value: '-90%', label: 'unexpected failures' }
+  - { value: '~3 hrs/day', label: 'engineering time recovered' }
+  - { value: 'Durable', label: 'execution guarantees' }
+featured: true
+order: 4
+---
+
+## The problem
+
+In wealth management, a workflow that fails halfway is worse than one that never
+ran. A multi-step financial planning process — pulling data, running
+calculations, writing results — that dies in the middle leaves the system in a
+state nobody designed.
+
+The old workflows failed in exactly those ways: unexpectedly, partially, and
+often enough that engineers were spending hours every day diagnosing and
+manually replaying them. That is not a bug backlog — it is a missing
+infrastructure layer.
+
+## Architecture
+
+The fix was to stop treating durability as something each workflow re-invents:
+
+- **Temporal** — workflows were migrated onto Temporal, which makes execution
+  *durable*: progress is persisted step by step, so a crash or restart resumes
+  from where it stopped instead of starting over or stalling.
+- **Go workflow logic** — the planning logic itself runs as Go, with the
+  unreliable parts (network calls, external dependencies) expressed as Temporal
+  activities that retry on well-defined policies.
+- **Financial Planning Service** — alongside the migration, the planning service
+  itself was built in Go and MySQL, including the proprietary logic that
+  computes each client's financial health score.
+
+## Engineering decisions
+
+The core decision was to make **reliability a property of the platform, not of
+each developer's diligence.** Asking every workflow to handle its own retries,
+idempotency and partial-failure recovery guarantees inconsistency. Temporal moves
+those guarantees underneath the business logic, where they are uniform and hard
+to get wrong.
+
+The payoff is also operational: a durable workflow that hits a transient error
+recovers itself. There is simply less for a human to be paged about.
+
+## Outcome
+
+Unexpected failures dropped **90%**, and the engineering time previously lost to
+diagnosing and replaying broken runs — about **three hours a day** — went back
+into building. The financial workflows stopped being a thing the team worried
+about and became a thing the team trusted.

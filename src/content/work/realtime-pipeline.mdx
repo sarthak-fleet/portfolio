@@ -1,0 +1,61 @@
+---
+title: Real-Time Market Data Pipeline
+tagline: streaming · protobuf · fan-out
+role: Software Engineer · Front.Page
+year: '2023'
+summary: >-
+  The streaming backbone of a fintech social app. Go services push live market
+  data through Kafka to clients in real time — and it held up while daily users
+  went from 15k to 200k.
+stack: ['Go', 'Kafka', 'Protocol Buffers', 'Socket.io', 'Redis']
+metrics:
+  - { value: '15k → 200k', label: 'DAU in 14 weeks' }
+  - { value: '600 → 60ms', label: 'page build + load' }
+  - { value: '92%', label: 'fewer session DB calls' }
+featured: true
+order: 2
+---
+
+## The problem
+
+Market data is unforgiving infrastructure: it arrives continuously, it is only
+valuable while it is fresh, and the number of clients waiting for it was growing
+fast. Over fourteen weeks daily actives went from 15k to 200k — a **13×** jump —
+and the data path had to absorb that without the user ever seeing stale prices.
+
+The hard part is not ingesting the data. It is fanning it out to a moving target
+of connected clients, cheaply enough that scale does not become a cost crisis.
+
+## Architecture
+
+The pipeline separates ingest from delivery so each side can scale on its own:
+
+- **Go services** — ingest and processing run as Go services, chosen for cheap
+  concurrency and predictable latency under load.
+- **Kafka** — sits between ingest and fan-out as a buffer and decoupling layer,
+  so a burst on one side never stalls the other.
+- **Protocol Buffers** — the wire format throughout. Compact and fast to
+  encode/decode, which matters enormously when the same tick is serialised for
+  thousands of subscribers.
+- **Socket.io delivery** — real-time stock ticks reach clients over Socket.io,
+  with three selectable subscription modes: **room-based** fan-out, an
+  **in-memory** path, and **Redis pub/sub** for distributed subscription state.
+
+## Engineering decisions
+
+Offering three subscription modes was deliberate. Different workloads have
+different right answers — in-memory is fastest until you need more than one node;
+Redis pub/sub coordinates across many. Making it a choice meant the system fit
+the deployment instead of forcing one trade-off everywhere.
+
+Scaling to 200k DAU also meant attacking the database. Queue-based batching cut
+write load; granular session handling reduced session-refresh DB calls by
+**92%**; and caching page renders in Redis took HTML build + load from **600ms
+to 60ms** — a 10× win that compounded across every request.
+
+## Outcome
+
+A real-time data path that grew 13× in three months without a rewrite — and
+stayed fast while doing it. The lesson I keep: at scale, the wins are rarely one
+clever thing. They are a dozen unglamorous decisions — batch this, cache that,
+decouple here — each removing a little load.

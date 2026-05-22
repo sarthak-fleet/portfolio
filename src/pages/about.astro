@@ -1,0 +1,154 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SectionHeader from '@/components/astro/SectionHeader.astro';
+import Timeline from '@/components/astro/Timeline.astro';
+import { site } from '@/data/site';
+import { education } from '@/data/experience';
+
+const toolbox = [
+  { group: 'Languages', items: ['Go', 'TypeScript', 'JavaScript', 'Python'] },
+  { group: 'Backend', items: ['Node.js', 'REST APIs', 'Protocol Buffers', 'Microservices'] },
+  { group: 'Distributed & Real-time', items: ['Apache Kafka', 'Temporal', 'Socket.io', 'Queue batching'] },
+  { group: 'AI / LLM', items: ['RAG', 'OpenAI APIs', 'BERT embeddings', 'Milvus', 'GPT'] },
+  { group: 'Data', items: ['MySQL', 'PostgreSQL', 'Redis', 'ClickHouse', 'Elasticsearch', 'BigQuery'] },
+  { group: 'Cloud & DevOps', items: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'Prometheus'] },
+];
+---
+
+<BaseLayout
+  title="About"
+  description={`About ${site.name} — ${site.role}. Background, experience and the tools I build with.`}
+>
+  {/* Header */}
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+      <SectionHeader
+        kicker="// about"
+        title="I like the hard, invisible parts."
+      />
+
+      <div class="mt-8 grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+        <div class="space-y-5 text-pretty leading-relaxed text-muted">
+          <p>
+            I'm {site.name}, an <span class="text-fg">{site.role.toLowerCase()}</span>
+            based in {site.location}. I work on the layer most people never see —
+            the backend services, data pipelines and infrastructure that decide
+            whether a product is fast, reliable and affordable to run.
+          </p>
+          <p>
+            I spent three years at <span class="text-fg">Front.Page</span> (YC
+            S'21), where the backend had to grow up fast: I built a real-time
+            market-data pipeline on Go and Kafka that helped carry daily actives
+            from <span class="text-fg">15k to 200k in 14 weeks</span>. From there
+            the work moved into <span class="text-fg">AI infrastructure</span> —
+            vector-powered personalized feeds with BERT embeddings and Milvus,
+            and a family of RAG agents that cut human support load by 90%.
+          </p>
+          <p>
+            Today I'm at <span class="text-fg">VaultWealth</span> (Peak
+            XV-backed), building financial-planning services and the durable,
+            Temporal-backed workflows underneath them — because in wealth
+            management, a workflow that fails halfway is worse than one that
+            never ran.
+          </p>
+          <p>
+            I care most about the unglamorous things: the timeout, the retry,
+            the backpressure, the migration that has to run while the system
+            stays up. Good infrastructure is mostly the failure modes you
+            handled before anyone noticed.
+          </p>
+          <p>
+            Outside the day job I build constantly — developer tools, full-stack
+            apps, a few games — and most of it is open source on{' '}
+            <a href="/projects" class="text-accent link-underline">my projects page</a>.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="panel p-5">
+            <p class="kicker mb-3">// quick facts</p>
+            <dl class="space-y-2.5 font-mono text-sm">
+              <div class="flex justify-between gap-4">
+                <dt class="text-faint">role</dt>
+                <dd class="text-fg">{site.role}</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-faint">at</dt>
+                <dd class="text-fg">VaultWealth</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-faint">based in</dt>
+                <dd class="text-fg">{site.location}</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-faint">focus</dt>
+                <dd class="text-fg">backend · infra · ai</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-faint">status</dt>
+                <dd class="text-accent">open to work</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="panel p-5">
+            <p class="kicker mb-3">// education</p>
+            <p class="text-sm font-medium text-fg">{education.school}</p>
+            <p class="mt-1 text-sm text-muted">{education.degree}</p>
+            <p class="mt-1 font-mono text-xs text-faint">{education.period}</p>
+          </div>
+
+          <a
+            href={site.resumeUrl}
+            class="panel panel-hover flex items-center justify-between p-5"
+          >
+            <span class="text-sm text-fg">View résumé</span>
+            <span class="font-mono text-xs text-accent">/resume →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Experience */}
+  <section class="border-b border-line bg-panel/40">
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+      <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+        <SectionHeader
+          kicker="// experience"
+          title="The full background."
+        />
+        <Timeline detailed />
+      </div>
+    </div>
+  </section>
+
+  {/* Toolbox */}
+  <section>
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+      <SectionHeader
+        kicker="// toolbox"
+        title="What I build with."
+        intro="Tools earn their place by surviving production — not by being new."
+      />
+      <div class="mt-10 grid gap-px overflow-hidden rounded-xl border border-line sm:grid-cols-2 lg:grid-cols-3">
+        {
+          toolbox.map((cat) => (
+            <div class="bg-panel p-6">
+              <h3 class="font-mono text-xs uppercase tracking-wider text-accent">
+                {cat.group}
+              </h3>
+              <ul class="mt-4 flex flex-wrap gap-1.5">
+                {cat.items.map((item) => (
+                  <li class="rounded border border-line bg-panel-2 px-2 py-1 font-mono text-[11px] text-muted">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
