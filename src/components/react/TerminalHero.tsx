@@ -63,50 +63,27 @@ export default function TerminalHero({
   work?: WorkItem[];
   projects?: ProjectItem[];
 }) {
-  const [lines, setLines] = useState<Line[]>([]);
+  // Terminal is fully populated from the first render — server-side too — so it
+  // never flashes empty and there is no boot animation to "go away".
+  const [lines, setLines] = useState<Line[]>(BOOT);
   const [input, setInput] = useState('');
-  const [ready, setReady] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
   const [histIdx, setHistIdx] = useState(-1);
   const [hint, setHint] = useState(0);
   const bodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Boot sequence.
-  useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      setLines(BOOT);
-      setReady(true);
-      return;
-    }
-    let i = 0;
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    const step = () => {
-      if (i >= BOOT.length) {
-        setReady(true);
-        return;
-      }
-      setLines((prev) => [...prev, BOOT[i]]);
-      i += 1;
-      timers.push(setTimeout(step, BOOT[i - 1]?.kind === 'cmd' ? 220 : 380));
-    };
-    timers.push(setTimeout(step, 320));
-    return () => timers.forEach(clearTimeout);
-  }, []);
-
   // Keep the view pinned to the latest output.
   useEffect(() => {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight });
   }, [lines]);
 
-  // Rotate the idle hint so the prompt never looks like a finished animation.
+  // Rotate the idle hint so the prompt stays visibly interactive.
   useEffect(() => {
-    if (!ready) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const id = setInterval(() => setHint((h) => (h + 1) % HINTS.length), 2800);
     return () => clearInterval(id);
-  }, [ready]);
+  }, []);
 
   const print = (out: Line[]) => setLines((prev) => [...prev, ...out]);
 
@@ -329,28 +306,26 @@ export default function TerminalHero({
           </div>
         ))}
 
-        {ready && (
-          <div className="flex items-center text-fg">
-            <span className="text-accent">{PROMPT}</span>
-            <span className="text-faint">:~$</span>
-            <span className="ml-2 whitespace-pre">{input}</span>
-            <span className="ml-px inline-block h-[1.05em] w-[7px] translate-y-[2px] bg-accent [animation:var(--animate-blink)]" />
-            {!input && (
-              <span className="ml-2 select-none text-faint/60">{HINTS[hint]}</span>
-            )}
-            <input
-              ref={inputRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={onKeyDown}
-              spellCheck={false}
-              autoCapitalize="off"
-              autoCorrect="off"
-              aria-label="Terminal command input"
-              className="absolute h-px w-px opacity-0"
-            />
-          </div>
-        )}
+        <div className="flex items-center text-fg">
+          <span className="text-accent">{PROMPT}</span>
+          <span className="text-faint">:~$</span>
+          <span className="ml-2 whitespace-pre">{input}</span>
+          <span className="ml-px inline-block h-[1.05em] w-[7px] translate-y-[2px] bg-accent [animation:var(--animate-blink)]" />
+          {!input && (
+            <span className="ml-2 select-none text-faint/60">{HINTS[hint]}</span>
+          )}
+          <input
+            ref={inputRef}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={onKeyDown}
+            spellCheck={false}
+            autoCapitalize="off"
+            autoCorrect="off"
+            aria-label="Terminal command input"
+            className="absolute h-px w-px opacity-0"
+          />
+        </div>
       </div>
     </div>
   );
