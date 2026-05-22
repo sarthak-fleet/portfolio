@@ -20,8 +20,6 @@ const BOOT: Line[] = [
   { kind: 'out', text: 'sarthak agrawal — ai infrastructure engineer' },
   { kind: 'cmd', text: 'cat focus.txt' },
   { kind: 'accent', text: 'real-time pipelines · vector search · durable workflows' },
-  { kind: 'cmd', text: './status --check' },
-  { kind: 'ok', text: '✓ shipping 4+ yrs    ✓ systems at scale    ✓ open to hard problems' },
   { kind: 'dim', text: "type 'help' for commands — or press ⌘K to navigate" },
 ];
 
