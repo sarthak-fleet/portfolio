@@ -34,6 +34,15 @@ const HELP: Line[] = [
   { kind: 'out', text: '  clear      reset the terminal' },
 ];
 
+/** Rotating prompt hints — keeps the terminal feeling live & invites a real command. */
+const HINTS = [
+  "try 'help'",
+  "try 'work'",
+  "try 'goto projects'",
+  "try 'whoami'",
+  "try 'contact'",
+];
+
 const lineClass: Record<Kind, string> = {
   cmd: 'text-fg',
   out: 'text-muted',
@@ -49,6 +58,7 @@ export default function TerminalHero() {
   const [ready, setReady] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
   const [histIdx, setHistIdx] = useState(-1);
+  const [hint, setHint] = useState(0);
   const bodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -79,6 +89,14 @@ export default function TerminalHero() {
   useEffect(() => {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight });
   }, [lines]);
+
+  // Rotate the idle hint so the prompt never looks like a finished animation.
+  useEffect(() => {
+    if (!ready) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => setHint((h) => (h + 1) % HINTS.length), 2800);
+    return () => clearInterval(id);
+  }, [ready]);
 
   const print = (out: Line[]) => setLines((prev) => [...prev, ...out]);
 
@@ -246,6 +264,9 @@ export default function TerminalHero() {
             <span className="text-faint">:~$</span>
             <span className="ml-2 whitespace-pre">{input}</span>
             <span className="ml-px inline-block h-[1.05em] w-[7px] translate-y-[2px] bg-accent [animation:var(--animate-blink)]" />
+            {!input && (
+              <span className="ml-2 select-none text-faint/60">{HINTS[hint]}</span>
+            )}
             <input
               ref={inputRef}
               value={input}
