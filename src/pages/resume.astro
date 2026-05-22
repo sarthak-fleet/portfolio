@@ -1,5 +1,4 @@
 ---
-import { existsSync } from 'node:fs';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { site } from '@/data/site';
 import {
@@ -9,9 +8,8 @@ import {
   resumeEducation,
 } from '@/data/resume';
 
-// The PDF is produced by the LaTeX GitHub Action (.github/workflows/resume.yml).
-// Until the first build runs, fall back to a gentle note.
-const hasPdf = existsSync('public/resume.pdf');
+// resume.pdf is committed to the repo and rebuilt from resume.tex by the
+// LaTeX GitHub Action (.github/workflows/resume.yml) on every change.
 
 const contacts = [
   { label: 'Email', value: site.email, href: `mailto:${site.email}` },
@@ -62,21 +60,13 @@ const contacts = [
         </div>
       </div>
 
-      {
-        hasPdf ? (
-          <a
-            href={site.resumePdf}
-            download
-            class="shrink-0 self-start rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-base transition-opacity hover:opacity-90 sm:self-auto"
-          >
-            ↓ Download PDF
-          </a>
-        ) : (
-          <span class="shrink-0 self-start rounded-md border border-line px-4 py-2.5 font-mono text-xs text-faint">
-            PDF builds on next deploy
-          </span>
-        )
-      }
+      <a
+        href={site.resumePdf}
+        download
+        class="shrink-0 self-start rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-base transition-opacity hover:opacity-90 sm:self-auto"
+      >
+        ↓ Download PDF
+      </a>
     </header>
 
     {/* Experience */}
