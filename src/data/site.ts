@@ -15,7 +15,7 @@ export const site = {
   description:
     'Sarthak Agrawal — AI Infrastructure Engineer with deep backend expertise. Real-time data pipelines, vector-powered feeds, RAG systems, durable workflows and the distributed infrastructure underneath.',
   /** Used for canonical URLs & OG tags. Keep in sync with astro.config.mjs `site`. */
-  url: 'https://sarthakagrawal.dev',
+  url: 'https://sarthakagrawal.pages.dev',
   email: 'sarthakagrawal927@gmail.com',
   location: 'India',
   /** The résumé page (on-site, HTML). */

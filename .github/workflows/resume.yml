@@ -34,5 +34,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/resume.pdf
-          git diff --staged --quiet || git commit -m "chore: rebuild résumé PDF [skip ci]"
+          git diff --staged --quiet || git commit -m "chore: rebuild résumé PDF"
           git push
