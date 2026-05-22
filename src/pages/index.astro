@@ -24,7 +24,7 @@ const statBand = [
   { value: '4+', label: 'years shipping' },
   { value: '200k', label: 'daily actives served' },
   { value: String(stats.repos), label: 'public repositories' },
-  { value: '6', label: 'languages in prod' },
+  { value: '6', label: 'languages shipped' },
 ];
 ---
 
@@ -91,7 +91,11 @@ const statBand = [
       </div>
 
       <div class="lg:pl-4">
-        <TerminalHero client:load />
+        <TerminalHero
+          client:load
+          work={work.map((w) => ({ slug: w.id, title: w.data.title }))}
+          projects={topRepos.map((r) => ({ name: r.name, url: r.url }))}
+        />
       </div>
     </div>
   </section>

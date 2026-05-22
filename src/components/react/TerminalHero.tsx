@@ -8,7 +8,10 @@ import { site } from '@/data/site';
  */
 
 type Kind = 'cmd' | 'out' | 'ok' | 'dim' | 'accent' | 'err';
-type Line = { kind: Kind; text: string };
+type Line = { kind: Kind; text: string; href?: string; external?: boolean };
+
+type WorkItem = { slug: string; title: string };
+type ProjectItem = { name: string; url: string };
 
 const PROMPT = 'guest@sarthak';
 
@@ -28,6 +31,7 @@ const HELP: Line[] = [
   { kind: 'out', text: '  stack      languages & infrastructure I work with' },
   { kind: 'out', text: '  work       production systems I have built' },
   { kind: 'out', text: '  projects   open-source repositories' },
+  { kind: 'out', text: '  open       open a project / case study by name' },
   { kind: 'out', text: '  contact    how to reach me' },
   { kind: 'out', text: '  resume     view my résumé' },
   { kind: 'out', text: '  goto       jump to: about · work · projects · writing' },
@@ -52,7 +56,13 @@ const lineClass: Record<Kind, string> = {
   err: 'text-[#f5736b]',
 };
 
-export default function TerminalHero() {
+export default function TerminalHero({
+  work = [],
+  projects = [],
+}: {
+  work?: WorkItem[];
+  projects?: ProjectItem[];
+}) {
   const [lines, setLines] = useState<Line[]>([]);
   const [input, setInput] = useState('');
   const [ready, setReady] = useState(false);
@@ -131,28 +141,78 @@ export default function TerminalHero() {
           { kind: 'accent', text: 'ai          rag · embeddings · openai apis' },
         ]);
         break;
-      case 'work':
+      case 'work': {
+        if (!work.length) {
+          print([{ kind: 'dim', text: '↳ run: goto work' }]);
+          break;
+        }
         print([
-          { kind: 'out', text: 'selected work — production systems:' },
-          { kind: 'out', text: '  · vector-feeds        personalized feeds · +40% engagement' },
-          { kind: 'out', text: '  · realtime-pipeline   market data · 15k → 200k dau' },
-          { kind: 'out', text: '  · rag-agents          support agents · -90% human load' },
-          { kind: 'out', text: '  · durable-workflows   temporal · -90% failures' },
-          { kind: 'dim', text: '↳ run: goto work' },
+          { kind: 'out', text: 'selected work — click one, or run: open <name>' },
+          ...work.map((w): Line => ({
+            kind: 'out',
+            text: `  → ${w.title}`,
+            href: `/work/${w.slug}`,
+          })),
         ]);
         break;
+      }
       case 'projects':
-      case 'repos':
+      case 'repos': {
+        if (!projects.length) {
+          print([{ kind: 'dim', text: '↳ run: goto projects' }]);
+          break;
+        }
         print([
-          { kind: 'out', text: '50+ open-source repos — tools, apps, games & experiments' },
-          { kind: 'dim', text: '↳ run: goto projects' },
+          { kind: 'out', text: 'open source — top picks (click, or: open <name>):' },
+          ...projects.slice(0, 5).map((p): Line => ({
+            kind: 'out',
+            text: `  → ${p.name}`,
+            href: p.url,
+            external: true,
+          })),
+          { kind: 'dim', text: '↳ all 26 curated — run: goto projects' },
         ]);
         break;
+      }
+      case 'open': {
+        const q = args.join(' ').replace(/['"]/g, '').trim();
+        if (!q) {
+          print([{ kind: 'err', text: 'open: needs a name — e.g. open vector-feeds' }]);
+          break;
+        }
+        const w = work.find(
+          (x) =>
+            x.slug.toLowerCase().includes(q) || x.title.toLowerCase().includes(q),
+        );
+        if (w) {
+          print([{ kind: 'ok', text: `→ opening ${w.title}` }]);
+          setTimeout(() => window.location.assign(`/work/${w.slug}`), 220);
+          break;
+        }
+        const p = projects.find((x) => x.name.toLowerCase().includes(q));
+        if (p) {
+          print([{ kind: 'ok', text: `→ opening ${p.name} on github` }]);
+          window.open(p.url, '_blank', 'noopener');
+          break;
+        }
+        print([{ kind: 'err', text: `open: nothing matches '${q}'` }]);
+        break;
+      }
       case 'contact':
         print([
-          { kind: 'accent', text: site.email },
-          { kind: 'out', text: 'github.com/sarthakagrawal927 · x.com/sarthakcodes' },
-          { kind: 'dim', text: '↳ run: goto contact' },
+          { kind: 'accent', text: site.email, href: `mailto:${site.email}` },
+          {
+            kind: 'out',
+            text: '→ github.com/sarthakagrawal927',
+            href: 'https://github.com/sarthakagrawal927',
+            external: true,
+          },
+          {
+            kind: 'out',
+            text: '→ x.com/sarthakcodes',
+            href: 'https://x.com/sarthakcodes',
+            external: true,
+          },
         ]);
         break;
       case 'resume':
@@ -252,6 +312,17 @@ export default function TerminalHero() {
                 <span className="text-faint">:~$</span>{' '}
                 <span>{line.text}</span>
               </>
+            ) : line.href ? (
+              <a
+                href={line.href}
+                {...(line.external
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+                onClick={(e) => e.stopPropagation()}
+                className="whitespace-pre-wrap underline-offset-2 transition-colors hover:text-accent hover:underline"
+              >
+                {line.text}
+              </a>
             ) : (
               <span className="whitespace-pre-wrap">{line.text}</span>
             )}
