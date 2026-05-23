@@ -1,0 +1,89 @@
+---
+title: TinyGPT — a transformer built end to end
+tagline: pytorch · webassembly · webgpu · browser
+role: Personal · Learning by building
+year: '2026'
+summary: >-
+  A small GPT (~0.8M params, byte-level) written from scratch in three layers —
+  a PyTorch reference, a hand-derived C++/WASM implementation, and a full WebGPU
+  training loop — running entirely in a browser tab. Every layer's backward
+  pass was finite-difference checked before being trusted.
+stack: ['PyTorch', 'C++', 'WebAssembly', 'WebGPU / WGSL', 'TypeScript', 'Emscripten']
+metrics:
+  - { value: '~0.8M', label: 'params, trained in-browser' }
+  - { value: '24/24', label: 'GPU kernels parity-checked' }
+  - { value: '1.6×', label: 'WASM SIMD speedup' }
+featured: true
+order: 0
+repo: 'https://github.com/sarthakagrawal927/tinygpt'
+---
+
+## The problem
+
+Most people who use transformers can describe attention with a diagram but
+couldn't write its backward pass from memory. I was one of them. Calling an LLM
+API doesn't teach you how it works; even idiomatic PyTorch mostly teaches you
+*its API*, not the underlying maths.
+
+So I set the bar: a working transformer, trainable from scratch in a browser
+tab, with **no autograd anywhere in the WASM and WebGPU paths**. Every layer
+something I'd written, derived, and tested.
+
+## Architecture
+
+The same model exists at three levels, in build order:
+
+- **`python_ref/`** — a PyTorch reference: model, training loop, sampler, LoRA,
+  evaluation. ~200 lines of clear code; the source of truth everything else is
+  compared against.
+- **`wasm/`** — the same model in C++, with every backward pass *derived and
+  written by hand*. There is no autograd. Compiled to WebAssembly with
+  Emscripten; built twice — scalar and `-msimd128` for SIMD autovectorization.
+- **`webgpu/`** — full forward, backward, and AdamW on the GPU in WGSL. Tensors
+  stay resident in GPU buffers between ops; a buffer pool reuses them across
+  steps; an entire training step records into one command submission.
+
+A browser app picks a backend (WASM or WebGPU), trains in a Web Worker so the
+page never freezes, samples from the model, and checkpoints to OPFS so a run
+survives a refresh.
+
+## Engineering decisions
+
+The principle throughout: **every layer had to be testable before it was
+trusted.** Each kernel has a finite-difference gradient check against a
+reference implementation; each model has an "overfit gate" — train on a single
+batch, the cross-entropy loss must collapse to near-zero or the build doesn't
+ship. That one property is what made writing a hand-derived WebGPU backward
+pass tractable. Bugs were caught at the layer they lived in, not three layers
+later as a mystery in the loss curve.
+
+The three implementations were built in that order on purpose: the PyTorch
+reference exists so the C++ has something to be wrong against; the C++ overfit
+gate exists so the WebGPU does too. Each level pins the next. The WebGPU
+training port itself went in as six staged pull requests — GPU tensors and
+matmul, the elementwise ops, attention, embeddings + cross-entropy + AdamW, the
+orchestrator, the app integration — each parity-checked against WASM before the
+next began. When everything is verifiable, the diffs stay small and the bugs
+stay local.
+
+One note on honesty. An earlier write-up of mine documented WebGPU training as
+~2× slower than WASM based on automated measurements; I later discovered the
+headless CI was using `swiftshader`, a **software** WebGPU adapter, so the
+comparison was software-WebGPU racing SIMD-WASM — not a valid GPU number. The
+doc was corrected, the claim withdrawn, and the real-hardware speed left
+explicitly unmeasured. The project's whole method was "verify before claiming";
+that was a miss against it, fixed in the open.
+
+## Outcome
+
+A complete transformer that runs in a browser tab — ~0.8M params, byte-level,
+trains from scratch, generates samples, survives a refresh. The overfit gate
+sits at cross-entropy 5.55 → 0.002. The SIMD WASM build trains at ~1.6× the
+scalar speed. The WebGPU training loop is correct end to end (24/24 kernels
+parity-checked, the GPU overfit gate passes); the real-hardware speedup is for
+whoever opens the playground on a real GPU to read off — which is, honestly,
+the right way to state an unmeasured number.
+
+The model itself is too small to write coherent prose and is meant to be. The
+point of the project was the learning trail behind it kept visible — the
+write-ups, the staged PRs, every layer's test. That part worked.
