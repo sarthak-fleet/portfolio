@@ -17,9 +17,9 @@ const PROMPT = 'guest@sarthak';
 
 const BOOT: Line[] = [
   { kind: 'cmd', text: 'whoami' },
-  { kind: 'out', text: 'sarthak agrawal — ai infrastructure engineer' },
+  { kind: 'out', text: 'sarthak agrawal — ai infrastructure & product engineer' },
   { kind: 'cmd', text: 'cat focus.txt' },
-  { kind: 'accent', text: 'real-time pipelines · vector search · durable workflows' },
+  { kind: 'accent', text: 'llm tooling · real-time pipelines · vector search · shipped products' },
   { kind: 'dim', text: "type 'help' for commands — or press ⌘K to navigate" },
 ];
 
@@ -102,18 +102,19 @@ export default function TerminalHero({
       case 'about':
         print([
           { kind: 'out', text: `${site.name.toLowerCase()} · ${site.role.toLowerCase()}` },
-          { kind: 'out', text: 'I build backend & infrastructure for AI systems —' },
-          { kind: 'out', text: 'the serving, orchestration and reliability layers.' },
+          { kind: 'out', text: 'I build AI infrastructure — and the products that run on it.' },
+          { kind: 'out', text: 'serving, orchestration, reliability — and full-stack apps on top.' },
           { kind: 'dim', text: '↳ run: goto about' },
         ]);
         break;
       case 'stack':
       case 'ls':
         print([
-          { kind: 'accent', text: 'languages   go · typescript · python' },
-          { kind: 'accent', text: 'systems     kafka · temporal · kubernetes · prometheus' },
-          { kind: 'accent', text: 'data        mysql · redis · clickhouse · milvus' },
-          { kind: 'accent', text: 'ai          rag · embeddings · openai apis' },
+          { kind: 'accent', text: 'languages   go · typescript · python · rust' },
+          { kind: 'accent', text: 'data        mysql · postgres · redis · clickhouse · milvus · elasticsearch · bigquery' },
+          { kind: 'accent', text: 'systems     kafka · temporal · kubernetes · docker · prometheus' },
+          { kind: 'accent', text: 'cloud       aws · gcp · cloudflare workers' },
+          { kind: 'accent', text: 'ai          rag · embeddings · openai apis · bert' },
         ]);
         break;
       case 'work': {

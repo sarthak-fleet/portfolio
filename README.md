@@ -1,11 +1,14 @@
 # sarthakagrawal.dev
 
-Personal site & portfolio for **Sarthak Agrawal — AI Infrastructure Engineer**.
+Personal site & portfolio for **Sarthak Agrawal — AI Infrastructure & Product
+Engineer**. *I build AI infrastructure — and the products that run on it.*
 
 A dark, "systems" aesthetic built to make one thing obvious: this person builds
-backend and AI infrastructure. Interactive terminal hero, an animated
-distributed-architecture diagram, a ⌘K command palette, engineering case studies
-framed as systems, and a live GitHub-sourced projects archive.
+AI infrastructure and ships the products that use it. Interactive terminal hero,
+an animated distributed-architecture diagram, a ⌘K command palette, engineering
+case studies framed as systems, and a live GitHub-sourced projects archive.
+
+> This site is managed by AI agents.
 
 ## Stack
 

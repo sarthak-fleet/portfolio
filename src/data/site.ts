@@ -7,13 +7,13 @@ export const site = {
   name: 'Sarthak Agrawal',
   initials: 'SA',
   /** Headline role — what the whole site is positioned around. */
-  role: 'AI Infrastructure Engineer',
+  role: 'AI Infrastructure & Product Engineer',
   /** One-line hero statement. */
   tagline:
-    'I build the backend and infrastructure that AI products actually run on.',
+    'I build AI infrastructure — and the products that run on it.',
   /** Short blurb for SEO / meta description. */
   description:
-    'Sarthak Agrawal — AI Infrastructure Engineer with deep backend expertise. Real-time data pipelines, vector-powered feeds, RAG systems, durable workflows and the distributed infrastructure underneath.',
+    'Sarthak Agrawal — AI infrastructure & product engineer. LLM gateways, from-scratch model code, real-time pipelines, vector search, durable workflows, and the products that ship on top.',
   /** Used for canonical URLs & OG tags. Keep in sync with astro.config.mjs `site`. */
   url: 'https://sarthakagrawal.pages.dev',
   email: 'sarthakagrawal927@gmail.com',
@@ -25,7 +25,7 @@ export const site = {
   /** GitHub username — drives build-time stats & the projects page. */
   githubUser: 'sarthakagrawal927',
   /** Availability badge in the nav. Set to null to hide. */
-  availability: 'Open to AI infra & backend roles',
+  availability: 'Open to AI infra & product roles',
 } as const;
 
 /** Primary nav + command-palette destinations. */
