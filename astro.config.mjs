@@ -24,5 +24,9 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    // Fleet standard (VoidZero ecosystem) — Lightning CSS as the CSS
+    // transformer + minifier. Already bundled in Vite, just needs opting in.
+    css: { transformer: 'lightningcss' },
+    build: { cssMinify: 'lightningcss' },
   },
 });
