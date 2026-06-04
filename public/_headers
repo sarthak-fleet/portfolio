@@ -9,3 +9,12 @@
 
 /favicon.svg
   Cache-Control: public, max-age=604800
+
+# Cache the HTML at the CF edge for ~1 day; stale-while-revalidate keeps it
+# instant for everyone while a single deploy bumps the source-of-truth.
+# psi-swarm flagged TTFB ~370ms as the dominant LCP contributor.
+/
+  Cache-Control: public, s-maxage=86400, stale-while-revalidate=604800
+
+/*.html
+  Cache-Control: public, s-maxage=86400, stale-while-revalidate=604800
