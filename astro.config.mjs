@@ -13,7 +13,10 @@ export default defineConfig({
   trailingSlash: 'never',
   // Emit `about.html` rather than `about/index.html` so URLs have no
   // trailing slash on Cloudflare Pages (no 308 redirect on every link).
-  build: { format: 'file' },
+  // Inline ALL stylesheets so we never block render on an external CSS
+  // request — psi-swarm flagged about.CGDoxez0.css (9 KB) as the LCP-blocker
+  // on mobile-slow (6.4s render delay). Reference: psi-swarm run.
+  build: { format: 'file', inlineStylesheets: 'always' },
   integrations: [react(), mdx(), sitemap()],
   prefetch: {
     prefetchAll: true,
