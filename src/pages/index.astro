@@ -92,7 +92,7 @@ const statBand = [
 
       <div class="lg:pl-4">
         <TerminalHero
-          client:load
+          client:visible
           work={work.map((w) => ({ slug: w.id, title: w.data.title }))}
           projects={topRepos.map((r) => ({ name: r.name, url: r.url }))}
         />
