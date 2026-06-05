@@ -31,11 +31,26 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   }
 
   const cache = caches.default;
-  const cached = await cache.match(request);
-  if (cached) {
-    const hit = new Response(cached.body, cached);
-    hit.headers.set("x-edge-cache", "HIT");
-    return hit;
+  // Bypass + evict the cache entry when the client explicitly asks for a
+  // fresh copy (Cache-Control: no-cache or Pragma: no-cache). Lets us
+  // invalidate stale worker-cache entries after deploys without waiting
+  // for s-maxage to expire — `purge_cache` on the zone only clears the
+  // CDN layer, not `caches.default`.
+  const cc = request.headers.get("cache-control") ?? "";
+  const pragma = request.headers.get("pragma") ?? "";
+  const wantsFresh =
+    cc.includes("no-cache") || cc.includes("no-store") || pragma.includes("no-cache");
+
+  if (!wantsFresh) {
+    const cached = await cache.match(request);
+    if (cached) {
+      const hit = new Response(cached.body, cached);
+      hit.headers.set("x-edge-cache", "HIT");
+      return hit;
+    }
+  } else {
+    // Best-effort eviction — failures are non-fatal.
+    context.waitUntil(cache.delete(request).catch(() => {}));
   }
 
   const response = await context.next();
