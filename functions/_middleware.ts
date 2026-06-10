@@ -11,6 +11,16 @@ interface Env {
   ASSETS?: { fetch: (req: Request) => Promise<Response> };
 }
 
+// Minimal local typings for the Pages Functions runtime so `astro check`
+// passes without pulling in @cloudflare/workers-types.
+interface PagesContext<E> {
+  request: Request;
+  env: E;
+  next: () => Promise<Response>;
+  waitUntil: (promise: Promise<unknown>) => void;
+}
+type PagesFunction<E> = (context: PagesContext<E>) => Promise<Response>;
+
 export const onRequest: PagesFunction<Env> = async (context) => {
   const { request } = context;
 
@@ -30,7 +40,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return context.next();
   }
 
-  const cache = caches.default;
+  // Workers runtime exposes `caches.default`; lib.dom's CacheStorage doesn't.
+  const cache = (caches as unknown as { default: Cache }).default;
   // Bypass + evict the cache entry when the client explicitly asks for a
   // fresh copy (Cache-Control: no-cache or Pragma: no-cache). Lets us
   // invalidate stale worker-cache entries after deploys without waiting
