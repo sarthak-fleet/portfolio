@@ -15,7 +15,7 @@ export const site = {
   description:
     'Sarthak Agrawal — AI infrastructure & product engineer. LLM gateways, from-scratch model code, real-time pipelines, vector search, durable workflows, and the products that ship on top.',
   /** Used for canonical URLs & OG tags. Keep in sync with astro.config.mjs `site`. */
-  url: 'https://sarthakagrawal.pages.dev',
+  url: 'https://sarthakagrawal.dev',
   email: 'sarthakagrawal927@gmail.com',
   location: 'India',
   /** The résumé page (on-site, HTML). */

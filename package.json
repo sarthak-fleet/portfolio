@@ -3,6 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://sarthakagrawal.dev",
   "description": "Sarthak Agrawal — AI Infrastructure Engineer. Personal site & portfolio.",
   "scripts": {
     "dev": "astro dev",
