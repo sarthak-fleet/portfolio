@@ -11,6 +11,8 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 - [About](https://sarthakagrawal.dev/about): Background, stack, and availability
 - [Résumé](https://sarthakagrawal.dev/resume): On-site résumé and PDF download
 - [Writing](https://sarthakagrawal.dev/blog): Devlog and technical posts
+- [Privacy](https://sarthakagrawal.dev/privacy): Privacy policy
+- [Terms](https://sarthakagrawal.dev/terms): Terms of use
 - [Fleet performance without Argo](https://sarthakagrawal.dev/blog/fleet-performance-without-argo): Case study on closing desktop LCP p75 under 500 ms across 23 Cloudflare sites
 
 ## Shipped products

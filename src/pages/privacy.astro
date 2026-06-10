@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
+---
+
+<BaseLayout
+  title="Privacy"
+  description={`Privacy policy for ${site.url} — personal portfolio and writing by ${site.name}.`}
+>
+  <article class="mx-auto max-w-2xl px-5 py-16 sm:px-8 sm:py-20">
+    <a
+      href="/"
+      class="link-underline font-mono text-sm text-muted transition-colors hover:text-accent"
+    >
+      ← home
+    </a>
+
+    <header class="mt-8 border-b border-line pb-8">
+      <h1 class="text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
+        Privacy Policy
+      </h1>
+      <p class="mt-3 font-mono text-xs text-faint">Last updated: June 10, 2026</p>
+    </header>
+
+    <div class="prose mt-8">
+      <h2>What this site is</h2>
+      <p>
+        {site.url} is a personal portfolio and writing site. It does not require
+        an account and does not collect form submissions on this domain.
+      </p>
+
+      <h2>What may be collected</h2>
+      <ul>
+        <li>
+          <strong>Edge logs:</strong> Cloudflare may log standard request metadata
+          (IP address, user agent, path) for security and performance.
+        </li>
+        <li>
+          <strong>Third-party links:</strong> Linked products (CodeVetter, RolePatch,
+          High Signal, etc.) operate on their own domains with separate policies.
+        </li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        Questions: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+  </article>
+</BaseLayout>
