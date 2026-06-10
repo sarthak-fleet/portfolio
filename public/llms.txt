@@ -1,0 +1,28 @@
+# Sarthak Agrawal
+
+> Personal site of Sarthak Agrawal — AI infrastructure and product engineer. Portfolio, shipped products, and technical writing.
+
+Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal product fleet.
+
+## Portfolio
+
+- [Home](https://sarthakagrawal.dev/): Hero, selected work, and contact
+- [Projects](https://sarthakagrawal.dev/projects): Shipped products on owned domains plus curated open-source repos
+- [About](https://sarthakagrawal.dev/about): Background, stack, and availability
+- [Résumé](https://sarthakagrawal.dev/resume): On-site résumé and PDF download
+- [Writing](https://sarthakagrawal.dev/blog): Devlog and technical posts
+
+## Shipped products
+
+- [Foundry / SaaS Maker](https://sassmaker.com): Personal fleet operating layer and product showcase
+- [CodeVetter](https://codevetter.com): Desktop-first AI code review for agent-generated diffs
+- [High Signal](https://highsignal.app): Daily brief on technology, startups, and finance
+- [RolePatch](https://rolepatch.com): AI resume tailoring against job descriptions
+- [Aliveville](https://aliveville.com): Interactive AI world experiment
+- [Significant Hobbies](https://significanthobbies.com): Hobby journey mapping and discovery
+- [psi-swarm](https://github.com/sarthakagrawal927/psi-swarm): Distributional Lighthouse Web Vitals CLI
+
+## Optional
+
+- [GitHub](https://github.com/sarthakagrawal927): Source code and experiments
+- [Foundry docs](https://docs.sassmaker.com): Fleet operating manual
