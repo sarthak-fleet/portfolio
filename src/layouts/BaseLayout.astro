@@ -23,6 +23,173 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      (() => {
+        const storageKey = 'sarthak-theme';
+        const themes = {
+          dark: '#08090a',
+          light: '#f7f9fc',
+        };
+        const pullThreshold = 22;
+        const maxPull = 36;
+        let activePull = null;
+        let suppressPointerClick = false;
+
+        const getStoredTheme = () => {
+          try {
+            const theme = window.localStorage.getItem(storageKey);
+            return theme === 'light' || theme === 'dark' ? theme : 'dark';
+          } catch {
+            return 'dark';
+          }
+        };
+
+        const syncControls = (theme) => {
+          document.querySelectorAll('[data-theme-toggle]').forEach((control) => {
+            const isLight = theme === 'light';
+            control.setAttribute('aria-pressed', String(isLight));
+            control.setAttribute(
+              'aria-label',
+              isLight ? 'Pull cord to turn the lights off' : 'Pull cord to turn the lights on',
+            );
+            control.setAttribute('title', isLight ? 'Turn lights off' : 'Turn lights on');
+          });
+        };
+
+        const setThemeColor = (theme) => {
+          const meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) {
+            meta.setAttribute('content', themes[theme]);
+          }
+        };
+
+        const animateLamp = (theme) => {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+          const root = document.documentElement;
+          const animationClass = theme === 'light' ? 'theme-lights-on' : 'theme-lights-off';
+          root.classList.remove('theme-lights-on', 'theme-lights-off');
+          void root.offsetWidth;
+          root.classList.add(animationClass);
+          window.setTimeout(() => root.classList.remove(animationClass), 720);
+        };
+
+        const applyTheme = (theme, animate = false) => {
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+          setThemeColor(theme);
+          syncControls(theme);
+          if (animate) animateLamp(theme);
+        };
+
+        const getThemeControl = (target) =>
+          target instanceof Element ? target.closest('[data-theme-toggle]') : null;
+
+        const getControls = () => document.querySelectorAll('[data-theme-toggle]');
+
+        const setPullDistance = (distance) => {
+          getControls().forEach((control) => {
+            control.style.setProperty('--pull-distance', `${distance}px`);
+            control.classList.toggle('is-dragging', distance > 0);
+          });
+        };
+
+        const resetPullDistance = () => {
+          getControls().forEach((control) => {
+            control.style.removeProperty('--pull-distance');
+            control.classList.remove('is-dragging');
+          });
+        };
+
+        const playPullAnimation = () => {
+          getControls().forEach((button) => {
+            button.classList.remove('is-pulling');
+            void button.offsetWidth;
+            button.classList.add('is-pulling');
+            window.setTimeout(() => button.classList.remove('is-pulling'), 560);
+          });
+        };
+
+        const toggleTheme = () => {
+          const currentTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+          const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+          try {
+            window.localStorage.setItem(storageKey, nextTheme);
+          } catch {}
+
+          playPullAnimation();
+          applyTheme(nextTheme, true);
+        };
+
+        const finishPull = (event, cancelled = false) => {
+          if (!activePull || activePull.pointerId !== event.pointerId) return;
+
+          const { control, distance, pointerId } = activePull;
+          activePull = null;
+          control.releasePointerCapture?.(pointerId);
+          resetPullDistance();
+
+          if (!cancelled && distance >= pullThreshold) {
+            suppressPointerClick = true;
+            window.setTimeout(() => {
+              suppressPointerClick = false;
+            }, 80);
+            toggleTheme();
+          }
+        };
+
+        applyTheme(getStoredTheme());
+        window.requestAnimationFrame(() => applyTheme(getStoredTheme()));
+
+        if (!window.__sarthakThemeToggle) {
+          window.__sarthakThemeToggle = true;
+
+          document.addEventListener('pointerdown', (event) => {
+            const control = getThemeControl(event.target);
+            if (!control) return;
+            if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+            event.preventDefault();
+            activePull = {
+              control,
+              distance: 0,
+              pointerId: event.pointerId,
+              startY: event.clientY,
+            };
+            control.setPointerCapture?.(event.pointerId);
+            setPullDistance(0);
+          });
+
+          document.addEventListener('pointermove', (event) => {
+            if (!activePull || activePull.pointerId !== event.pointerId) return;
+
+            const distance = Math.min(maxPull, Math.max(0, event.clientY - activePull.startY));
+            activePull.distance = distance;
+            setPullDistance(distance);
+
+            if (distance > 2) {
+              event.preventDefault();
+            }
+          });
+
+          document.addEventListener('pointerup', (event) => finishPull(event));
+          document.addEventListener('pointercancel', (event) => finishPull(event, true));
+
+          document.addEventListener('click', (event) => {
+            const control = getThemeControl(event.target);
+            if (!control) return;
+
+            event.preventDefault();
+            if (suppressPointerClick || event.detail !== 0) return;
+
+            toggleTheme();
+          });
+
+          document.addEventListener('astro:page-load', () => applyTheme(getStoredTheme()));
+        }
+      })();
+    </script>
     <Head title={title} description={description} image={image} type={type} />
     <ClientRouter />
   </head>

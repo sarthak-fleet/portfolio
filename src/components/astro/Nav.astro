@@ -55,6 +55,20 @@ import { navLinks, site } from '@/data/site';
 
     <!-- Actions -->
     <div class="flex items-center gap-2.5">
+      <button
+        type="button"
+        data-theme-toggle
+        class="pull-cord-toggle"
+        aria-label="Pull cord to turn the lights on"
+        aria-pressed="false"
+        title="Turn lights on"
+      >
+        <span class="sr-only">Toggle light mode</span>
+        <span class="pull-fixture" aria-hidden="true"></span>
+        <span class="pull-chain" aria-hidden="true"></span>
+        <span class="pull-bulb" aria-hidden="true"></span>
+        <span class="pull-grip" aria-hidden="true"></span>
+      </button>
       <a
         href={site.resumeUrl}
         class="hidden rounded-md border border-line px-3 py-1.5 text-sm text-muted transition-colors hover:border-line-strong hover:text-fg sm:block"
