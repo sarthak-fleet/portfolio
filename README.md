@@ -37,7 +37,7 @@ Node version is pinned in `.nvmrc` (22).
 |---|---|
 | `/` | Hero, stats, architecture diagram, case studies, open-source teaser, expertise, timeline |
 | `/work/[slug]` | Engineering case studies (real work — vector feeds, real-time pipeline, RAG agents, durable workflows) |
-| `/projects` | Every public repo, auto-synced from GitHub at build, ranked by stars |
+| `/projects` | Curated public repos, auto-synced from GitHub at build, plus a link to the full archive |
 | `/about` | Bio, full experience timeline, education, toolbox |
 | `/resume` | On-site résumé + "Download PDF" |
 | `/blog` | "Coming soon" — flips to a post list when the first `.mdx` lands |
