@@ -35,6 +35,9 @@ export const fleetProducts = [
     description:
       'Map hobby history across life phases — shareable journeys and discovery for curious people.',
   },
+] as const;
+
+export const fleetTools = [
   {
     name: 'psi-swarm',
     url: 'https://github.com/sarthakagrawal927/psi-swarm',
