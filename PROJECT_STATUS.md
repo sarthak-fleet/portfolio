@@ -1,6 +1,6 @@
 # Project Status
 
-Last updated: 2026-06-08
+Last updated: 2026-06-12
 
 ## Current Scope
 
@@ -22,6 +22,8 @@ writing surface.
   graceful fallback when no token is configured.
 - Resume PDF generation is documented through the GitHub Action and local
   fallback path.
+- Home-page architecture diagram is an editable React island with shareable
+  URL state and mailto-based recommendation submission.
 
 ## Planned Next
 

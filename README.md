@@ -14,7 +14,7 @@ case studies framed as systems, and a live GitHub-sourced projects archive.
 
 - **[Astro 5](https://astro.build)** — static output, ships ~zero JS by default
 - **Tailwind CSS v4** — via the `@tailwindcss/vite` plugin; tokens in `src/styles/global.css`
-- **React 19 islands** — only the command palette & terminal hero hydrate
+- **React 19 islands** — command palette, terminal hero, and the editable architecture diagram hydrate
 - **MDX content collections** — case studies (`work`) and writing (`blog`)
 - **`motion` + `cmdk`** — animation primitives & the command menu
 - Deployed on **Cloudflare Pages**
@@ -35,7 +35,7 @@ Node version is pinned in `.nvmrc` (22).
 
 | Route | What |
 |---|---|
-| `/` | Hero, stats, architecture diagram, case studies, open-source teaser, expertise, timeline |
+| `/` | Hero, stats, editable architecture diagram (share link + mailto submit), case studies, open-source teaser, expertise, timeline |
 | `/work/[slug]` | Engineering case studies (real work — vector feeds, real-time pipeline, RAG agents, durable workflows) |
 | `/projects` | Curated public repos, auto-synced from GitHub at build, plus a link to the full archive |
 | `/about` | Bio, full experience timeline, education, toolbox |
@@ -97,3 +97,4 @@ Static site (`output: 'static'`) — deployment is just static assets.
 Optional: set a `GITHUB_TOKEN` build env var to raise the GitHub API rate limit
 used by the build-time stats & projects list (it falls back gracefully without
 one).
+

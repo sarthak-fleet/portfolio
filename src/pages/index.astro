@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeader from '@/components/astro/SectionHeader.astro';
 import StatBand from '@/components/astro/StatBand.astro';
-import ArchitectureDiagram from '@/components/astro/ArchitectureDiagram.astro';
+import EditableArchitectureDiagram from '@/components/react/EditableArchitectureDiagram';
 import WorkCard from '@/components/astro/WorkCard.astro';
 import DomainCard from '@/components/astro/DomainCard.astro';
 import RepoCard from '@/components/astro/RepoCard.astro';
@@ -121,7 +121,7 @@ const statBand = [
         intro="Most of the job isn't the code that works first try. It's the request that times out, the queue that backs up, the dependency that goes down. That's what I build for."
       />
       <div class="mt-10">
-        <ArchitectureDiagram />
+        <EditableArchitectureDiagram client:visible />
       </div>
     </div>
   </section>
