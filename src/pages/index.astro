@@ -64,26 +64,27 @@ const statBand = [
         <p class="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
           I'm {site.name}. Backend-heavy, full-stack — I build LLM tooling,
           real-time pipelines, and the infrastructure that keeps AI features
-          dependable in production. I also ship the products that run on top.
+          dependable in production. Most recently: a Go + Kafka feed that took
+          one product from 15k to 200k daily actives in 14 weeks.
         </p>
 
-        <div class="mt-8 flex flex-wrap items-center gap-3">
+        <div class="mt-8 flex flex-wrap items-center gap-4">
           <a
             href="#work"
             class="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-base transition-opacity hover:opacity-90"
           >
-            View selected work
+            Read the case studies
           </a>
           <a
             href="/about"
-            class="rounded-md border border-line-strong px-4 py-2.5 text-sm font-medium text-fg transition-colors hover:border-faint hover:bg-panel"
+            class="link-underline font-mono text-xs text-muted transition-colors hover:text-fg"
           >
-            About me
+            about me →
           </a>
           <button
             type="button"
             data-cmdk-trigger
-            class="rounded-md px-3 py-2.5 font-mono text-xs text-faint transition-colors hover:text-accent"
+            class="font-mono text-xs text-faint transition-colors hover:text-accent"
           >
             press ⌘K
           </button>
