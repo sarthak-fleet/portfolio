@@ -20,6 +20,52 @@ function headers(): Record<string, string> {
   return h;
 }
 
+type GithubUserSummary = {
+  public_repos?: number;
+  followers?: number;
+};
+
+async function fetchGithubJson<T>(url: string): Promise<T | null> {
+  try {
+    const res = await fetch(url, { headers: headers() });
+    if (!res.ok) return null;
+    return (await res.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchReposFrom(url: string): Promise<Repo[]> {
+  try {
+    const all: Repo[] = [];
+    for (let page = 1; page <= 5; page++) {
+      const res = await fetch(`${url}&page=${page}`, { headers: headers() });
+      if (!res.ok) break;
+      const data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) break;
+      for (const r of data) {
+        if (r.fork) continue;
+        all.push({
+          name: r.name,
+          description: r.description ?? null,
+          url: r.html_url,
+          homepage: r.homepage || null,
+          language: r.language ?? null,
+          stars: r.stargazers_count ?? 0,
+          forks: r.forks_count ?? 0,
+          topics: Array.isArray(r.topics) ? r.topics : [],
+          archived: Boolean(r.archived),
+          updated: r.pushed_at ?? r.updated_at ?? '',
+        });
+      }
+      if (data.length < 100) break;
+    }
+    return all;
+  } catch {
+    return [];
+  }
+}
+
 /* ----------------------------- stats ----------------------------- */
 
 export type GithubStats = {
@@ -27,32 +73,33 @@ export type GithubStats = {
   followers: number;
 };
 
-const STATS_FALLBACK: GithubStats = { repos: 115, followers: 30 };
+const STATS_FALLBACK: GithubStats = { repos: 128, followers: 30 };
 
 let statsCache: Promise<GithubStats> | null = null;
 
 export function getGithubStats(): Promise<GithubStats> {
   statsCache ??= (async () => {
-    try {
-      const res = await fetch(
+    const [user, org] = await Promise.all([
+      fetchGithubJson<GithubUserSummary>(
         `https://api.github.com/users/${site.githubUser}`,
-        { headers: headers() },
-      );
-      if (!res.ok) return STATS_FALLBACK;
-      const user = await res.json();
-      return {
-        repos:
-          typeof user.public_repos === 'number'
-            ? user.public_repos
-            : STATS_FALLBACK.repos,
-        followers:
-          typeof user.followers === 'number'
-            ? user.followers
-            : STATS_FALLBACK.followers,
-      };
-    } catch {
-      return STATS_FALLBACK;
-    }
+      ),
+      site.githubOrg
+        ? fetchGithubJson<GithubUserSummary>(
+            `https://api.github.com/orgs/${site.githubOrg}`,
+          )
+        : Promise.resolve(null),
+    ]);
+
+    const repos =
+      (typeof user?.public_repos === 'number' ? user.public_repos : 0) +
+        (typeof org?.public_repos === 'number' ? org.public_repos : 0) ||
+      STATS_FALLBACK.repos;
+    const followers =
+      typeof user?.followers === 'number'
+        ? user.followers
+        : STATS_FALLBACK.followers;
+
+    return { repos, followers };
   })();
   return statsCache;
 }
@@ -81,32 +128,26 @@ let reposCache: Promise<Repo[]> | null = null;
 export function getRepos(): Promise<Repo[]> {
   reposCache ??= (async () => {
     try {
+      const [userRepos, orgRepos] = await Promise.all([
+        fetchReposFrom(
+          `https://api.github.com/users/${site.githubUser}/repos?per_page=100&type=owner&sort=pushed`,
+        ),
+        site.githubOrg
+          ? fetchReposFrom(
+              `https://api.github.com/orgs/${site.githubOrg}/repos?per_page=100&type=owner&sort=pushed`,
+            )
+          : Promise.resolve([]),
+      ]);
+
       const all: Repo[] = [];
-      for (let page = 1; page <= 5; page++) {
-        const res = await fetch(
-          `https://api.github.com/users/${site.githubUser}/repos?per_page=100&page=${page}&type=owner&sort=pushed`,
-          { headers: headers() },
-        );
-        if (!res.ok) break;
-        const data = await res.json();
-        if (!Array.isArray(data) || data.length === 0) break;
-        for (const r of data) {
-          if (r.fork) continue;
-          all.push({
-            name: r.name,
-            description: r.description ?? null,
-            url: r.html_url,
-            homepage: r.homepage || null,
-            language: r.language ?? null,
-            stars: r.stargazers_count ?? 0,
-            forks: r.forks_count ?? 0,
-            topics: Array.isArray(r.topics) ? r.topics : [],
-            archived: Boolean(r.archived),
-            updated: r.pushed_at ?? r.updated_at ?? '',
-          });
-        }
-        if (data.length < 100) break;
+      const seen = new Set<string>();
+      for (const repo of [...userRepos, ...orgRepos]) {
+        const key = repo.url.toLowerCase();
+        if (seen.has(key)) continue;
+        seen.add(key);
+        all.push(repo);
       }
+
       all.sort(
         (a, b) =>
           b.stars - a.stars ||

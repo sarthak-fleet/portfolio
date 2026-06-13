@@ -24,6 +24,8 @@ export const site = {
   resumePdf: '/resume.pdf',
   /** GitHub username — drives build-time stats & the projects page. */
   githubUser: 'sarthakagrawal927',
+  /** GitHub org that hosts the fleet repos mirrored into the portfolio. */
+  githubOrg: 'sarthak-fleet',
   /** Availability badge in the nav. Set to null to hide. */
   availability: 'Open to AI infra & product roles',
 } as const;
