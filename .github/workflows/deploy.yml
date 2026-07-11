@@ -12,6 +12,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      HAS_CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -24,8 +26,14 @@ jobs:
       - run: npm run build
 
       - name: Deploy to Cloudflare Pages
+        if: env.HAS_CLOUDFLARE_API_TOKEN == 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 7d048325699a5acddb44d3be31cf6ba9
           command: pages deploy dist --project-name=sarthakagrawal --branch=main
+
+      - name: Skip deploy without Cloudflare token
+        if: env.HAS_CLOUDFLARE_API_TOKEN != 'true'
+        run: |
+          echo "::notice::CLOUDFLARE_API_TOKEN is not configured, so this run built the site but skipped Cloudflare Pages deploy."
