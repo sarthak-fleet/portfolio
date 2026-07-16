@@ -40,7 +40,7 @@ export const projectGroups: ProjectGroup[] = [
           'Pulls from SEC filings, news and Reddit, then runs an NLP pipeline to score what is actually worth knowing.',
       },
       {
-        repo: 'tinygpt',
+        repo: 'posttrainllm',
         summary:
           'A GPT written from scratch, LoRA fine-tuning and all, that runs in the browser on WASM and WebGPU kernels.',
       },

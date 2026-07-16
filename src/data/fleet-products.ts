@@ -34,7 +34,7 @@ export const fleetProductGroups: FleetProductGroup[] = [
       },
       {
         name: 'PostTrainLLM',
-        url: repo('PostTrainLLM', 'tinygpt'),
+        url: repo('PostTrainLLM', 'posttrainllm'),
         description: 'Post-training and model-learning workspace built around small local language models.',
         maturity: 'internal-first',
       },
