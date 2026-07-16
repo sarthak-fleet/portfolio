@@ -19,7 +19,7 @@ const BOOT: Line[] = [
   { kind: 'cmd', text: 'whoami' },
   { kind: 'out', text: 'sarthak agrawal — ai infrastructure & product engineer' },
   { kind: 'cmd', text: 'cat focus.txt' },
-  { kind: 'accent', text: 'llm tooling · real-time pipelines · vector search · shipped products' },
+  { kind: 'accent', text: 'codevetter · posttrainllm · pace' },
   { kind: 'dim', text: "type 'help' for commands — or press ⌘K to navigate" },
 ];
 

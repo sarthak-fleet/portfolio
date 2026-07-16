@@ -8,7 +8,7 @@ date: 2026-06-10
 tags: [performance, cloudflare, astro, web-vitals]
 ---
 
-I ship a lot of small products — 23 live sites on Cloudflare Workers and Pages, mostly solo. The fleet had a split personality: `*.workers.dev` and `*.pages.dev` URLs were fast, but custom domains sat on a **400–1000 ms TTFB floor**. PageSpeed Insights gave me one number per URL. That number lied often enough that I built [psi-swarm](https://github.com/sarthak-fleet/psi-swarm) to run Lighthouse many times and report **p50/p75/p90/p99** instead.
+I ship a lot of small products — 23 live sites on Cloudflare Workers and Pages, mostly solo. The fleet had a split personality: `*.workers.dev` and `*.pages.dev` URLs were fast, but custom domains sat on a **400–1000 ms TTFB floor**. PageSpeed Insights gave me one number per URL. That number lied often enough that I built [psi-swarm](https://github.com/sass-maker/psi-swarm) to run Lighthouse many times and report **p50/p75/p90/p99** instead.
 
 This post is the narrative version. The structured case study with baseline, tactics, and results lives on [Foundry](https://sassmaker.com/case-study/fleet-performance).
 
@@ -46,7 +46,7 @@ Five sites closed under 500 ms desktop LCP p75 in the first push. The remaining 
 
 ## Try the tooling
 
-- **[psi-swarm](https://github.com/sarthak-fleet/psi-swarm)** — CLI + local UI; runs stay on your machine
+- **[psi-swarm](https://github.com/sass-maker/psi-swarm)** — CLI + local UI; runs stay on your machine
 - **[Fleet performance case study](https://sassmaker.com/case-study/fleet-performance)** — condensed write-up on Foundry
 - **[Fleet products hub](https://sarthakagrawal.dev/projects)** — all seven owned domains in one place
 

@@ -143,7 +143,7 @@ export const projectGroups: ProjectGroup[] = [
     intro: 'Things I shipped and actually use.',
     projects: [
       {
-        repo: 'anime_list',
+        repo: 'anime-list',
         summary:
           'Browse 14,000+ anime with a ranking I actually trust, plus watchlists to keep track.',
       },
@@ -153,7 +153,7 @@ export const projectGroups: ProjectGroup[] = [
           'Save articles and PDFs for later, mark them up, and ask an AI about anything you’ve saved.',
       },
       {
-        repo: 'linkchat',
+        repo: 'karte',
         summary:
           'A link-in-bio page that can also chat, roast you, or lay itself out like a small newspaper.',
       },

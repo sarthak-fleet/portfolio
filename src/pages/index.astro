@@ -11,6 +11,7 @@ import Timeline from '@/components/astro/Timeline.astro';
 import TerminalHero from '@/components/react/TerminalHero';
 import { site } from '@/data/site';
 import { domains } from '@/data/expertise';
+import { focusProjects } from '@/data/fleet-products';
 import { getGithubStats, getFeaturedRepos } from '@/lib/github';
 
 const stats = await getGithubStats();
@@ -109,12 +110,44 @@ const statBand = [
   </section>
 
   {/* ----------------------------------------------------------------- */}
+  {/* Current focus                                                     */}
+  {/* ----------------------------------------------------------------- */}
+  <section id="focus" class="scroll-mt-20 border-y border-line bg-panel/40">
+    <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+      <SectionHeader
+        kicker="// current focus"
+        title="Three projects, one through-line."
+        intro="I’m currently focused on better ways to review agent-written code, understand and train small models, and build private on-device assistants."
+      />
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        {
+          focusProjects.map((project) => (
+            <a
+              href={project.repo ?? project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="panel panel-hover group flex flex-col p-5"
+            >
+              <h2 class="font-semibold text-fg transition-colors group-hover:text-accent">
+                {project.name}
+              </h2>
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-muted">
+                {project.description}
+              </p>
+              <span class="mt-5 border-t border-line pt-3 font-mono text-xs text-accent">
+                view project →
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* ----------------------------------------------------------------- */}
   {/* Architecture / how I think                                        */}
   {/* ----------------------------------------------------------------- */}
-  <section
-    id="approach"
-    class="scroll-mt-20 border-y border-line bg-panel/40"
-  >
+  <section id="approach" class="scroll-mt-20">
     <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeader
         kicker="// how i think"
@@ -158,10 +191,7 @@ const statBand = [
   {/* ----------------------------------------------------------------- */}
   {
     topRepos.length > 0 && (
-      <section
-        id="open-source"
-        class="scroll-mt-20 border-y border-line bg-panel/40"
-      >
+      <section id="open-source" class="scroll-mt-20 border-y border-line bg-panel/40">
         <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
           <div class="flex flex-wrap items-end justify-between gap-4">
             <SectionHeader

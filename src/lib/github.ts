@@ -79,20 +79,27 @@ let statsCache: Promise<GithubStats> | null = null;
 
 export function getGithubStats(): Promise<GithubStats> {
   statsCache ??= (async () => {
-    const [user, org] = await Promise.all([
+    const [user, orgs] = await Promise.all([
       fetchGithubJson<GithubUserSummary>(
         `https://api.github.com/users/${site.githubUser}`,
       ),
-      site.githubOrg
-        ? fetchGithubJson<GithubUserSummary>(
-            `https://api.github.com/orgs/${site.githubOrg}`,
-          )
-        : Promise.resolve(null),
+      Promise.all(
+        site.githubOrgs.map((org) =>
+          fetchGithubJson<GithubUserSummary>(
+            `https://api.github.com/orgs/${org}`,
+          ),
+        ),
+      ),
     ]);
 
     const repos =
       (typeof user?.public_repos === 'number' ? user.public_repos : 0) +
-        (typeof org?.public_repos === 'number' ? org.public_repos : 0) ||
+        orgs.reduce(
+          (count, org) =>
+            count +
+            (typeof org?.public_repos === 'number' ? org.public_repos : 0),
+          0,
+        ) ||
       STATS_FALLBACK.repos;
     const followers =
       typeof user?.followers === 'number'
@@ -132,16 +139,18 @@ export function getRepos(): Promise<Repo[]> {
         fetchReposFrom(
           `https://api.github.com/users/${site.githubUser}/repos?per_page=100&type=owner&sort=pushed`,
         ),
-        site.githubOrg
-          ? fetchReposFrom(
-              `https://api.github.com/orgs/${site.githubOrg}/repos?per_page=100&type=owner&sort=pushed`,
-            )
-          : Promise.resolve([]),
+        Promise.all(
+          site.githubOrgs.map((org) =>
+            fetchReposFrom(
+              `https://api.github.com/orgs/${org}/repos?per_page=100&type=owner&sort=pushed`,
+            ),
+          ),
+        ),
       ]);
 
       const all: Repo[] = [];
       const seen = new Set<string>();
-      for (const repo of [...userRepos, ...orgRepos]) {
+      for (const repo of [...userRepos, ...orgRepos.flat()]) {
         const key = repo.url.toLowerCase();
         if (seen.has(key)) continue;
         seen.add(key);

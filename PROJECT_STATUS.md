@@ -1,6 +1,6 @@
 # sarthakagrawal — PROJECT STATUS
 
-Last updated: 2026-06-20
+Last updated: 2026-07-16
 
 ## Why / What
 
@@ -18,7 +18,7 @@ sarthakagrawal.dev is a personal Astro portfolio site for Sarthak Agrawal. It is
 
 ### External
 
-- **GitHub API:** Build-time repo stats and project archive (`githubUser: sarthakagrawal927`, org `sarthak-fleet`). Optional `GITHUB_TOKEN` on Cloudflare Pages builds for API rate limits.
+- **GitHub API:** Build-time repo stats and project archive across `sarthakagrawal927` plus the six product organizations in `src/data/site.ts`. Optional `GITHUB_TOKEN` on Cloudflare Pages builds for API rate limits.
 - **Cloudflare Pages:** Static hosting; project name `sarthakagrawal` (`pages_build_output_dir: dist`).
 - **LaTeX GitHub Action:** Resume PDF generation on push (`.github/workflows/resume.yml`).
 
@@ -103,7 +103,7 @@ Cloudflare Pages project name: `sarthakagrawal` (`pages_build_output_dir: dist`)
 ### Content & data
 
 - Editable locations documented: `src/data/site.ts`, experience, resume, expertise, socials, fleet-products, case studies, blog.
-- GitHub project stats fetched at build with graceful fallback when no token configured.
+- GitHub project stats and repositories fetched across the personal account and six active product organizations, with graceful fallback when no token is configured.
 
 ### Resume PDF
 
