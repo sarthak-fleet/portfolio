@@ -160,14 +160,14 @@ export const fleetProductGroups: FleetProductGroup[] = [
       },
       {
         name: 'Anime List',
-        url: 'https://anime-list-9lk.pages.dev',
+        url: 'https://anime.significanthobbies.com',
         repo: repo('Significant-Hobbies', 'anime-list'),
         description: 'Personal anime discovery and tracking surface.',
         maturity: 'maintained',
       },
       {
         name: 'Email Manager',
-        url: 'https://email-manager.sarthakagrawal927.workers.dev',
+        url: 'https://mail.sassmaker.com',
         repo: repo('sarthakagrawal927', 'email-manager'),
         description: 'Personal email operations workspace with local-first semantic search.',
         maturity: 'internal-first',

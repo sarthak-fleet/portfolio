@@ -76,7 +76,7 @@ To preview the PDF locally before pushing, compile `resume.tex` any way you like
 
 ## Before going live
 
-- [ ] Set the real domain in `astro.config.mjs` (`site`) and `src/data/site.ts` (`url`)
+- [x] Set the real domain in `astro.config.mjs` (`site`) and `src/data/site.ts` (`url`)
 - [ ] Push to GitHub so the résumé Action generates `public/resume.pdf`
 - [ ] Optional: convert `public/og.svg` → `og.png` for the richest social
       previews — `npx svgexport public/og.svg public/og.png 1200:630`, then
@@ -97,4 +97,3 @@ Static site (`output: 'static'`) — deployment is just static assets.
 Optional: set a `GITHUB_TOKEN` build env var to raise the GitHub API rate limit
 used by the build-time stats & projects list (it falls back gracefully without
 one).
-
