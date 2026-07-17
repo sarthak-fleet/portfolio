@@ -48,6 +48,7 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 
 ## Timeline
 
+- **2026-07-17 — Focused homepage:** Reduced the landing page to one professional thesis, the five active core products, and selected production case studies. Moved repository breadth, architecture exploration, expertise detail, and career history off the homepage to their dedicated routes.
 - **Perf pass:** Inline critical CSS (`inlineStylesheets: 'always'`) — psi-swarm LCP fix; Lightning CSS pipeline (fleet VoidZero standard).
 - **Domain live:** `https://sarthakagrawal.dev` in config and site data.
 
@@ -86,7 +87,7 @@ Cloudflare Pages project name: `sarthakagrawal` (`pages_build_output_dir: dist`)
 
 ### Pages & routes
 
-- `/` — hero, stats, editable architecture diagram (share URL state + mailto recommendation), case study teaser, expertise, timeline.
+- `/` — focused hero, five current core products, and selected production case studies.
 - `/work/[slug]` — MDX engineering case studies (vector feeds, pipelines, RAG agents, durable workflows).
 - `/projects` — curated fleet products on owned domains + GitHub archive link.
 - `/about` — bio, experience timeline, education, toolbox.

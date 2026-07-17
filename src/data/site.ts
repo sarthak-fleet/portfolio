@@ -10,10 +10,10 @@ export const site = {
   role: 'AI Infrastructure & Product Engineer',
   /** One-line hero statement. */
   tagline:
-    'I build AI infrastructure — and the products that run on it.',
+    'I build dependable AI products, from infrastructure to interface.',
   /** Short blurb for SEO / meta description. */
   description:
-    'Sarthak Agrawal — AI infrastructure & product engineer. LLM gateways, from-scratch model code, real-time pipelines, vector search, durable workflows, and the products that ship on top.',
+    'Sarthak Agrawal is an AI infrastructure and product engineer building dependable local tools, model systems, research products, and their operating infrastructure.',
   /** Used for canonical URLs & OG tags. Keep in sync with astro.config.mjs `site`. */
   url: 'https://sarthakagrawal.dev',
   email: 'sarthakagrawal927@gmail.com',

@@ -2,31 +2,13 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeader from '@/components/astro/SectionHeader.astro';
-import StatBand from '@/components/astro/StatBand.astro';
-import EditableArchitectureDiagram from '@/components/react/EditableArchitectureDiagram';
 import WorkCard from '@/components/astro/WorkCard.astro';
-import DomainCard from '@/components/astro/DomainCard.astro';
-import RepoCard from '@/components/astro/RepoCard.astro';
-import Timeline from '@/components/astro/Timeline.astro';
-import TerminalHero from '@/components/react/TerminalHero';
 import { site } from '@/data/site';
-import { domains } from '@/data/expertise';
 import { focusProjects } from '@/data/fleet-products';
-import { getGithubStats, getFeaturedRepos } from '@/lib/github';
-
-const stats = await getGithubStats();
-const topRepos = (await getFeaturedRepos()).slice(0, 6);
 
 const work = (await getCollection('work'))
   .filter((w) => w.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
-
-const statBand = [
-  { value: '4+', label: 'years shipping' },
-  { value: '200k', label: 'daily actives served' },
-  { value: String(stats.repos), label: 'public repositories' },
-  { value: '6', label: 'languages shipped' },
-];
 ---
 
 <BaseLayout title={site.name}>
@@ -36,10 +18,8 @@ const statBand = [
   <section class="relative overflow-hidden border-b border-line">
     <div class="grid-bg pointer-events-none absolute inset-0 opacity-60"></div>
 
-    <div
-      class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1fr_1.05fr] lg:gap-14 lg:py-28"
-    >
-      <div>
+    <div class="relative mx-auto max-w-4xl px-5 py-20 sm:px-8 sm:py-28 lg:py-36">
+      <div class="max-w-3xl">
         {
           site.availability && (
             <div class="inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3 py-1 font-mono text-xs text-muted">
@@ -58,55 +38,33 @@ const statBand = [
         <h1
           class="mt-6 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-fg sm:text-5xl lg:text-6xl"
         >
-          I build <span class="text-accent">AI infrastructure</span> — and the
-          products that run on it.
+          I build dependable <span class="text-accent">AI products</span>, from
+          infrastructure to interface.
         </h1>
 
         <p class="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
-          I'm {site.name}. Backend-heavy, full-stack — I build LLM tooling,
-          real-time pipelines, and the infrastructure that keeps AI features
-          dependable in production. Most recently: a Go + Kafka feed that took
-          one product from 15k to 200k daily actives in 14 weeks.
+          I'm {site.name}, an AI infrastructure and product engineer. I turn
+          model capabilities into systems people can trust: local code review,
+          post-training tools, private assistants, research signals, and the
+          operating layer behind them.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center gap-4">
           <a
-            href="#work"
+            href="#focus"
             class="rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-base transition-opacity hover:opacity-90"
           >
-            Read the case studies
+            See what I’m building
           </a>
           <a
-            href="/about"
+            href="#work"
             class="link-underline font-mono text-xs text-muted transition-colors hover:text-fg"
           >
-            about me →
+            production case studies →
           </a>
-          <button
-            type="button"
-            data-cmdk-trigger
-            class="font-mono text-xs text-faint transition-colors hover:text-accent"
-          >
-            press ⌘K
-          </button>
         </div>
       </div>
-
-      <div class="lg:pl-4">
-        <TerminalHero
-          client:visible
-          work={work.map((w) => ({ slug: w.id, title: w.data.title }))}
-          projects={topRepos.map((r) => ({ name: r.name, url: r.url }))}
-        />
-      </div>
     </div>
-  </section>
-
-  {/* ----------------------------------------------------------------- */}
-  {/* Stats                                                             */}
-  {/* ----------------------------------------------------------------- */}
-  <section class="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-16">
-    <StatBand stats={statBand} />
   </section>
 
   {/* ----------------------------------------------------------------- */}
@@ -116,10 +74,10 @@ const statBand = [
     <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeader
         kicker="// current focus"
-        title="Three projects, one through-line."
-        intro="I’m currently focused on better ways to review agent-written code, understand and train small models, and build private on-device assistants."
+        title="Five products, one through-line."
+        intro="Each explores the same question from a different angle: how do useful AI systems become more private, legible, and dependable?"
       />
-      <div class="mt-10 grid gap-5 md:grid-cols-3">
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {
           focusProjects.map((project) => (
             <a
@@ -140,22 +98,6 @@ const statBand = [
             </a>
           ))
         }
-      </div>
-    </div>
-  </section>
-
-  {/* ----------------------------------------------------------------- */}
-  {/* Architecture / how I think                                        */}
-  {/* ----------------------------------------------------------------- */}
-  <section id="approach" class="scroll-mt-20">
-    <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <SectionHeader
-        kicker="// how i think"
-        title="It's the stuff around the happy path."
-        intro="Most of the job isn't the code that works first try. It's the request that times out, the queue that backs up, the dependency that goes down. That's what I build for."
-      />
-      <div class="mt-10">
-        <EditableArchitectureDiagram client:visible />
       </div>
     </div>
   </section>
@@ -186,73 +128,4 @@ const statBand = [
     </div>
   </section>
 
-  {/* ----------------------------------------------------------------- */}
-  {/* Open source                                                       */}
-  {/* ----------------------------------------------------------------- */}
-  {
-    topRepos.length > 0 && (
-      <section id="open-source" class="scroll-mt-20 border-y border-line bg-panel/40">
-        <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-          <div class="flex flex-wrap items-end justify-between gap-4">
-            <SectionHeader
-              kicker="// open source"
-              title="Selected open-source work."
-              intro={`A few favourites, pulled out of ${stats.repos} public repos.`}
-            />
-            <a
-              href="/projects"
-              class="link-underline shrink-0 font-mono text-sm text-accent"
-            >
-              all projects →
-            </a>
-          </div>
-          <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {topRepos.map((repo) => (
-              <RepoCard repo={repo} />
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  {/* ----------------------------------------------------------------- */}
-  {/* Expertise                                                         */}
-  {/* ----------------------------------------------------------------- */}
-  <section id="expertise" class="scroll-mt-20">
-    <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <SectionHeader
-        kicker="// expertise"
-        title="What I work on."
-        intro="From the API down to storage, plus the AI parts that sit on top."
-      />
-      <div class="mt-10 grid gap-5 sm:grid-cols-2">
-        {domains.map((domain) => <DomainCard domain={domain} />)}
-      </div>
-    </div>
-  </section>
-
-  {/* ----------------------------------------------------------------- */}
-  {/* Trajectory                                                        */}
-  {/* ----------------------------------------------------------------- */}
-  <section id="trajectory" class="scroll-mt-20 border-t border-line">
-    <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-        <SectionHeader
-          kicker="// trajectory"
-          title="Where I've been."
-          intro="A short version. The longer story lives on the about page."
-        />
-        <div>
-          <Timeline />
-          <a
-            href="/about"
-            class="link-underline mt-2 inline-block font-mono text-sm text-accent"
-          >
-            full background →
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
