@@ -19,10 +19,10 @@ const repo = (owner: string, name: string) =>
 /** Current fleet taxonomy mirrored from the SaaS Maker registry. */
 export const fleetProductGroups: FleetProductGroup[] = [
   {
-    label: 'Focus',
-    kicker: '// focus',
+    label: 'Core products',
+    kicker: '// core products',
     intro:
-      'The products getting the most active product attention: code review, local voice, and post-training.',
+      'The five products getting active product attention. Each organization is centered on its core product, with supporting repositories where they help.',
     products: [
       {
         name: 'CodeVetter',
@@ -44,72 +44,83 @@ export const fleetProductGroups: FleetProductGroup[] = [
         description: 'Local-only macOS menu-bar voice agent for screen-aware personal workflows.',
         maturity: 'internal-first',
       },
-    ],
-  },
-  {
-    label: 'Support/platform',
-    kicker: '// support/platform',
-    intro:
-      'Shared platform pieces and small public surfaces that make the rest of the fleet easier to run.',
-    products: [
-      {
-        name: 'SaaS Maker / Foundry',
-        url: 'https://sassmaker.com',
-        repo: repo('sass-maker', 'saas-maker'),
-        description:
-          'Personal fleet operating layer: registry, audits, tasks, widgets, and the cockpit for running the full product set.',
-        maturity: 'internal-first',
-      },
       {
         name: 'High Signal',
         url: 'https://highsignal.app',
         repo: repo('High-Signal-App', 'high-signal'),
-        description:
-          'Public signal log for AI infrastructure, semiconductors, markets, and domain intelligence.',
+        description: 'Evidence-first signal log supported by focused research and ratings data.',
         maturity: 'public-ready',
       },
       {
-        name: 'AliveVille',
-        url: 'https://aliveville.com',
-        repo: repo('sarthakagrawal927', 'aliveville'),
-        description: 'Persistent AI world simulator and browser-playable multi-agent game experiment.',
+        name: 'SaaS Maker',
+        url: 'https://sassmaker.com',
+        repo: repo('sass-maker', 'saas-maker'),
+        description: 'Product platform and operating layer supported by focused infrastructure tools.',
         maturity: 'internal-first',
       },
+    ],
+  },
+  {
+    label: 'Supporting projects',
+    kicker: '// supporting projects',
+    intro:
+      'Repositories that directly support one of the core products. They are useful surfaces, not additional top-level brands.',
+    products: [
       {
         name: 'Free AI',
         url: repo('sass-maker', 'free-ai'),
-        description: 'OpenAI-compatible gateway that routes across free-tier model providers.',
+        description: 'SaaS Maker support: OpenAI-compatible gateway across free-tier model providers.',
         maturity: 'maintained',
       },
       {
         name: 'Knowledge Base',
         url: repo('sass-maker', 'knowledge-base'),
-        description: 'Private Agent Search over project-scoped corpora.',
+        description: 'SaaS Maker support: private agent search over project-scoped corpora.',
         maturity: 'maintained',
       },
       {
         name: 'Reel Pipeline',
         url: repo('sass-maker', 'reel-pipeline'),
-        description: 'AI short-form video generation pipeline for fleet marketing assets.',
+        description: 'SaaS Maker support: short-form media generation for product work.',
         maturity: 'maintained',
       },
       {
         name: 'Research Papers',
         url: repo('High-Signal-App', 'research-papers'),
-        description: 'Academic paper platform and data asset for research workflows.',
+        description: 'High Signal support: academic research data and semantic paper discovery.',
         maturity: 'maintained',
       },
       {
         name: 'drank',
         url: repo('High-Signal-App', 'drank'),
-        description: 'Domain Rating tracker that supports High Signal and domain research.',
+        description: 'High Signal support: domain-rating research.',
         maturity: 'maintained',
       },
       {
         name: 'Starboard',
         url: repo('Codevetter', 'starboard'),
-        description: 'GitHub stars organizer and semantic search surface under CodeVetter.',
+        description: 'CodeVetter support: GitHub stars organization and semantic repository discovery.',
         maturity: 'maintained',
+      },
+      {
+        name: 'EverythingRated',
+        url: 'https://ratings.highsignal.app',
+        repo: repo('High-Signal-App', 'everythingrated'),
+        description: 'High Signal support: structured ratings data for adoption decisions.',
+        maturity: 'maintained',
+      },
+      {
+        name: 'psi-swarm',
+        url: 'https://performance.sassmaker.com',
+        repo: repo('sass-maker', 'psi-swarm'),
+        description: 'SaaS Maker support: repeated Lighthouse performance distributions.',
+        maturity: 'maintained',
+      },
+      {
+        name: 'Companion Robot',
+        url: repo('HeyPace', 'companion-robot'),
+        description: 'Future Pace support project for an embodied home companion.',
+        maturity: 'internal-first',
       },
     ],
   },
@@ -124,7 +135,21 @@ export const fleetProductGroups: FleetProductGroup[] = [
         url: 'https://rolepatch.com',
         repo: repo('sarthakagrawal927', 'rolepatch'),
         description: 'AI resume tailoring and job-application assistant.',
-        maturity: 'public-ready',
+        maturity: 'maintained',
+      },
+      {
+        name: 'TrueHire',
+        url: 'https://truehire.rolepatch.com',
+        repo: repo('sarthakagrawal927', 'truehire'),
+        description: 'Maintained hiring workspace in the RolePatch family.',
+        maturity: 'maintained',
+      },
+      {
+        name: 'AliveVille',
+        url: 'https://aliveville.com',
+        repo: repo('sarthakagrawal927', 'aliveville'),
+        description: 'Maintained multi-agent world experiment; no longer a focus product.',
+        maturity: 'maintained',
       },
       {
         name: 'Karte',
@@ -137,8 +162,29 @@ export const fleetProductGroups: FleetProductGroup[] = [
         name: 'Significant Hobbies',
         url: 'https://significanthobbies.com',
         repo: repo('Significant-Hobbies', 'significanthobbies'),
-        description: 'Personal hobby mapping and journey visualization.',
+        description: 'The core hobby-mapping project in a collection of independent tools I made for myself.',
         maturity: 'public-ready',
+      },
+      {
+        name: 'Chess Coach',
+        url: 'https://chess.significanthobbies.com',
+        repo: repo('Significant-Hobbies', 'chess'),
+        description: 'Personal Stockfish chess and AI coaching tool.',
+        maturity: 'maintained',
+      },
+      {
+        name: 'Materia',
+        url: 'https://materia.significanthobbies.com',
+        repo: repo('Significant-Hobbies', 'materia'),
+        description: 'Personal anatomy and evidence-graded remedies reference.',
+        maturity: 'maintained',
+      },
+      {
+        name: 'Protein Index',
+        url: 'https://protein.significanthobbies.com',
+        repo: repo('Significant-Hobbies', 'protein-index'),
+        description: 'Personal source-aware protein product intelligence tool.',
+        maturity: 'maintained',
       },
       {
         name: 'Reader',
