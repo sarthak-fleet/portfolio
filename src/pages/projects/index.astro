@@ -24,8 +24,23 @@ const bucketSummary = fleetProductGroups
     <SectionHeader
       kicker="// fleet"
       title="The product fleet."
-      intro={`Currently sorted into ${bucketSummary}: ${fleetProjectCount} active entries total. Core products get active attention, supporting repositories stay attached to their core, and personal projects remain available without being presented as focus products.`}
+      intro={`The landing page stays precise with four products plus SaaS Maker. This is the full archive: ${bucketSummary}, ${fleetProjectCount} active entries total. For the canonical directory and product pages, visit SaaS Maker.`}
     />
+
+    <div class="panel mt-8 flex flex-col items-start gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
+      <p class="max-w-2xl text-sm leading-relaxed text-muted">
+        SaaS Maker is the broader directory for the fleet — product pages,
+        supporting tools, and the operating layer behind them.
+      </p>
+      <a
+        href="https://sassmaker.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="shrink-0 rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-base transition-opacity hover:opacity-90"
+      >
+        Open SaaS Maker →
+      </a>
+    </div>
 
     {
       fleetProductGroups.map((group) => (

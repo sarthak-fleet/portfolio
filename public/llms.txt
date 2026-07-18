@@ -7,7 +7,7 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 ## Portfolio
 
 - [Home](https://sarthakagrawal.dev/): Hero, selected work, and contact
-- [Projects](https://sarthakagrawal.dev/projects): Current product fleet grouped by focus, support/platform, and personal use, plus curated open-source repos
+- [Projects](https://sarthakagrawal.dev/projects): Full project archive; the landing page leads with four products plus SaaS Maker
 - [About](https://sarthakagrawal.dev/about): Background, stack, and availability
 - [Résumé](https://sarthakagrawal.dev/resume): On-site résumé and PDF download
 - [Writing](https://sarthakagrawal.dev/blog): Devlog and technical posts
@@ -17,15 +17,17 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 
 ## Product fleet
 
-### Focus
+### Spotlight
 
 - [CodeVetter](https://codevetter.com): Desktop-first AI code review for agent-generated diffs
-- [Pace](https://github.com/HeyPace/pace): Local-only macOS voice agent
-- [PostTrainLLM](https://github.com/PostTrainLLM/posttrainllm): Post-training and small-language-model learning workspace
+- [Post-train LLM](https://posttrainllm.com): Post-training and small-language-model learning workspace
+- [HeyPace](https://heypace.app): Local-only macOS voice agent
+- [HiSignal](https://highsignal.app): Evidence-first signal log for AI infrastructure, markets, and domain intelligence
+- [SaaS Maker](https://sassmaker.com): Broader directory and operating layer for the full product fleet
 
-### Support/platform
+### Full directory
 
-- [Foundry / SaaS Maker](https://sassmaker.com): Personal fleet operating layer and product showcase
+- The broader project archive is maintained at [SaaS Maker](https://sassmaker.com)
 - [High Signal](https://highsignal.app): Public signal log for AI infrastructure, markets, and domain intelligence
 - [AliveVille](https://aliveville.com): Interactive AI world experiment
 - [Free AI](https://github.com/sass-maker/free-ai): OpenAI-compatible gateway for free-tier model providers

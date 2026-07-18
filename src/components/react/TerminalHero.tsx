@@ -19,7 +19,7 @@ const BOOT: Line[] = [
   { kind: 'cmd', text: 'whoami' },
   { kind: 'out', text: 'sarthak agrawal — ai infrastructure & product engineer' },
   { kind: 'cmd', text: 'cat focus.txt' },
-  { kind: 'accent', text: 'codevetter · posttrainllm · pace' },
+  { kind: 'accent', text: 'codevetter · posttrainllm · heypace · hisignal' },
   { kind: 'dim', text: "type 'help' for commands — or press ⌘K to navigate" },
 ];
 
@@ -139,14 +139,14 @@ export default function TerminalHero({
           break;
         }
         print([
-          { kind: 'out', text: 'open source — top picks (click, or: open <name>):' },
+          { kind: 'out', text: 'spotlight products (click, or: open <name>):' },
           ...projects.slice(0, 5).map((p): Line => ({
             kind: 'out',
             text: `  → ${p.name}`,
             href: p.url,
             external: true,
           })),
-          { kind: 'dim', text: '↳ all 26 curated — run: goto projects' },
+          { kind: 'dim', text: '↳ full archive: run: goto projects' },
         ]);
         break;
       }

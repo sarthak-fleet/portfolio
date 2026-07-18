@@ -4,7 +4,9 @@ Personal site & portfolio for **Sarthak Agrawal — AI Infrastructure & Product
 Engineer**. *I build AI infrastructure — and the products that run on it.*
 
 A dark, "systems" aesthetic built to make one thing obvious: this person builds
-AI infrastructure and ships the products that use it. Interactive terminal hero,
+AI infrastructure and ships the products that use it. The landing page leads
+with CodeVetter, Post-train LLM, HeyPace, HiSignal, and SaaS Maker; the full
+project archive remains available at `/projects`. Interactive terminal hero,
 an animated distributed-architecture diagram, a ⌘K command palette, engineering
 case studies framed as systems, and a live GitHub-sourced projects archive.
 
@@ -35,9 +37,9 @@ Node version is pinned in `.nvmrc` (22).
 
 | Route | What |
 |---|---|
-| `/` | Hero, stats, editable architecture diagram (share link + mailto submit), case studies, open-source teaser, expertise, timeline |
+| `/` | Hero, stats, editable architecture diagram (share link + mailto submit), case studies, spotlight products, expertise, timeline |
 | `/work/[slug]` | Engineering case studies (real work — vector feeds, real-time pipeline, RAG agents, durable workflows) |
-| `/projects` | Curated public repos, auto-synced from GitHub at build, plus a link to the full archive |
+| `/projects` | Full fleet archive, auto-synced from GitHub at build, with SaaS Maker as the broader directory |
 | `/about` | Bio, full experience timeline, education, toolbox |
 | `/resume` | On-site résumé + "Download PDF" |
 | `/blog` | "Coming soon" — flips to a post list when the first `.mdx` lands |

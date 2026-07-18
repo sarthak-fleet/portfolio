@@ -4,7 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import SectionHeader from '@/components/astro/SectionHeader.astro';
 import WorkCard from '@/components/astro/WorkCard.astro';
 import { site } from '@/data/site';
-import { focusProjects } from '@/data/fleet-products';
+import { spotlightProducts } from '@/data/spotlight-products';
 
 const work = (await getCollection('work'))
   .filter((w) => w.data.featured)
@@ -74,26 +74,26 @@ const work = (await getCollection('work'))
     <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeader
         kicker="// current focus"
-        title="Five products, one through-line."
-        intro="Each explores the same question from a different angle: how do useful AI systems become more private, legible, and dependable?"
+        title="Four products, one platform."
+        intro="Four focused products — CodeVetter, Post-train LLM, HeyPace, and HiSignal — with SaaS Maker as the directory and operating layer for everything else."
       />
       <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {
-          focusProjects.map((project) => (
+          spotlightProducts.map((project) => (
             <a
-              href={project.repo ?? project.url}
+              href={project.url}
               target="_blank"
               rel="noopener noreferrer"
               class="panel panel-hover group flex flex-col p-5"
             >
               <h2 class="font-semibold text-fg transition-colors group-hover:text-accent">
-                {project.name}
+                {project.label}
               </h2>
               <p class="mt-3 flex-1 text-sm leading-relaxed text-muted">
                 {project.description}
               </p>
               <span class="mt-5 border-t border-line pt-3 font-mono text-xs text-accent">
-                view project →
+                {project.id === 'saas-maker' ? 'open the directory →' : 'view product →'}
               </span>
             </a>
           ))
