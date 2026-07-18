@@ -1,6 +1,6 @@
 # sarthakagrawal — PROJECT STATUS
 
-Last updated: 2026-07-16
+Last updated: 2026-07-18
 
 ## Why / What
 
@@ -24,7 +24,7 @@ sarthakagrawal.dev is a personal Astro portfolio site for Sarthak Agrawal. It is
 
 ### Internal (fleet)
 
-- **Fleet product data:** `src/data/fleet-products.ts` — curated shipped products on owned domains.
+- **Fleet product data:** `src/data/spotlight-products.ts` — the five-entry spotlight contract mirrored from `fleet-ops/config/spotlight-products.json`; `/projects` retains the broader archive.
 
 ### Stack & commands
 
@@ -49,6 +49,7 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 ## Timeline
 
 - **2026-07-17 — Focused homepage:** Reduced the landing page to one professional thesis, the five active core products, and selected production case studies. Moved repository breadth, architecture exploration, expertise detail, and career history off the homepage to their dedicated routes.
+- **2026-07-18 — Fleet spotlight sync:** Homepage spotlight metadata is checked against the fleet contract; SaaS Maker remains the full directory and `/projects` remains the full archive.
 - **Perf pass:** Inline critical CSS (`inlineStylesheets: 'always'`) — psi-swarm LCP fix; Lightning CSS pipeline (fleet VoidZero standard).
 - **Domain live:** `https://sarthakagrawal.dev` in config and site data.
 
@@ -87,7 +88,7 @@ Cloudflare Pages project name: `sarthakagrawal` (`pages_build_output_dir: dist`)
 
 ### Pages & routes
 
-- `/` — focused hero, five current core products, and selected production case studies.
+- `/` — focused hero, four spotlight products plus SaaS Maker as the directory entry point, and selected production case studies.
 - `/work/[slug]` — MDX engineering case studies (vector feeds, pipelines, RAG agents, durable workflows).
 - `/projects` — curated fleet products on owned domains + GitHub archive link.
 - `/about` — bio, experience timeline, education, toolbox.
