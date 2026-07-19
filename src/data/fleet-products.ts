@@ -34,13 +34,15 @@ export const fleetProductGroups: FleetProductGroup[] = [
       },
       {
         name: 'PostTrainLLM',
-        url: repo('PostTrainLLM', 'posttrainllm'),
+        url: 'https://posttrainllm.com',
+        repo: repo('PostTrainLLM', 'posttrainllm'),
         description: 'Post-training and model-learning workspace built around small local language models.',
         maturity: 'internal-first',
       },
       {
         name: 'Pace',
-        url: repo('HeyPace', 'pace'),
+        url: 'https://heypace.app',
+        repo: repo('HeyPace', 'pace'),
         description: 'Local-only macOS menu-bar voice agent for screen-aware personal workflows.',
         maturity: 'internal-first',
       },

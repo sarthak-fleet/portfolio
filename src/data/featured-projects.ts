@@ -158,11 +158,6 @@ export const projectGroups: ProjectGroup[] = [
           'A link-in-bio page that can also chat, roast you, or lay itself out like a small newspaper.',
       },
       {
-        repo: 'today-little-log',
-        summary:
-          'A small daily journal — habits, tasks, a plan for the day — that works offline as a PWA.',
-      },
-      {
         repo: 'email-manager',
         summary:
           'A Gmail client that searches with on-device embeddings and clears out junk in bulk.',

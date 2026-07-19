@@ -45,8 +45,8 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 - [Reader](https://github.com/Significant-Hobbies/reader): Personal reading and saved-article workflow
 - [SWE Interview Prep](https://github.com/Significant-Hobbies/swe-interview-prep): Interview practice workspace
 - [LoopTV](https://github.com/Significant-Hobbies/looptv): Ambient video and anime companion
-- [Anime List](https://anime-list-9lk.pages.dev): Personal anime discovery and tracking surface
-- [Email Manager](https://email-manager.sarthakagrawal927.workers.dev): Personal email operations workspace
+- [Anime List](https://anime.significanthobbies.com): Personal anime discovery and tracking surface
+- [Email Manager](https://mail.sassmaker.com): Personal email operations workspace
 
 ## Optional
 
