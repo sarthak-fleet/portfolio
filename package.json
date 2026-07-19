@@ -11,7 +11,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "check": "astro check"
+    "check": "astro check",
+    "test:contract": "node --test scripts/portfolio-contract.test.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.6",
