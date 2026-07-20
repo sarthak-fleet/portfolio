@@ -30,8 +30,7 @@ const work = defineCollection({
 });
 
 /**
- * `blog` — long-form writing. Empty for now; the route ships a
- * "coming soon" state until the first post lands here.
+ * `blog` — long-form writing published under /blog.
  */
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),

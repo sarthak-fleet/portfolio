@@ -21,7 +21,7 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
   },
   {
     id: 'posttrainllm',
-    label: 'Post-train LLM',
+    label: 'PostTrainLLM',
     name: 'PostTrainLLM',
     url: 'https://posttrainllm.com',
     organizationUrl: 'https://github.com/PostTrainLLM',
@@ -39,7 +39,7 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
   },
   {
     id: 'hisignal',
-    label: 'HiSignal',
+    label: 'High Signal',
     name: 'High Signal',
     url: 'https://highsignal.app',
     organizationUrl: 'https://github.com/High-Signal-App',

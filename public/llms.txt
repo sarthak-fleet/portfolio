@@ -12,7 +12,6 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 - [Résumé](https://sarthakagrawal.dev/resume): On-site résumé and PDF download
 - [Writing](https://sarthakagrawal.dev/blog): Devlog and technical posts
 - [Privacy](https://sarthakagrawal.dev/privacy): Privacy policy
-- [Terms](https://sarthakagrawal.dev/terms): Terms of use
 - [Fleet performance without Argo](https://sarthakagrawal.dev/blog/fleet-performance-without-argo): Case study on closing desktop LCP p75 under 500 ms across 23 Cloudflare sites
 
 ## Product fleet
@@ -20,9 +19,9 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 ### Spotlight
 
 - [CodeVetter](https://codevetter.com): Desktop-first AI code review for agent-generated diffs
-- [Post-train LLM](https://posttrainllm.com): Post-training and small-language-model learning workspace
+- [PostTrainLLM](https://posttrainllm.com): Post-training and small-language-model learning workspace
 - [HeyPace](https://heypace.app): Local-only macOS voice agent
-- [HiSignal](https://highsignal.app): Evidence-first signal log for AI infrastructure, markets, and domain intelligence
+- [High Signal](https://highsignal.app): Evidence-first signal log for AI infrastructure, markets, and domain intelligence
 - [SaaS Maker](https://sassmaker.com): Broader directory and operating layer for the full product fleet
 
 ### Full directory

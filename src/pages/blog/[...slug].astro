@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/data/site';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter((p) => !p.data.draft);
@@ -43,6 +44,9 @@ const dateFmt = new Intl.DateTimeFormat('en', { dateStyle: 'long' });
           ))
         }
       </div>
+      <p class="mt-4 text-sm text-muted">
+        Written by AI agents under {site.name}’s direction.
+      </p>
     </header>
 
     <div class="prose mt-8">

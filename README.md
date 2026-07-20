@@ -5,18 +5,16 @@ Engineer**. *I build AI infrastructure — and the products that run on it.*
 
 A dark, "systems" aesthetic built to make one thing obvious: this person builds
 AI infrastructure and ships the products that use it. The landing page leads
-with CodeVetter, Post-train LLM, HeyPace, HiSignal, and SaaS Maker; the full
-project archive remains available at `/projects`. Interactive terminal hero,
-an animated distributed-architecture diagram, a ⌘K command palette, engineering
-case studies framed as systems, and a live GitHub-sourced projects archive.
-
-> This site is managed by AI agents.
+with CodeVetter, PostTrainLLM, HeyPace, High Signal, and SaaS Maker; the full
+project archive remains available at `/projects`. The site includes a focused
+homepage, engineering case studies, technical writing, a compact contact
+footer, and a live GitHub-sourced projects archive.
 
 ## Stack
 
 - **[Astro 5](https://astro.build)** — static output, ships ~zero JS by default
 - **Tailwind CSS v4** — via the `@tailwindcss/vite` plugin; tokens in `src/styles/global.css`
-- **React 19 islands** — command palette, terminal hero, and the editable architecture diagram hydrate
+- **React 19 islands** — the command palette hydrates while core pages remain static
 - **MDX content collections** — case studies (`work`) and writing (`blog`)
 - **`motion` + `cmdk`** — animation primitives & the command menu
 - Deployed on **Cloudflare Pages**
@@ -37,12 +35,12 @@ Node version is pinned in `.nvmrc` (22).
 
 | Route | What |
 |---|---|
-| `/` | Hero, stats, editable architecture diagram (share link + mailto submit), case studies, spotlight products, expertise, timeline |
+| `/` | Focused hero, spotlight products, and selected production case studies |
 | `/work/[slug]` | Engineering case studies (real work — vector feeds, real-time pipeline, RAG agents, durable workflows) |
 | `/projects` | Full fleet archive, auto-synced from GitHub at build, with SaaS Maker as the broader directory |
 | `/about` | Bio, full experience timeline, education, toolbox |
 | `/resume` | On-site résumé + "Download PDF" |
-| `/blog` | "Coming soon" — flips to a post list when the first `.mdx` lands |
+| `/blog` | Technical writing with an AI-authorship disclosure on every article |
 
 ## Editing content
 
@@ -87,6 +85,10 @@ To preview the PDF locally before pushing, compile `resume.tex` any way you like
 ## Deploy — Cloudflare Pages
 
 Static site (`output: 'static'`) — deployment is just static assets.
+
+Pushes to `main` run build-only CI. Production deployment is manual: dispatch
+the `Portfolio CI / Deploy` GitHub Actions workflow after the fleet deploy
+guard passes.
 
 **Dashboard:** create a Pages project from the Git repo with:
 
