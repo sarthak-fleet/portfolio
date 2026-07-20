@@ -10,15 +10,10 @@
 /favicon.svg
   Cache-Control: public, max-age=604800
 
-# Cache the HTML at the CF edge for ~1 day; stale-while-revalidate keeps it
-# instant for everyone while a single deploy bumps the source-of-truth.
-# psi-swarm flagged TTFB ~370ms as the dominant LCP contributor.
-#
-# IMPORTANT: CF Pages was returning cf-cache-status: DYNAMIC with just
-# s-maxage. Adding an explicit max-age (browser cache) seems to be the
-# tell CF Pages needs to mark HTML responses as cacheable at edge too.
+# Revalidate HTML so a new Pages deployment is visible immediately.
+# Hashed Astro assets remain immutable above.
 /
-  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+  Cache-Control: public, max-age=0, must-revalidate
 
 /*.html
-  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
+  Cache-Control: public, max-age=0, must-revalidate

@@ -52,6 +52,7 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 - **2026-07-18 — Fleet spotlight sync:** Homepage spotlight metadata is checked against the fleet contract; SaaS Maker remains the full directory and `/projects` remains the full archive.
 - **2026-07-20 — Footer and writing cleanup:** Collapsed the site-wide contact pitch into a compact email/social footer, removed the Terms route and promotional footer links, and added an AI-authorship disclosure to every blog article.
 - **2026-07-20 — Manual production deploys:** Main-branch pushes now run build-only CI; Cloudflare Pages deployment requires an explicit workflow dispatch after the deploy guard passes.
+- **2026-07-20 — Deploy-safe HTML caching:** Removed the data-center-local HTML cache that could serve a previous deployment for a day; HTML now revalidates while hashed assets remain immutable.
 - **Perf pass:** Inline critical CSS (`inlineStylesheets: 'always'`) — psi-swarm LCP fix; Lightning CSS pipeline (fleet VoidZero standard).
 - **Domain live:** `https://sarthakagrawal.dev` in config and site data.
 
@@ -84,6 +85,7 @@ Cloudflare Pages project name: `sarthakagrawal` (`pages_build_output_dir: dist`)
 - Astro 5 static site with Tailwind v4, React islands, MDX collections.
 - Lightning CSS pipeline (fleet VoidZero standard).
 - Inline critical CSS (`inlineStylesheets: 'always'`).
+- HTML revalidates on each visit so new Pages deployments are visible immediately; hashed Astro assets remain immutable.
 - Domain `https://sarthakagrawal.dev` in config and site data.
 - Sitemap, OG/meta via `src/components/astro/Head.astro`.
 - `public/llms.txt` for LLM crawlers.
