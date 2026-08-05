@@ -5,6 +5,7 @@
 
 export const site = {
   name: 'Sarthak Agrawal',
+  personId: 'https://sarthakagrawal.dev/#person',
   initials: 'SA',
   /** Headline role — what the whole site is positioned around. */
   role: 'AI Infrastructure & Product Engineer',
@@ -16,6 +17,13 @@ export const site = {
     'Sarthak Agrawal is an AI infrastructure and product engineer building dependable local tools, model systems, research products, and their operating infrastructure.',
   /** Used for canonical URLs & OG tags. Keep in sync with astro.config.mjs `site`. */
   url: 'https://sarthakagrawal.dev',
+  image: 'https://avatars.githubusercontent.com/u/43884471?v=4',
+  profiles: {
+    linkedin: 'https://www.linkedin.com/in/sarthakagrawal927',
+    github: 'https://github.com/sarthakagrawal927',
+    x: 'https://x.com/sarthakcodes',
+    huggingFace: 'https://huggingface.co/sarthakagrawal927',
+  },
   email: 'sarthakagrawal927@gmail.com',
   location: 'India',
   /** The résumé page (on-site, HTML). */
