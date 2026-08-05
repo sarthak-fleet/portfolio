@@ -6,6 +6,7 @@
 export const site = {
   name: 'Sarthak Agrawal',
   personId: 'https://sarthakagrawal.dev/#person',
+  alternateNames: ['sarthakagrawal927', 'sarthakagrawal.dev'],
   initials: 'SA',
   /** Headline role — what the whole site is positioned around. */
   role: 'AI Infrastructure & Product Engineer',

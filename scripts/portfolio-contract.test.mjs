@@ -94,6 +94,7 @@ test('site publishes one canonical, externally corroborated person identity', as
   const headSource = await readHeadSource();
 
   assert.match(siteSource, /personId: 'https:\/\/sarthakagrawal\.dev\/#person'/);
+  assert.match(siteSource, /alternateNames: \['sarthakagrawal927', 'sarthakagrawal\.dev'\]/);
   assert.match(siteSource, /avatars\.githubusercontent\.com\/u\/43884471/);
   assert.match(siteSource, /linkedin\.com\/in\/sarthakagrawal927/);
   assert.match(siteSource, /github\.com\/sarthakagrawal927/);
@@ -103,6 +104,7 @@ test('site publishes one canonical, externally corroborated person identity', as
   assert.match(headSource, /const personNode = \{/);
   assert.match(headSource, /'@type': 'Person'/);
   assert.match(headSource, /'@id': site\.personId/);
+  assert.match(headSource, /alternateName: site\.alternateNames/);
   assert.match(headSource, /sameAs: Object\.values\(site\.profiles\)/);
   assert.match(headSource, /if \(isHome\)/);
 });
