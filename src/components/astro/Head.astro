@@ -26,6 +26,28 @@ const isHome = Astro.url.pathname === '/';
 const fullTitle = isHome
   ? `${site.name} — ${site.role}`
   : `${title} · ${site.name}`;
+const personNode = {
+  '@type': 'Person',
+  '@id': site.personId,
+  name: site.name,
+  jobTitle: site.role,
+  description: site.description,
+  url: site.url,
+  image: site.image,
+  email: `mailto:${site.email}`,
+  sameAs: Object.values(site.profiles),
+};
+const structuredDataGraph: Record<string, unknown>[] = [personNode];
+
+if (isHome) {
+  structuredDataGraph.unshift({
+    '@type': 'ProfilePage',
+    '@id': `${site.url}/#profile-page`,
+    url: site.url,
+    name: `${site.name} — ${site.role}`,
+    mainEntity: { '@id': site.personId },
+  });
+}
 ---
 
 <meta charset="utf-8" />
@@ -68,20 +90,12 @@ const fullTitle = isHome
 <meta name="twitter:image" content={ogImage} />
 <meta name="twitter:creator" content="@sarthakcodes" />
 
-<!-- Structured data — helps search engines understand who this is. -->
+<!-- One stable identity graph prevents this person from being conflated with namesakes. -->
 <script
   type="application/ld+json"
   is:inline
   set:html={JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: site.name,
-    jobTitle: site.role,
-    url: site.url,
-    email: `mailto:${site.email}`,
-    sameAs: [
-      'https://github.com/sarthakagrawal927',
-      'https://x.com/sarthakcodes',
-    ],
+    '@graph': structuredDataGraph,
   })}
 />

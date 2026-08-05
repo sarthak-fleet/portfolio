@@ -40,6 +40,14 @@ async function readHomepageSource() {
   return readFile(`${ROOT}/src/pages/index.astro`, 'utf8');
 }
 
+async function readSiteSource() {
+  return readFile(`${ROOT}/src/data/site.ts`, 'utf8');
+}
+
+async function readHeadSource() {
+  return readFile(`${ROOT}/src/components/astro/Head.astro`, 'utf8');
+}
+
 test('spotlight data declares exactly the four primary products plus SaaS Maker as directory', async () => {
   const source = await readSpotlightSource();
   for (const id of PRIMARY_PRODUCT_IDS) {
@@ -79,4 +87,22 @@ test('homepage declares one meaningful CTA in the hero', async () => {
   // surface on a static site (outbound click; no server-side event).
   assert.match(home, /See what I/, 'hero must declare the primary CTA');
   assert.match(home, /href="#focus"/, 'hero CTA must anchor to the focus section');
+});
+
+test('site publishes one canonical, externally corroborated person identity', async () => {
+  const siteSource = await readSiteSource();
+  const headSource = await readHeadSource();
+
+  assert.match(siteSource, /personId: 'https:\/\/sarthakagrawal\.dev\/#person'/);
+  assert.match(siteSource, /avatars\.githubusercontent\.com\/u\/43884471/);
+  assert.match(siteSource, /linkedin\.com\/in\/sarthakagrawal927/);
+  assert.match(siteSource, /github\.com\/sarthakagrawal927/);
+  assert.match(siteSource, /x\.com\/sarthakcodes/);
+  assert.match(siteSource, /huggingface\.co\/sarthakagrawal927/);
+  assert.match(headSource, /'@type': 'ProfilePage'/);
+  assert.match(headSource, /const personNode = \{/);
+  assert.match(headSource, /'@type': 'Person'/);
+  assert.match(headSource, /'@id': site\.personId/);
+  assert.match(headSource, /sameAs: Object\.values\(site\.profiles\)/);
+  assert.match(headSource, /if \(isHome\)/);
 });
