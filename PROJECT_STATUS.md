@@ -48,6 +48,11 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 
 ## Timeline
 
+- **2026-08-05 — Complete agent-readable portfolio corpus:** Every public
+  sitemap route now has a source-backed Markdown counterpart, `/api/ai`
+  publishes the complete catalog, and `/llms-full.txt` combines the public
+  identity, résumé, case studies, products, and writing without requiring
+  JavaScript.
 - **2026-07-17 — Focused homepage:** Reduced the landing page to one professional thesis, the five active core products, and selected production case studies. Moved repository breadth, architecture exploration, expertise detail, and career history off the homepage to their dedicated routes.
 - **2026-07-18 — Fleet spotlight sync:** Homepage spotlight metadata is checked against the fleet contract; SaaS Maker remains the full directory and `/projects` remains the full archive.
 - **2026-07-20 — Footer and writing cleanup:** Collapsed the site-wide contact pitch into a compact email/social footer, removed the Terms route and promotional footer links, and added an AI-authorship disclosure to every blog article.
@@ -88,7 +93,8 @@ Cloudflare Pages project name: `sarthakagrawal` (`pages_build_output_dir: dist`)
 - HTML revalidates on each visit so new Pages deployments are visible immediately; hashed Astro assets remain immutable.
 - Domain `https://sarthakagrawal.dev` in config and site data.
 - Sitemap, OG/meta via `src/components/astro/Head.astro`.
-- `public/llms.txt` for LLM crawlers.
+- `public/llms.txt`, `/api/ai`, `/llms-full.txt`, and one Markdown counterpart
+  per public sitemap route for LLM crawlers and agents.
 
 ### Pages & routes
 

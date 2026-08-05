@@ -4,6 +4,12 @@
 
 Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal product fleet.
 
+## Machine-readable corpus
+
+- [Agent catalog](https://sarthakagrawal.dev/api/ai): JSON inventory of every public page and its Markdown counterpart
+- [Full public corpus](https://sarthakagrawal.dev/llms-full.txt): Combined identity, portfolio, case-study, résumé, and writing content
+- [Homepage Markdown](https://sarthakagrawal.dev/index.md): Canonical identity and selected work without JavaScript
+
 ## Portfolio
 
 - [Home](https://sarthakagrawal.dev/): Hero, selected work, and contact
@@ -28,7 +34,7 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 
 - The broader project archive is maintained at [SaaS Maker](https://sassmaker.com)
 - [High Signal](https://highsignal.app): Public signal log for AI infrastructure, markets, and domain intelligence
-- [AliveVille](https://aliveville.com): Interactive AI world experiment
+- [Aliveville](https://aliveville.com): Interactive AI world experiment
 - [Free AI](https://github.com/sass-maker/free-ai): OpenAI-compatible gateway for free-tier model providers
 - [Knowledge Base](https://github.com/sass-maker/knowledge-base): Private Agent Search over project-scoped corpora
 - [Reel Pipeline](https://github.com/sass-maker/reel-pipeline): AI short-form video generation pipeline
@@ -45,7 +51,7 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 - [SWE Interview Prep](https://github.com/Significant-Hobbies/swe-interview-prep): Interview practice workspace
 - [LoopTV](https://github.com/Significant-Hobbies/looptv): Ambient video and anime companion
 - [Anime List](https://anime.significanthobbies.com): Personal anime discovery and tracking surface
-- [Email Manager](https://mail.sassmaker.com): Personal email operations workspace
+- [Email Manager](https://mail.significanthobbies.com): Personal email operations workspace
 
 ## Optional
 

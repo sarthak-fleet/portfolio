@@ -24,6 +24,7 @@ jobs:
 
       - run: npm ci
       - run: npm run build
+      - run: node scripts/check-agent-surfaces.mjs
 
       - name: Deploy to Cloudflare Pages
         if: github.event_name == 'workflow_dispatch' && env.HAS_CLOUDFLARE_API_TOKEN == 'true'

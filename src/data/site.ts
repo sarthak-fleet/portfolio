@@ -15,7 +15,7 @@ export const site = {
     'I build dependable AI products, from infrastructure to interface.',
   /** Short blurb for SEO / meta description. */
   description:
-    'Sarthak Agrawal is an AI infrastructure and product engineer building dependable local tools, model systems, research products, and their operating infrastructure.',
+    'Sarthak Agrawal is an AI infrastructure and product engineer building dependable local tools, model systems, and research products.',
   /** Used for canonical URLs & OG tags. Keep in sync with astro.config.mjs `site`. */
   url: 'https://sarthakagrawal.dev',
   image: 'https://avatars.githubusercontent.com/u/43884471?v=4',
