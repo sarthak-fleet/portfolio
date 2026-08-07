@@ -5,6 +5,7 @@ import RepoCard from '@/components/astro/RepoCard.astro';
 import { getProjectGroups, getRepos } from '@/lib/github';
 import { site } from '@/data/site';
 import { fleetProductGroups, fleetProjectCount } from '@/data/fleet-products';
+import { rootDomains } from '@/data/root-domains';
 
 const groups = await getProjectGroups();
 const allRepos = await getRepos();
@@ -18,7 +19,7 @@ const bucketSummary = fleetProductGroups
 
 <BaseLayout
   title="Projects"
-  description={`Selected open-source projects by ${site.name} — AI infrastructure, developer tools and shipped products.`}
+  description={`Ten root domains and open-source projects by ${site.name} — CodeVetter, PostTrainLLM, Pace, RolePatch, and the rest of the fleet.`}
 >
   <section class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
     <SectionHeader
@@ -40,6 +41,36 @@ const bucketSummary = fleetProductGroups
       >
         Open SaaS Maker →
       </a>
+    </div>
+
+
+    <div class="mt-14">
+      <SectionHeader
+        kicker="// ten root domains"
+        title="Canonical roots."
+        intro="Every root brand that should own search for its name. P0 products get active visibility work first."
+      />
+      <ul class="mt-10 grid gap-3 sm:grid-cols-2">
+        {rootDomains.map((root) => (
+          <li>
+            <a
+              href={root.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="panel panel-hover group flex flex-col p-5 no-underline"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <h2 class="font-semibold text-fg transition-colors group-hover:text-accent">{root.name}</h2>
+                <span class="shrink-0 rounded border border-line bg-panel-2 px-1.5 py-0.5 font-mono text-[11px] uppercase text-faint">
+                  {root.tier}
+                </span>
+              </div>
+              <p class="mt-1 font-mono text-xs text-accent">{root.domain}</p>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{root.blurb}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
 
     {
