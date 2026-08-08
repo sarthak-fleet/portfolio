@@ -1,6 +1,6 @@
 # sarthakagrawal — PROJECT STATUS
 
-Last updated: 2026-07-20
+Last updated: 2026-08-09
 
 ## Why / What
 
@@ -21,6 +21,8 @@ sarthakagrawal.dev is a personal Astro portfolio site for Sarthak Agrawal. It is
 - **GitHub API:** Build-time repo stats and project archive across `sarthakagrawal927` plus the six product organizations in `src/data/site.ts`. Optional `GITHUB_TOKEN` on Cloudflare Pages builds for API rate limits.
 - **Cloudflare Pages:** Static hosting; project name `sarthakagrawal` (`pages_build_output_dir: dist`).
 - **LaTeX GitHub Action:** Resume PDF generation on push (`.github/workflows/resume.yml`).
+- **Ultracite/Biome:** Repository lint contract for Astro, React, TypeScript,
+  scripts, and configuration files.
 
 ### Internal (fleet)
 
@@ -37,6 +39,7 @@ sarthakagrawal.dev is a personal Astro portfolio site for Sarthak Agrawal. It is
 | `npm run build` | static build → dist/ |
 | `npm run preview` | serve production build locally |
 | `npm run check` | astro check (types) |
+| `npm run lint` | Ultracite/Biome lint contract |
 
 Node pinned in `.nvmrc` (22). Pushes to `main` run build-only CI; production deploys use the manual `Portfolio CI / Deploy` workflow.
 
@@ -48,6 +51,9 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 
 ## Timeline
 
+- **2026-08-09 — Fleet lint contract:** Adopted Ultracite/Biome with zero
+  findings across 46 applicable files and added it to the build-only CI path;
+  production deployment remains manual.
 - **2026-08-05 — Complete agent-readable portfolio corpus:** Every public
   sitemap route now has a source-backed Markdown counterpart, `/api/ai`
   publishes the complete catalog, and `/llms-full.txt` combines the public
@@ -77,6 +83,8 @@ Cloudflare Pages project name: `sarthakagrawal` (`pages_build_output_dir: dist`)
 
 ### Architecture
 
+- Ultracite/Biome lint contract covers 46 applicable Astro, React, TypeScript,
+  script, and configuration files with zero findings and runs in build-only CI.
 - Build time: Astro 5 static compiles `src/data/*.ts`, MDX case studies/blog, optional GitHub API fetch (`src/lib/github.ts`).
 - Static `dist/` with `inlineStylesheets: always`, `format: file` → Cloudflare Pages (`pages_build_output_dir: dist`).
 - Live site: `https://sarthakagrawal.dev` — no server runtime.
