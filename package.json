@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
+    "lint": "ultracite check .",
     "test:contract": "node --test scripts/portfolio-contract.test.mjs"
   },
   "dependencies": {
@@ -30,9 +31,11 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@biomejs/biome": "2.5.5",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "lightningcss": "^1.32.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "ultracite": "7.10.2"
   }
 }
