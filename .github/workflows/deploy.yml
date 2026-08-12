@@ -5,6 +5,7 @@ name: Portfolio CI / Deploy
 # "Cloudflare Pages — Edit" permission). The account ID below is not secret.
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
