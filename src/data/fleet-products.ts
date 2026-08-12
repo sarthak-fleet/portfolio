@@ -1,4 +1,4 @@
-export type FleetProduct = {
+type FleetProduct = {
   name: string;
   url: string;
   repo?: string;
@@ -228,5 +228,3 @@ export const fleetProjectCount = fleetProductGroups.reduce(
   (count, group) => count + group.products.length,
   0,
 );
-
-export const focusProjects = fleetProductGroups[0].products;

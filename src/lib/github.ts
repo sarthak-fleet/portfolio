@@ -1,5 +1,14 @@
 import { site } from '@/data/site';
 import { projectGroups } from '@/data/featured-projects';
+import {
+  mergeRepos,
+  normalizeRepo,
+  resolveProjectGroups,
+  type Repo,
+  type ResolvedGroup,
+} from './github-core';
+
+export type { Repo, ResolvedGroup } from './github-core';
 
 /**
  * Build-time GitHub data. Runs inside Astro frontmatter, so numbers and
@@ -20,21 +29,6 @@ function headers(): Record<string, string> {
   return h;
 }
 
-type GithubUserSummary = {
-  public_repos?: number;
-  followers?: number;
-};
-
-async function fetchGithubJson<T>(url: string): Promise<T | null> {
-  try {
-    const res = await fetch(url, { headers: headers() });
-    if (!res.ok) return null;
-    return (await res.json()) as T;
-  } catch {
-    return null;
-  }
-}
-
 async function fetchReposFrom(url: string): Promise<Repo[]> {
   try {
     const all: Repo[] = [];
@@ -43,20 +37,9 @@ async function fetchReposFrom(url: string): Promise<Repo[]> {
       if (!res.ok) break;
       const data = await res.json();
       if (!Array.isArray(data) || data.length === 0) break;
-      for (const r of data) {
-        if (r.fork) continue;
-        all.push({
-          name: r.name,
-          description: r.description ?? null,
-          url: r.html_url,
-          homepage: r.homepage || null,
-          language: r.language ?? null,
-          stars: r.stargazers_count ?? 0,
-          forks: r.forks_count ?? 0,
-          topics: Array.isArray(r.topics) ? r.topics : [],
-          archived: Boolean(r.archived),
-          updated: r.pushed_at ?? r.updated_at ?? '',
-        });
+      for (const raw of data) {
+        const repo = normalizeRepo(raw as Record<string, unknown>);
+        if (repo) all.push(repo);
       }
       if (data.length < 100) break;
     }
@@ -66,65 +49,7 @@ async function fetchReposFrom(url: string): Promise<Repo[]> {
   }
 }
 
-/* ----------------------------- stats ----------------------------- */
-
-export type GithubStats = {
-  repos: number;
-  followers: number;
-};
-
-const STATS_FALLBACK: GithubStats = { repos: 128, followers: 30 };
-
-let statsCache: Promise<GithubStats> | null = null;
-
-export function getGithubStats(): Promise<GithubStats> {
-  statsCache ??= (async () => {
-    const [user, orgs] = await Promise.all([
-      fetchGithubJson<GithubUserSummary>(
-        `https://api.github.com/users/${site.githubUser}`,
-      ),
-      Promise.all(
-        site.githubOrgs.map((org) =>
-          fetchGithubJson<GithubUserSummary>(
-            `https://api.github.com/orgs/${org}`,
-          ),
-        ),
-      ),
-    ]);
-
-    const repos =
-      (typeof user?.public_repos === 'number' ? user.public_repos : 0) +
-        orgs.reduce(
-          (count, org) =>
-            count +
-            (typeof org?.public_repos === 'number' ? org.public_repos : 0),
-          0,
-        ) ||
-      STATS_FALLBACK.repos;
-    const followers =
-      typeof user?.followers === 'number'
-        ? user.followers
-        : STATS_FALLBACK.followers;
-
-    return { repos, followers };
-  })();
-  return statsCache;
-}
-
 /* ----------------------------- repos ----------------------------- */
-
-export type Repo = {
-  name: string;
-  description: string | null;
-  url: string;
-  homepage: string | null;
-  language: string | null;
-  stars: number;
-  forks: number;
-  topics: string[];
-  archived: boolean;
-  updated: string;
-};
 
 let reposCache: Promise<Repo[]> | null = null;
 
@@ -148,21 +73,7 @@ export function getRepos(): Promise<Repo[]> {
         ),
       ]);
 
-      const all: Repo[] = [];
-      const seen = new Set<string>();
-      for (const repo of [...userRepos, ...orgRepos.flat()]) {
-        const key = repo.url.toLowerCase();
-        if (seen.has(key)) continue;
-        seen.add(key);
-        all.push(repo);
-      }
-
-      all.sort(
-        (a, b) =>
-          b.stars - a.stars ||
-          new Date(b.updated).getTime() - new Date(a.updated).getTime(),
-      );
-      return all;
+      return mergeRepos([...userRepos, ...orgRepos.flat()]);
     } catch {
       return [];
     }
@@ -172,12 +83,6 @@ export function getRepos(): Promise<Repo[]> {
 
 /* --------------------------- curated --------------------------- */
 
-export type ResolvedGroup = {
-  label: string;
-  intro: string;
-  repos: Repo[];
-};
-
 /**
  * The hand-curated project groups, enriched with live GitHub data and
  * with curated display order preserved. The curated `summary` overrides the
@@ -185,25 +90,7 @@ export type ResolvedGroup = {
  */
 export async function getProjectGroups(): Promise<ResolvedGroup[]> {
   const all = await getRepos();
-  const byName = new Map(all.map((r) => [r.name.toLowerCase(), r]));
-  return projectGroups
-    .map((g) => ({
-      label: g.label,
-      intro: g.intro,
-      repos: g.projects
-        .map((p): Repo | null => {
-          const live = byName.get(p.repo.toLowerCase());
-          return live ? { ...live, description: p.summary } : null;
-        })
-        .filter((r): r is Repo => r !== null),
-    }))
-    .filter((g) => g.repos.length > 0);
-}
-
-/** Flat curated repo list (live data), in curated order — for the home teaser. */
-export async function getFeaturedRepos(): Promise<Repo[]> {
-  const groups = await getProjectGroups();
-  return groups.flatMap((g) => g.repos);
+  return resolveProjectGroups(all, projectGroups);
 }
 
 /** Approximate GitHub language colours for the small language dot. */
