@@ -13,7 +13,7 @@
  * language, last-updated — is merged in at build time.
  */
 
-export type FeaturedRepo = {
+type FeaturedRepo = {
   repo: string;
   summary: string;
 };
@@ -177,6 +177,3 @@ export const projectGroups: ProjectGroup[] = [
 ];
 
 /** Flat list of curated repo names, in display order. */
-export const featuredRepoNames = projectGroups.flatMap((g) =>
-  g.projects.map((p) => p.repo),
-);

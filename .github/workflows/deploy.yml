@@ -5,6 +5,7 @@ name: Portfolio CI / Deploy
 # "Cloudflare Pages — Edit" permission). The account ID below is not secret.
 
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
@@ -22,10 +23,12 @@ jobs:
           node-version: 22
           cache: npm
 
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: false
+
       - run: npm ci
-      - run: npm run lint
-      - run: npm run build
-      - run: node scripts/check-agent-surfaces.mjs
+      - run: npm run quality
 
       - name: Deploy to Cloudflare Pages
         if: github.event_name == 'workflow_dispatch' && env.HAS_CLOUDFLARE_API_TOKEN == 'true'
