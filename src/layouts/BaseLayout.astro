@@ -210,5 +210,11 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
     {!hideFooter && <Footer />}
 
     <CommandPalette client:idle transition:persist />
+    <script
+      is:inline
+      src="https://sassmaker.com/project-strip.js"
+      data-project="sarthakagrawal-personal"
+      defer
+    ></script>
   </body>
 </html>
