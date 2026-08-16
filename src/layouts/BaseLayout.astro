@@ -192,11 +192,9 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
     </script>
     <Head title={title} description={description} image={image} type={type} />
     <ClientRouter />
-    <script is:inline>
-      const posthogLoader = document.createElement('script');
-      posthogLoader.async = true;
-      posthogLoader.src = '/scripts/posthog.js';
-      document.head.append(posthogLoader);
+    <script>
+      import { emitPageView } from '../lib/product-analytics';
+      emitPageView();
     </script>
   </head>
   <body class="min-h-screen">
