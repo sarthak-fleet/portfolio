@@ -192,7 +192,7 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
     </script>
     <Head title={title} description={description} image={image} type={type} />
     <ClientRouter />
-    <script is:inline async src="/scripts/posthog.js"></script>
+    <script async src="/scripts/posthog.js"></script>
   </head>
   <body class="min-h-screen">
     <a
