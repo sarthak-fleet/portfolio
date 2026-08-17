@@ -192,6 +192,10 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
     </script>
     <Head title={title} description={description} image={image} type={type} />
     <ClientRouter />
+    <script>
+      import { emitPageView } from '../lib/product-analytics';
+      emitPageView();
+    </script>
   </head>
   <body class="min-h-screen">
     <a
