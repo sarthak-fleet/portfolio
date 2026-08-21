@@ -51,16 +51,16 @@ if (isHome) {
 }
 ---
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="generator" content={Astro.generator} />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content={Astro.generator}>
 
 <title>{fullTitle}</title>
-<meta name="description" content={description} />
-<meta name="author" content={site.name} />
-<link rel="canonical" href={canonical} />
+<meta name="description" content={description}>
+<meta name="author" content={site.name}>
+<link rel="canonical" href={canonical}>
 
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <!-- Preload the LCP-critical font subsets so they fetch in parallel with the
      HTML, instead of waiting for inlined CSS to be parsed. Hashes are stable
@@ -72,24 +72,24 @@ if (isHome) {
   type="font/woff2"
   href="/_astro/geist-latin-wght-normal.BgDaEnEv.woff2"
   crossorigin
-/>
-<link rel="sitemap" href="/sitemap-index.xml" />
-<meta name="theme-color" content="#08090a" />
+>
+<link rel="sitemap" href="/sitemap-index.xml">
+<meta name="theme-color" content="#08090a">
 
 <!-- Open Graph -->
-<meta property="og:type" content={type} />
-<meta property="og:site_name" content={site.name} />
-<meta property="og:title" content={fullTitle} />
-<meta property="og:description" content={description} />
-<meta property="og:url" content={canonical} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:type" content={type}>
+<meta property="og:site_name" content={site.name}>
+<meta property="og:title" content={fullTitle}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={ogImage}>
 
 <!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={fullTitle} />
-<meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={ogImage} />
-<meta name="twitter:creator" content="@sarthakcodes" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content={fullTitle}>
+<meta name="twitter:description" content={description}>
+<meta name="twitter:image" content={ogImage}>
+<meta name="twitter:creator" content="@sarthakcodes">
 
 <!-- One stable identity graph prevents this person from being conflated with namesakes. -->
 <script

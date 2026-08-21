@@ -29,8 +29,7 @@ const num = String(index + 1).padStart(2, '0');
 
   <p class="mt-3 flex-1 text-sm leading-relaxed text-muted">{summary}</p>
 
-  {
-    metrics.length > 0 && (
+  {metrics.length > 0 && (
       <div class="mt-5 flex flex-wrap gap-x-6 gap-y-3 border-t border-line pt-4">
         {metrics.map((m) => (
           <div>
@@ -39,17 +38,14 @@ const num = String(index + 1).padStart(2, '0');
           </div>
         ))}
       </div>
-    )
-  }
+    )}
 
   <div class="mt-5 flex flex-wrap items-center gap-1.5">
-    {
-      stack.slice(0, 5).map((tech) => (
+    {stack.slice(0, 5).map((tech) => (
         <span class="rounded border border-line bg-panel-2 px-1.5 py-0.5 font-mono text-[10px] text-muted">
           {tech}
         </span>
-      ))
-    }
+      ))}
     <span
       class="ml-auto font-mono text-xs text-faint transition-all group-hover:translate-x-0.5 group-hover:text-accent"
     >

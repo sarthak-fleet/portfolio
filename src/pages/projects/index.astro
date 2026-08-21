@@ -28,7 +28,9 @@ const bucketSummary = fleetProductGroups
       intro={`The landing page stays precise with four products plus SaaS Maker. This is the full archive: ${bucketSummary}, ${fleetProjectCount} active entries total. For the canonical directory and product pages, visit SaaS Maker.`}
     />
 
-    <div class="panel mt-8 flex flex-col items-start gap-3 p-5 sm:flex-row sm:items-center sm:justify-between">
+    <div
+      class="panel mt-8 flex flex-col items-start gap-3 p-5 sm:flex-row sm:items-center sm:justify-between"
+    >
       <p class="max-w-2xl text-sm leading-relaxed text-muted">
         SaaS Maker is the broader directory for the fleet — product pages,
         supporting tools, and the operating layer behind them.
@@ -42,7 +44,6 @@ const bucketSummary = fleetProductGroups
         Open SaaS Maker →
       </a>
     </div>
-
 
     <div class="mt-14">
       <SectionHeader
@@ -73,8 +74,7 @@ const bucketSummary = fleetProductGroups
       </ul>
     </div>
 
-    {
-      fleetProductGroups.map((group) => (
+    {fleetProductGroups.map((group) => (
         <div class="mt-14 first:mt-10">
           <SectionHeader
             kicker={group.kicker}
@@ -111,8 +111,7 @@ const bucketSummary = fleetProductGroups
             ))}
           </div>
         </div>
-      ))
-    }
+      ))}
 
     <div class="mt-16">
       <SectionHeader
@@ -122,8 +121,7 @@ const bucketSummary = fleetProductGroups
       />
     </div>
 
-    {
-      groups.length > 0 ? (
+    {groups.length > 0 ? (
         <>
           {groups.map((group) => (
             <div class="mt-14 first:mt-12">
@@ -175,7 +173,6 @@ const bucketSummary = fleetProductGroups
             Browse everything on GitHub →
           </a>
         </div>
-      )
-    }
+      )}
   </section>
 </BaseLayout>

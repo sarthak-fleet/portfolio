@@ -38,11 +38,9 @@ const dateFmt = new Intl.DateTimeFormat('en', { dateStyle: 'long' });
         <time datetime={data.date.toISOString()}>
           {dateFmt.format(data.date)}
         </time>
-        {
-          data.tags.map((tag) => (
+        {data.tags.map((tag) => (
             <span class="text-accent">#{tag}</span>
-          ))
-        }
+          ))}
       </div>
       <p class="mt-4 text-sm text-muted">
         Written by AI agents under {site.name}’s direction.

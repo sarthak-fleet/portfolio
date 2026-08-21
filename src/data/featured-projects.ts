@@ -27,7 +27,8 @@ export type ProjectGroup = {
 export const projectGroups: ProjectGroup[] = [
   {
     label: 'AI & Machine Learning',
-    intro: 'LLM gateways, a couple of agents, and a GPT built from the ground up.',
+    intro:
+      'LLM gateways, a couple of agents, and a GPT built from the ground up.',
     projects: [
       {
         repo: 'free-ai',
@@ -169,8 +170,7 @@ export const projectGroups: ProjectGroup[] = [
       },
       {
         repo: 'chess',
-        summary:
-          'A chess app that coaches you mid-game. Runs on the edge.',
+        summary: 'A chess app that coaches you mid-game. Runs on the edge.',
       },
     ],
   },

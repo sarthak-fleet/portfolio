@@ -41,7 +41,8 @@ export const resumeSkills = [
   { label: 'Languages', items: 'JavaScript / TypeScript, Golang, Python' },
   {
     label: 'Databases & Data Tools',
-    items: 'MySQL, PostgreSQL, Redis, Elasticsearch, Kafka, ClickHouse, Milvus, BigQuery',
+    items:
+      'MySQL, PostgreSQL, Redis, Elasticsearch, Kafka, ClickHouse, Milvus, BigQuery',
   },
   {
     label: 'Cloud & DevOps',
@@ -52,7 +53,8 @@ export const resumeSkills = [
 export const resumeProjects = [
   {
     name: 'Stumble — Social App',
-    stack: 'Node.js, PostgreSQL (PostGIS), Redis, Docker, AWS, Flutter, Astro, Python',
+    stack:
+      'Node.js, PostgreSQL (PostGIS), Redis, Docker, AWS, Flutter, Astro, Python',
     bullets: [
       'Launched a platform to help users connect with people nearby, encouraging meaningful in-person interactions.',
       'Supported real-time chat, location-based profile filtering, face recognition, Google auth and push notifications.',

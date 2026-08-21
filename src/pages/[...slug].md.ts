@@ -14,7 +14,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const GET: APIRoute = ({ props }) => {
-  const surface = props.surface as Awaited<ReturnType<typeof getAgentSurfaces>>[number];
+  const surface = props.surface as Awaited<
+    ReturnType<typeof getAgentSurfaces>
+  >[number];
 
   return new Response(surface.markdown, {
     headers: {

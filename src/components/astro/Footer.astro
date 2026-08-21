@@ -8,7 +8,9 @@ const profiles = socials.filter((social) => social.label !== 'Email');
 
 <footer id="contact" class="scroll-mt-20 border-t border-line">
   <div class="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-12">
-    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <div
+      class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
+    >
       <div>
         <p class="kicker">// contact</p>
         <a
@@ -20,8 +22,7 @@ const profiles = socials.filter((social) => social.label !== 'Email');
       </div>
 
       <nav class="flex flex-wrap gap-x-5 gap-y-2" aria-label="Social profiles">
-        {
-          profiles.map((social) => (
+        {profiles.map((social) => (
             <a
               href={social.href}
               target="_blank"
@@ -30,8 +31,7 @@ const profiles = socials.filter((social) => social.label !== 'Email');
             >
               {social.label}
             </a>
-          ))
-        }
+          ))}
       </nav>
     </div>
 

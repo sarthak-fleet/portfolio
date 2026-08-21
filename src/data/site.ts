@@ -11,8 +11,7 @@ export const site = {
   /** Headline role — what the whole site is positioned around. */
   role: 'AI Infrastructure & Product Engineer',
   /** One-line hero statement. */
-  tagline:
-    'I build dependable AI products, from infrastructure to interface.',
+  tagline: 'I build dependable AI products, from infrastructure to interface.',
   /** Short blurb for SEO / meta description. */
   description:
     'Sarthak Agrawal is an AI infrastructure and product engineer building dependable local tools, model systems, and research products.',

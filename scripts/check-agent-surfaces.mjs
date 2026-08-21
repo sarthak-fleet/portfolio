@@ -12,7 +12,9 @@ const routes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => {
   const url = new URL(match[1]);
   return url.pathname === '/' ? '/' : url.pathname.replace(/\/$/, '');
 });
-const catalog = JSON.parse(await readFile(path.join(DIST, 'api', 'ai'), 'utf8'));
+const catalog = JSON.parse(
+  await readFile(path.join(DIST, 'api', 'ai'), 'utf8')
+);
 
 assert.equal(catalog.name, 'Sarthak Agrawal');
 assert.equal(catalog.url, ORIGIN);
@@ -20,10 +22,15 @@ assert.equal(catalog.llms, `${ORIGIN}/llms.txt`);
 assert.equal(catalog.llmsFull, `${ORIGIN}/llms-full.txt`);
 assert.equal(catalog.surfaces.length, routes.length);
 
-const catalogRoutes = new Set(catalog.surfaces.map((surface) => new URL(surface.url).pathname));
+const catalogRoutes = new Set(
+  catalog.surfaces.map((surface) => new URL(surface.url).pathname)
+);
 for (const route of routes) {
   const normalizedRoute = route === '/' ? '/' : route;
-  assert.ok(catalogRoutes.has(normalizedRoute), `${route} is missing from /api/ai`);
+  assert.ok(
+    catalogRoutes.has(normalizedRoute),
+    `${route} is missing from /api/ai`
+  );
 
   const markdownPath = route === '/' ? 'index.md' : `${route.slice(1)}.md`;
   await access(path.join(DIST, markdownPath));
@@ -31,7 +38,10 @@ for (const route of routes) {
 
 const fullCorpus = await readFile(path.join(DIST, 'llms-full.txt'), 'utf8');
 for (const surface of catalog.surfaces) {
-  assert.match(fullCorpus, new RegExp(`Source page: ${escapeRegex(surface.url)}`));
+  assert.match(
+    fullCorpus,
+    new RegExp(`Source page: ${escapeRegex(surface.url)}`)
+  );
 }
 
 console.log(

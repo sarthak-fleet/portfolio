@@ -19,7 +19,14 @@ export const domains: Domain[] = [
     title: 'Backend & APIs',
     blurb:
       'Getting the service right comes before getting it fast. I care about clean contracts and knowing how things break before they do.',
-    items: ['Go', 'Node.js / TypeScript', 'Python', 'Protocol Buffers', 'REST APIs', 'Microservices'],
+    items: [
+      'Go',
+      'Node.js / TypeScript',
+      'Python',
+      'Protocol Buffers',
+      'REST APIs',
+      'Microservices',
+    ],
   },
   {
     id: 'distributed',
@@ -57,6 +64,13 @@ export const domains: Domain[] = [
     title: 'Data & Storage',
     blurb:
       'Pick storage for how the data actually gets read and written. Then cache the slow paths until they stop being slow.',
-    items: ['MySQL', 'PostgreSQL', 'Redis', 'ClickHouse', 'Elasticsearch', 'BigQuery'],
+    items: [
+      'MySQL',
+      'PostgreSQL',
+      'Redis',
+      'ClickHouse',
+      'Elasticsearch',
+      'BigQuery',
+    ],
   },
 ];

@@ -62,14 +62,14 @@ export function getRepos(): Promise<Repo[]> {
     try {
       const [userRepos, orgRepos] = await Promise.all([
         fetchReposFrom(
-          `https://api.github.com/users/${site.githubUser}/repos?per_page=100&type=owner&sort=pushed`,
+          `https://api.github.com/users/${site.githubUser}/repos?per_page=100&type=owner&sort=pushed`
         ),
         Promise.all(
           site.githubOrgs.map((org) =>
             fetchReposFrom(
-              `https://api.github.com/orgs/${org}/repos?per_page=100&type=owner&sort=pushed`,
-            ),
-          ),
+              `https://api.github.com/orgs/${org}/repos?per_page=100&type=owner&sort=pushed`
+            )
+          )
         ),
       ]);
 

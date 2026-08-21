@@ -13,7 +13,7 @@ const color = (repo.language && langColor[repo.language]) || '#585c64';
 const prettyName = repo.name.replace(/[-_]/g, ' ');
 const updated = repo.updated
   ? new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' }).format(
-      new Date(repo.updated),
+      new Date(repo.updated)
     )
   : null;
 
@@ -21,8 +21,7 @@ const StarIcon =
   'M12 2.5l2.95 5.98 6.6.96-4.77 4.65 1.13 6.57L12 18.56l-5.9 3.1 1.12-6.57L2.45 9.44l6.6-.96z';
 ---
 
-{
-  compact ? (
+{compact ? (
     <a
       href={repo.url}
       target="_blank"
@@ -101,5 +100,4 @@ const StarIcon =
         {updated && <span class="ml-auto">updated {updated}</span>}
       </div>
     </a>
-  )
-}
+  )}

@@ -45,7 +45,15 @@ export const experience: Experience[] = [
       'Integrated the Razorpay payment gateway, opening a new revenue stream and lifting overall revenue by 50%.',
       'Designed real-time stock ticks over Socket.io with room-based, in-memory and Redis pub/sub subscription modes.',
     ],
-    stack: ['Go', 'Kafka', 'Node.js', 'Redis', 'Milvus', 'ClickHouse', 'BigQuery'],
+    stack: [
+      'Go',
+      'Kafka',
+      'Node.js',
+      'Redis',
+      'Milvus',
+      'ClickHouse',
+      'BigQuery',
+    ],
   },
 ];
 

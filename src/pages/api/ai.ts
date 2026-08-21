@@ -19,14 +19,16 @@ export const GET: APIRoute = async () => {
       id: surface.id,
       url: new URL(surface.path, site.url).toString(),
       md: new URL(markdownPathFor(surface.path), site.url).toString(),
-      kind: surface.path.startsWith('/work/') || surface.path.startsWith('/blog/')
-        ? 'content'
-        : 'static',
+      kind:
+        surface.path.startsWith('/work/') || surface.path.startsWith('/blog/')
+          ? 'content'
+          : 'static',
       description: surface.description,
     })),
     auth: {
       public: true,
-      notes: 'The portfolio is fully public and static. It has no authenticated user surface.',
+      notes:
+        'The portfolio is fully public and static. It has no authenticated user surface.',
     },
   };
 

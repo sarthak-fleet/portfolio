@@ -45,15 +45,22 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
         };
 
         const syncControls = (theme) => {
-          document.querySelectorAll('[data-theme-toggle]').forEach((control) => {
-            const isLight = theme === 'light';
-            control.setAttribute('aria-pressed', String(isLight));
-            control.setAttribute(
-              'aria-label',
-              isLight ? 'Pull cord to turn the lights off' : 'Pull cord to turn the lights on',
-            );
-            control.setAttribute('title', isLight ? 'Turn lights off' : 'Turn lights on');
-          });
+          document
+            .querySelectorAll('[data-theme-toggle]')
+            .forEach((control) => {
+              const isLight = theme === 'light';
+              control.setAttribute('aria-pressed', String(isLight));
+              control.setAttribute(
+                'aria-label',
+                isLight
+                  ? 'Pull cord to turn the lights off'
+                  : 'Pull cord to turn the lights on'
+              );
+              control.setAttribute(
+                'title',
+                isLight ? 'Turn lights off' : 'Turn lights on'
+              );
+            });
         };
 
         const setThemeColor = (theme) => {
@@ -64,10 +71,12 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
         };
 
         const animateLamp = (theme) => {
-          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+            return;
 
           const root = document.documentElement;
-          const animationClass = theme === 'light' ? 'theme-lights-on' : 'theme-lights-off';
+          const animationClass =
+            theme === 'light' ? 'theme-lights-on' : 'theme-lights-off';
           root.classList.remove('theme-lights-on', 'theme-lights-off');
           void root.offsetWidth;
           root.classList.add(animationClass);
@@ -83,9 +92,12 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
         };
 
         const getThemeControl = (target) =>
-          target instanceof Element ? target.closest('[data-theme-toggle]') : null;
+          target instanceof Element
+            ? target.closest('[data-theme-toggle]')
+            : null;
 
-        const getControls = () => document.querySelectorAll('[data-theme-toggle]');
+        const getControls = () =>
+          document.querySelectorAll('[data-theme-toggle]');
 
         const setPullDistance = (distance) => {
           getControls().forEach((control) => {
@@ -111,7 +123,10 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
         };
 
         const toggleTheme = () => {
-          const currentTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+          const currentTheme =
+            document.documentElement.dataset.theme === 'light'
+              ? 'light'
+              : 'dark';
           const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
 
           try {
@@ -164,7 +179,10 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
           document.addEventListener('pointermove', (event) => {
             if (!activePull || activePull.pointerId !== event.pointerId) return;
 
-            const distance = Math.min(maxPull, Math.max(0, event.clientY - activePull.startY));
+            const distance = Math.min(
+              maxPull,
+              Math.max(0, event.clientY - activePull.startY)
+            );
             activePull.distance = distance;
             setPullDistance(distance);
 
@@ -174,7 +192,9 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
           });
 
           document.addEventListener('pointerup', (event) => finishPull(event));
-          document.addEventListener('pointercancel', (event) => finishPull(event, true));
+          document.addEventListener('pointercancel', (event) =>
+            finishPull(event, true)
+          );
 
           document.addEventListener('click', (event) => {
             const control = getThemeControl(event.target);
@@ -186,7 +206,9 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
             toggleTheme();
           });
 
-          document.addEventListener('astro:page-load', () => applyTheme(getStoredTheme()));
+          document.addEventListener('astro:page-load', () =>
+            applyTheme(getStoredTheme())
+          );
         }
       })();
     </script>

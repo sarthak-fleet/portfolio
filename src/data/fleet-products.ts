@@ -36,28 +36,32 @@ export const fleetProductGroups: FleetProductGroup[] = [
         name: 'PostTrainLLM',
         url: 'https://posttrainllm.com',
         repo: repo('PostTrainLLM', 'posttrainllm'),
-        description: 'Post-training and model-learning workspace built around small local language models.',
+        description:
+          'Post-training and model-learning workspace built around small local language models.',
         maturity: 'internal-first',
       },
       {
         name: 'Pace',
         url: 'https://heypace.app',
         repo: repo('HeyPace', 'pace'),
-        description: 'Local-only macOS menu-bar voice agent for screen-aware personal workflows.',
+        description:
+          'Local-only macOS menu-bar voice agent for screen-aware personal workflows.',
         maturity: 'internal-first',
       },
       {
         name: 'High Signal',
         url: 'https://highsignal.app',
         repo: repo('High-Signal-App', 'high-signal'),
-        description: 'Evidence-first signal log supported by focused research and ratings data.',
+        description:
+          'Evidence-first signal log supported by focused research and ratings data.',
         maturity: 'public-ready',
       },
       {
         name: 'SaaS Maker',
         url: 'https://sassmaker.com',
         repo: repo('sass-maker', 'saas-maker'),
-        description: 'Product platform and operating layer supported by focused infrastructure tools.',
+        description:
+          'Product platform and operating layer supported by focused infrastructure tools.',
         maturity: 'internal-first',
       },
     ],
@@ -71,25 +75,29 @@ export const fleetProductGroups: FleetProductGroup[] = [
       {
         name: 'Free AI',
         url: repo('sass-maker', 'free-ai'),
-        description: 'SaaS Maker support: OpenAI-compatible gateway across free-tier model providers.',
+        description:
+          'SaaS Maker support: OpenAI-compatible gateway across free-tier model providers.',
         maturity: 'maintained',
       },
       {
         name: 'Knowledge Base',
         url: repo('sass-maker', 'knowledge-base'),
-        description: 'SaaS Maker support: private agent search over project-scoped corpora.',
+        description:
+          'SaaS Maker support: private agent search over project-scoped corpora.',
         maturity: 'maintained',
       },
       {
         name: 'Reel Pipeline',
         url: repo('sass-maker', 'reel-pipeline'),
-        description: 'SaaS Maker support: short-form media generation for product work.',
+        description:
+          'SaaS Maker support: short-form media generation for product work.',
         maturity: 'maintained',
       },
       {
         name: 'Research Papers',
         url: repo('High-Signal-App', 'research-papers'),
-        description: 'High Signal support: academic research data and semantic paper discovery.',
+        description:
+          'High Signal support: academic research data and semantic paper discovery.',
         maturity: 'maintained',
       },
       {
@@ -101,27 +109,31 @@ export const fleetProductGroups: FleetProductGroup[] = [
       {
         name: 'Starboard',
         url: repo('Codevetter', 'starboard'),
-        description: 'CodeVetter support: GitHub stars organization and semantic repository discovery.',
+        description:
+          'CodeVetter support: GitHub stars organization and semantic repository discovery.',
         maturity: 'maintained',
       },
       {
         name: 'EverythingRated',
         url: 'https://ratings.highsignal.app',
         repo: repo('High-Signal-App', 'everythingrated'),
-        description: 'High Signal support: structured ratings data for adoption decisions.',
+        description:
+          'High Signal support: structured ratings data for adoption decisions.',
         maturity: 'maintained',
       },
       {
         name: 'psi-swarm',
         url: 'https://performance.sassmaker.com',
         repo: repo('sass-maker', 'psi-swarm'),
-        description: 'SaaS Maker support: repeated Lighthouse performance distributions.',
+        description:
+          'SaaS Maker support: repeated Lighthouse performance distributions.',
         maturity: 'maintained',
       },
       {
         name: 'Companion Robot',
         url: repo('HeyPace', 'companion-robot'),
-        description: 'Future Pace support project for an embodied home companion.',
+        description:
+          'Future Pace support project for an embodied home companion.',
         maturity: 'internal-first',
       },
     ],
@@ -150,21 +162,24 @@ export const fleetProductGroups: FleetProductGroup[] = [
         name: 'AliveVille',
         url: 'https://aliveville.com',
         repo: repo('sarthakagrawal927', 'aliveville'),
-        description: 'Maintained multi-agent world experiment; no longer a focus product.',
+        description:
+          'Maintained multi-agent world experiment; no longer a focus product.',
         maturity: 'maintained',
       },
       {
         name: 'Karte',
         url: 'https://karte.cc',
         repo: repo('sarthakagrawal927', 'karte'),
-        description: 'AI link-in-bio with chat, profile, lead, and inbound assistant surfaces.',
+        description:
+          'AI link-in-bio with chat, profile, lead, and inbound assistant surfaces.',
         maturity: 'public-ready',
       },
       {
         name: 'Significant Hobbies',
         url: 'https://significanthobbies.com',
         repo: repo('Significant-Hobbies', 'significanthobbies'),
-        description: 'The core hobby-mapping project in a collection of independent tools I made for myself.',
+        description:
+          'The core hobby-mapping project in a collection of independent tools I made for myself.',
         maturity: 'public-ready',
       },
       {
@@ -217,7 +232,8 @@ export const fleetProductGroups: FleetProductGroup[] = [
         name: 'Email Manager',
         url: 'https://mail.sassmaker.com',
         repo: repo('sarthakagrawal927', 'email-manager'),
-        description: 'Personal email operations workspace with local-first semantic search.',
+        description:
+          'Personal email operations workspace with local-first semantic search.',
         maturity: 'internal-first',
       },
     ],
@@ -226,5 +242,5 @@ export const fleetProductGroups: FleetProductGroup[] = [
 
 export const fleetProjectCount = fleetProductGroups.reduce(
   (count, group) => count + group.products.length,
-  0,
+  0
 );

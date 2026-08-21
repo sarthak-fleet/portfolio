@@ -41,16 +41,14 @@ import { navLinks, site } from '@/data/site';
 
     <!-- Center links -->
     <div class="hidden items-center gap-7 md:flex">
-      {
-        navLinks.map((link) => (
+      {navLinks.map((link) => (
           <a
             href={link.href}
             class="link-underline text-sm text-muted transition-colors hover:text-fg"
           >
             {link.label}
           </a>
-        ))
-      }
+        ))}
     </div>
 
     <!-- Actions -->
@@ -81,7 +79,13 @@ import { navLinks, site } from '@/data/site';
         class="flex items-center gap-2 rounded-md border border-line bg-panel px-2.5 py-1.5 text-sm text-muted transition-colors hover:border-line-strong hover:text-fg"
         aria-label="Open command menu"
       >
-        <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          viewBox="0 0 24 24"
+          class="h-3.5 w-3.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <path d="M3 5h18M3 12h18M3 19h18" stroke-linecap="round"></path>
         </svg>
         <kbd class="hidden font-mono text-xs sm:inline">⌘K</kbd>

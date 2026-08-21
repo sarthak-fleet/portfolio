@@ -2,7 +2,12 @@ import { getCollection } from 'astro:content';
 
 import { education, experience } from './experience';
 import { domains } from './expertise';
-import { resumeEducation, resumeExperience, resumeProjects, resumeSkills } from './resume';
+import {
+  resumeEducation,
+  resumeExperience,
+  resumeProjects,
+  resumeSkills,
+} from './resume';
 import { site } from './site';
 import { spotlightProducts } from './spotlight-products';
 
@@ -24,7 +29,9 @@ export async function getAgentSurfaces(): Promise<AgentSurface[]> {
     getCollection('blog', ({ data }) => !data.draft),
   ]);
 
-  const sortedWork = [...workEntries].sort((a, b) => a.data.order - b.data.order);
+  const sortedWork = [...workEntries].sort(
+    (a, b) => a.data.order - b.data.order
+  );
   const sortedBlog = [...blogEntries].sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
   );
@@ -149,7 +156,10 @@ function renderHome() {
     '',
     '## Current work',
     '',
-    ...experience.map((item) => `- ${item.role}, ${item.company} (${item.period}): ${item.summary}`),
+    ...experience.map(
+      (item) =>
+        `- ${item.role}, ${item.company} (${item.period}): ${item.summary}`
+    ),
     '',
     '## Selected products',
     '',
@@ -257,7 +267,11 @@ function renderResume() {
   ].join('\n');
 }
 
-function renderContentEntry(title: string, description: string, body: string | undefined) {
+function renderContentEntry(
+  title: string,
+  description: string,
+  body: string | undefined
+) {
   return [`# ${title}`, '', description, '', body?.trim() || ''].join('\n');
 }
 

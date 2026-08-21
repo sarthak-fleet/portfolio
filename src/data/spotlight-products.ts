@@ -26,7 +26,8 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     url: 'https://posttrainllm.com',
     organizationUrl: 'https://github.com/PostTrainLLM',
     repositoryUrl: 'https://github.com/PostTrainLLM/posttrainllm',
-    description: 'A Mac-local LLM factory, runtime, and WebGPU learning playground.',
+    description:
+      'A Mac-local LLM factory, runtime, and WebGPU learning playground.',
   },
   {
     id: 'heypace',
@@ -35,7 +36,8 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     url: 'https://heypace.app',
     organizationUrl: 'https://github.com/HeyPace',
     repositoryUrl: 'https://github.com/HeyPace/pace',
-    description: 'An on-device Mac voice agent with screen-aware local context.',
+    description:
+      'An on-device Mac voice agent with screen-aware local context.',
   },
   {
     id: 'hisignal',
@@ -44,7 +46,8 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     url: 'https://highsignal.app',
     organizationUrl: 'https://github.com/High-Signal-App',
     repositoryUrl: 'https://github.com/High-Signal-App/high-signal',
-    description: 'An evidence-first daily brief for technology, markets, and infrastructure.',
+    description:
+      'An evidence-first daily brief for technology, markets, and infrastructure.',
   },
   {
     id: 'saas-maker',
@@ -53,6 +56,7 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     url: 'https://sassmaker.com',
     organizationUrl: 'https://github.com/sass-maker',
     repositoryUrl: 'https://github.com/sass-maker/saas-maker',
-    description: 'The broader directory and operating layer for the full product fleet.',
+    description:
+      'The broader directory and operating layer for the full product fleet.',
   },
 ] as const;

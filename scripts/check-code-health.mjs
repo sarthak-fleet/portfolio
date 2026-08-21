@@ -11,7 +11,7 @@ const currentFile = fileURLToPath(import.meta.url);
 const root = resolve(dirname(currentFile), '..');
 const paths = ['src', 'astro.config.mjs'];
 const baselines = {
-  format: { errors: 31 },
+  format: { errors: 0 },
   types: { errors: 0, warnings: 0, hints: 0 },
   unused: {
     files: 0,
@@ -22,7 +22,7 @@ const baselines = {
     unlisted: 0,
     unresolved: 0,
   },
-  complexity: { violations: 1, maxCcn: 13, maxLength: 163, maxParams: 2 },
+  complexity: { violations: 0, maxCcn: 13, maxLength: 92, maxParams: 2 },
   duplication: { clones: 0, duplicatedLines: 0, percentage: 0 },
   suppressions: 0,
   dependencies: { criticalIds: 0, highIds: 13, highFindings: 8 },

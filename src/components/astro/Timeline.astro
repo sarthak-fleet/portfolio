@@ -9,8 +9,7 @@ const { detailed = false } = Astro.props;
 ---
 
 <ol>
-  {
-    experience.map((job, i) => {
+  {experience.map((job, i) => {
       const notLast = i < experience.length - 1;
       return (
         <li class="relative grid grid-cols-[1.25rem_1fr] gap-x-4 pb-9 last:pb-0">
@@ -79,6 +78,5 @@ const { detailed = false } = Astro.props;
           </div>
         </li>
       );
-    })
-  }
+    })}
 </ol>
