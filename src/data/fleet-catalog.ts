@@ -1,11 +1,11 @@
 /**
  * Full fleet catalog for LLM-readable surfaces only (llms.txt, llms-full.txt,
  * /api/ai). The human-facing /projects page uses the trimmed `fleet-products.ts`
- * with just core products. This file carries the complete live fleet — 49
+ * with just core products. This file carries the complete live fleet — 50
  * maintained projects across focus, active, secondary, and parked tiers — so
  * agents get the full picture without cluttering the HTML.
  *
- * Mirrored from site-health/apps/backend/config/projects.json (2026-08-22).
+ * Mirrored from site-health/apps/backend/config/projects.json (2026-08-23).
  * Exclude out-of-fleet, archived, deleted, and undeployed projects.
  */
 
@@ -124,16 +124,17 @@ export const fleetCatalog: readonly CatalogEntry[] = [
       'Fleet-wide observability and project catalog — the canonical private infrastructure inventory.',
   },
   {
-    id: 'workflows-and-skills',
-    name: 'Workflows and Skills',
+    id: 'live',
+    name: 'Live',
     tier: 'active',
     priority: 'P2',
-    kind: 'platform',
-    family: 'workflows-and-skills',
-    url: 'https://github.com/sass-maker/workflows-and-skills',
-    domains: [],
-    repo: 'https://github.com/sass-maker/workflows-and-skills',
-    description: 'Reusable agent workflows and skills shared across the fleet.',
+    kind: 'product',
+    family: 'significanthobbies',
+    url: 'https://live.significanthobbies.com',
+    domains: ['live.significanthobbies.com'],
+    repo: 'https://github.com/Significant-Hobbies/live',
+    description:
+      'The original Significant Hobbies experience for recording, exploring, and acting on a life lived beyond passive consumption.',
   },
   {
     id: 'chatgpt-connections',
@@ -369,10 +370,23 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     kind: 'product',
     family: 'significanthobbies',
     url: 'https://significanthobbies.com',
-    domains: ['significanthobbies.com', 'live.significanthobbies.com'],
+    domains: ['significanthobbies.com'],
     repo: 'https://github.com/Significant-Hobbies/significanthobbies',
     description:
-      'A simple directory for Live, Journal, Habits, Calorie, Setline, Kith, and Anchor — the personal-use product family.',
+      'The shared Hub for Live, Journal, Habits, Calorie, Setline, Kith, and Anchor, backed by one privacy-aware control plane.',
+  },
+  {
+    id: 'journal',
+    name: 'Journal',
+    tier: 'secondary',
+    priority: 'P2',
+    kind: 'product',
+    family: 'significanthobbies',
+    url: 'https://journal.significanthobbies.com',
+    domains: ['journal.significanthobbies.com'],
+    repo: 'https://github.com/Significant-Hobbies/journal',
+    description:
+      'A private iPhone journal for daily writing, reflection, and a personal archive that stays under the owner’s control.',
   },
   {
     id: 'india-standards',

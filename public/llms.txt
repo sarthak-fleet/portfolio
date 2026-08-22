@@ -43,7 +43,8 @@ Built on Astro, deployed on Cloudflare Pages. The human-facing site is intention
 - [SaaS Maker](https://sassmaker.com): Living studio of focused products built for particular problems.
 - [High Signal](https://highsignal.app): Evidence-backed daily intelligence across technology, startups, finance, and public policy.
 - [Site Health](https://github.com/sass-maker/site-health): Fleet-wide observability and project catalog.
-- [Workflows and Skills](https://github.com/sass-maker/workflows-and-skills): Reusable agent workflows and skills shared across the fleet.
+- [Live](https://live.significanthobbies.com): The independently owned original Significant Hobbies experience.
+- [Journal](https://journal.significanthobbies.com): A private daily-writing iPhone app and personal archive.
 - [ChatGPT Connections](https://github.com/sass-maker/chatgpt-connections): Public gateway for ChatGPT connection and memory data exports.
 - [Reel Pipeline](https://github.com/sass-maker/reel-pipeline): Short-form media generation pipeline for product work.
 - [Knowledge Base](https://knowledgebase.sassmaker.com): Private agent search over specialized corpora with ranked citations.
