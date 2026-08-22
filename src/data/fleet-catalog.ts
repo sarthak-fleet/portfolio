@@ -133,8 +133,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://github.com/sass-maker/workflows-and-skills',
     domains: [],
     repo: 'https://github.com/sass-maker/workflows-and-skills',
-    description:
-      'Reusable agent workflows and skills shared across the fleet.',
+    description: 'Reusable agent workflows and skills shared across the fleet.',
   },
   {
     id: 'chatgpt-connections',
@@ -159,8 +158,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://github.com/sass-maker/reel-pipeline',
     domains: [],
     repo: 'https://github.com/sass-maker/reel-pipeline',
-    description:
-      'Short-form media generation pipeline for product work.',
+    description: 'Short-form media generation pipeline for product work.',
   },
   {
     id: 'knowledge-base',
@@ -207,7 +205,10 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     kind: 'product',
     family: 'indulge',
     url: 'https://habits.significanthobbies.com',
-    domains: ['habits.significanthobbies.com', 'indulge.significanthobbies.com'],
+    domains: [
+      'habits.significanthobbies.com',
+      'indulge.significanthobbies.com',
+    ],
     description:
       'A private habit practice for noticing patterns, making intentional trades, and building streaks.',
   },
@@ -270,8 +271,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://ai-gateway.sassmaker.com',
     domains: ['ai-gateway.sassmaker.com'],
     repo: 'https://github.com/sass-maker/free-ai',
-    description:
-      'OpenAI-compatible gateway across free-tier model providers.',
+    description: 'OpenAI-compatible gateway across free-tier model providers.',
   },
   {
     id: 'psi-swarm',
@@ -295,8 +295,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     family: 'materia',
     url: 'https://materia.significanthobbies.com',
     domains: ['materia.significanthobbies.com'],
-    description:
-      'Evidence-graded remedy reference organized by body system.',
+    description: 'Evidence-graded remedy reference organized by body system.',
   },
   {
     id: 'reddit-insights',
@@ -347,8 +346,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://ratings.highsignal.app',
     domains: ['ratings.highsignal.app'],
     repo: 'https://github.com/High-Signal-App/everythingrated',
-    description:
-      'A general-purpose rating and comparison experiment.',
+    description: 'A general-purpose rating and comparison experiment.',
   },
   {
     id: 'research-papers',
@@ -440,8 +438,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://read.significanthobbies.com',
     domains: ['read.significanthobbies.com'],
     repo: 'https://github.com/Significant-Hobbies/reader',
-    description:
-      'Capture, annotate, revisit, and discuss saved reading.',
+    description: 'Capture, annotate, revisit, and discuss saved reading.',
   },
   {
     id: 'swe-interview-prep',
@@ -453,8 +450,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://learn.significanthobbies.com',
     domains: ['learn.significanthobbies.com'],
     repo: 'https://github.com/Significant-Hobbies/swe-interview-prep',
-    description:
-      'A learning OS for software-engineering interview practice.',
+    description: 'A learning OS for software-engineering interview practice.',
   },
   {
     id: 'calorie',
@@ -527,8 +523,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://karte.cc',
     domains: ['karte.cc'],
     repo: 'https://github.com/sarthakagrawal927/karte',
-    description:
-      'An AI link-in-bio that turns a profile into a conversation.',
+    description: 'An AI link-in-bio that turns a profile into a conversation.',
   },
   {
     id: 'starboard',
@@ -540,8 +535,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://starboard.codevetter.com',
     domains: ['starboard.codevetter.com'],
     repo: 'https://github.com/Codevetter/starboard',
-    description:
-      'Organize and semantically search your GitHub stars.',
+    description: 'Organize and semantically search your GitHub stars.',
   },
   {
     id: 'saas-ideas',
@@ -590,8 +584,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     family: 'ai-game',
     url: 'https://aliveville.com',
     domains: ['aliveville.com'],
-    description:
-      'Persistent AI world and multi-agent simulation experiments.',
+    description: 'Persistent AI world and multi-agent simulation experiments.',
   },
   {
     id: 'protein-index',
@@ -603,8 +596,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://protein.significanthobbies.com',
     domains: ['protein.significanthobbies.com'],
     repo: 'https://github.com/Significant-Hobbies/protein-index',
-    description:
-      'Searchable protein and nutrition reference.',
+    description: 'Searchable protein and nutrition reference.',
   },
   {
     id: 'open-historia',
@@ -615,8 +607,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     family: 'open-historia',
     url: 'https://historia.aliveville.com',
     domains: ['historia.aliveville.com'],
-    description:
-      'Interactive historical storytelling and world simulation.',
+    description: 'Interactive historical storytelling and world simulation.',
   },
   {
     id: 'mobile-dev-cockpit',
@@ -628,8 +619,7 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     url: 'https://github.com/sarthakagrawal927/mobile-dev-cockpit',
     domains: [],
     repo: 'https://github.com/sarthakagrawal927/mobile-dev-cockpit',
-    description:
-      'Mobile development dashboard — parked, no active investment.',
+    description: 'Mobile development dashboard — parked, no active investment.',
   },
 ] as const;
 
@@ -663,5 +653,3 @@ export const catalogGroups: readonly CatalogGroup[] = [
     entries: fleetCatalog.filter((e) => e.tier === 'parked'),
   },
 ];
-
-export const catalogEntryCount = fleetCatalog.length;

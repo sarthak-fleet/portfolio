@@ -1,6 +1,6 @@
 // Portfolio content contract test.
 //
-// Validates the canonical four-product presentation plus SaaS Maker as the
+// Validates the canonical three-product presentation plus SaaS Maker as the
 // directory entry point on the personal homepage. Runs with `node --test` —
 // no test framework dependency. Guards against:
 //   - a primary product being omitted from the spotlight set
@@ -20,18 +20,12 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 
-const PRIMARY_PRODUCT_IDS = [
-  'codevetter',
-  'posttrainllm',
-  'heypace',
-  'hisignal',
-];
+const PRIMARY_PRODUCT_IDS = ['codevetter', 'posttrainllm', 'heypace'];
 const DIRECTORY_PRODUCT_ID = 'saas-maker';
 const EXPECTED_PRODUCT_URLS = {
   codevetter: 'https://codevetter.com',
   posttrainllm: 'https://posttrainllm.com',
   heypace: 'https://heypace.app',
-  hisignal: 'https://highsignal.app',
   'saas-maker': 'https://sassmaker.com',
 };
 // Toolbox surfaces must never appear in the homepage spotlight set.
@@ -58,7 +52,7 @@ async function readHeadSource() {
   return readFile(`${ROOT}/src/components/astro/Head.astro`, 'utf8');
 }
 
-test('spotlight data declares exactly the four primary products plus SaaS Maker as directory', async () => {
+test('spotlight data declares exactly the three primary products plus SaaS Maker as directory', async () => {
   const source = await readSpotlightSource();
   for (const id of PRIMARY_PRODUCT_IDS) {
     assert.match(
@@ -116,7 +110,7 @@ test('homepage renders the spotlight set with a distinct directory CTA for SaaS 
     /open the directory/,
     'SaaS Maker must keep its distinct directory CTA copy'
   );
-  // The four primary products must each appear via the spotlight import —
+  // The three primary products must each appear via the spotlight import —
   // guard against the homepage hardcoding a different set.
   for (const id of PRIMARY_PRODUCT_IDS) {
     assert.match(
@@ -155,7 +149,6 @@ test('site publishes one canonical, externally corroborated person identity', as
   assert.match(siteSource, /linkedin\.com\/in\/sarthakagrawal927/);
   assert.match(siteSource, /github\.com\/sarthakagrawal927/);
   assert.match(siteSource, /x\.com\/sarthakcodes/);
-  assert.match(siteSource, /huggingface\.co\/sarthakagrawal927/);
   assert.match(headSource, /'@type': 'ProfilePage'/);
   assert.match(headSource, /const personNode = \{/);
   assert.match(headSource, /'@type': 'Person'/);
