@@ -2,18 +2,19 @@
 
 > Personal site of Sarthak Agrawal — AI infrastructure and product engineer. Portfolio, shipped products, and technical writing.
 
-Built on Astro, deployed on Cloudflare Pages.
+Built on Astro, deployed on Cloudflare Pages. The human-facing site is intentionally focused — three core products plus SaaS Maker. This file is the full machine-readable corpus including the complete 49-project fleet.
 
 ## Machine-readable corpus
 
 - [Agent catalog](https://sarthakagrawal.dev/api/ai): JSON inventory of every public page and its Markdown counterpart
-- [Full public corpus](https://sarthakagrawal.dev/llms-full.txt): Combined identity, portfolio, case-study, résumé, and writing content
+- [Full public corpus](https://sarthakagrawal.dev/llms-full.txt): Combined identity, portfolio, case-study, résumé, and writing content — includes the full fleet catalog
 - [Homepage Markdown](https://sarthakagrawal.dev/index.md): Canonical identity and selected work without JavaScript
+- [Projects Markdown](https://sarthakagrawal.dev/projects.md): Spotlight products plus the full 49-project fleet catalog with tiers, URLs, and descriptions
 
 ## Portfolio
 
 - [Home](https://sarthakagrawal.dev/): Hero, selected work, and contact
-- [Projects](https://sarthakagrawal.dev/projects): Full project archive; the landing page leads with three products plus SaaS Maker
+- [Projects](https://sarthakagrawal.dev/projects): Core products, ten root domains, and curated open-source repos
 - [About](https://sarthakagrawal.dev/about): Background, stack, and availability
 - [Résumé](https://sarthakagrawal.dev/resume): On-site résumé and PDF download
 - [Writing](https://sarthakagrawal.dev/blog): Devlog and technical posts
@@ -21,18 +22,85 @@ Built on Astro, deployed on Cloudflare Pages.
 - [Fleet performance without Argo](https://sarthakagrawal.dev/blog/fleet-performance-without-argo): Case study on closing desktop LCP p75 under 500 ms across Cloudflare sites
 - [Attention Is All You Need. Twice.](https://sarthakagrawal.dev/blog/attention-is-all-you-need-twice): LLMs as the production engine, marketing as the distribution engine
 
-## Product fleet
-
-### Spotlight
+## Product fleet — spotlight
 
 - [CodeVetter](https://codevetter.com): Desktop-first AI code review for agent-generated diffs
 - [PostTrainLLM](https://posttrainllm.com): Post-training and small-language-model learning workspace
-- [HeyPace](https://heypace.app): Local-only macOS voice agent
+- [Pace](https://heypace.app): Local-only macOS voice agent
 - [SaaS Maker](https://sassmaker.com): Directory and operating layer for the full product fleet
 
-### Full directory
+## Product fleet — full catalog (49 live projects)
 
-- The broader project archive is maintained at [SaaS Maker](https://sassmaker.com)
+### Focus products
+
+- [CodeVetter](https://codevetter.com): AI code review platform — desktop-first, works offline.
+- [Pace](https://heypace.app): Local-only macOS voice agent that can understand what is on your screen.
+- [PostTrainLLM](https://posttrainllm.com): A local factory for training, evaluating, and running specialist language models.
+
+### Active products and platforms
+
+- [Office OS](https://office-os.sassmaker.com): Local-first Mac workplace where named AI employees have bounded responsibilities.
+- [SaaS Maker](https://sassmaker.com): Living studio of focused products built for particular problems.
+- [High Signal](https://highsignal.app): Evidence-backed daily intelligence across technology, startups, finance, and public policy.
+- [Site Health](https://github.com/sass-maker/site-health): Fleet-wide observability and project catalog.
+- [Workflows and Skills](https://github.com/sass-maker/workflows-and-skills): Reusable agent workflows and skills shared across the fleet.
+- [ChatGPT Connections](https://github.com/sass-maker/chatgpt-connections): Public gateway for ChatGPT connection and memory data exports.
+- [Reel Pipeline](https://github.com/sass-maker/reel-pipeline): Short-form media generation pipeline for product work.
+- [Knowledge Base](https://knowledgebase.sassmaker.com): Private agent search over specialized corpora with ranked citations.
+- [App Health](https://health.sassmaker.com): Privacy-first endpoint health for Node, Go, and OpenTelemetry services.
+- [Motion](https://motion.significanthobbies.com): Body-controlled iPhone game that can mirror to a larger screen.
+- [Habits](https://habits.significanthobbies.com): Private habit practice for noticing patterns and building streaks.
+- [Local AI Video Studio](https://local-ai-video-studio.sassmaker.com): Local-first Mac studio for comparing reproducible video-effect variants.
+- [Anchor](https://anchor.significanthobbies.com): Local-first focus timer for Mac, iPhone and Apple Watch.
+- [Drank](https://domains.sassmaker.com): Domain Rating intelligence for product, SEO, and market research.
+- [Email Manager](https://mail.significanthobbies.com): Private Gmail workspace for local semantic search and unsubscribe workflows.
+- [Free AI](https://ai-gateway.sassmaker.com): OpenAI-compatible gateway across free-tier model providers.
+- [PSI Swarm](https://performance.sassmaker.com): Repeated Lighthouse distributions for honest performance tracking.
+- [Materia](https://materia.significanthobbies.com): Evidence-graded remedy reference organized by body system.
+- [Reddit Insights](https://reddit-insights.highsignal.app): Structured Reddit research and signal extraction.
+
+### Secondary products
+
+- [GitStat](https://git.significanthobbies.com): GitHub analytics dashboard for contribution history and AI-assisted work breakdowns.
+- [Memory Map](https://chatgpt.significanthobbies.com): Turn a ChatGPT export into a private map of recurring themes and patterns.
+- [EverythingRated](https://ratings.highsignal.app): General-purpose rating and comparison experiment.
+- [Research Papers](https://papers.highsignal.app): Academic paper discovery and structured research data asset.
+- [Significant Hobbies](https://significanthobbies.com): Directory for the personal-use product family.
+- [India Standards](https://india-standards.significanthobbies.com): Transparent India demographic standards calculator using PLFS data.
+- [Anime List](https://anime.significanthobbies.com): Anime and manga discovery with multi-axis filtering and watchlists.
+- [Chess](https://chess.significanthobbies.com): Browser chess against Stockfish with optional AI move coaching.
+- [LoopTV](https://tv.significanthobbies.com): Lean-back, TV-style random video player for curated channels.
+- [Reader](https://read.significanthobbies.com): Capture, annotate, revisit, and discuss saved reading.
+- [SWE Interview Prep](https://learn.significanthobbies.com): Learning OS for software-engineering interview practice.
+- [Calorie](https://calorie.significanthobbies.com): Private, local-first food, water, and weight journal.
+- [Setline](https://setline.significanthobbies.com): iOS-native training tracker for strength, cardio and mobility.
+- [Kith](https://kith.significanthobbies.com): Private iPhone app for staying close to the people who matter.
+- [iOS Landings](https://journal.significanthobbies.com): Shared Astro factory for Significant Hobbies iOS app landing pages.
+- [RolePatch](https://rolepatch.com): AI-assisted resume tailoring, role research, and interview preparation.
+- [Karte](https://karte.cc): AI link-in-bio that turns a profile into a conversation.
+- [Starboard](https://starboard.codevetter.com): Organize and semantically search your GitHub stars.
+- [SaaS Ideas](https://ideas.sassmaker.com): Curated directory of SaaS product ideas with market analysis.
+- [What It Takes to Win](https://paths.significanthobbies.com): Explore 2,585 documented early-breakthrough paths.
+
+### Parked experiments
+
+- [AliveVille](https://aliveville.com): Persistent AI world and multi-agent simulation experiments.
+- [Protein Index](https://protein.significanthobbies.com): Searchable protein and nutrition reference.
+- [Open Historia](https://historia.aliveville.com): Interactive historical storytelling and world simulation.
+- [Mobile Dev Cockpit](https://github.com/sarthakagrawal927/mobile-dev-cockpit): Mobile development dashboard — parked.
+
+## Ten root domains
+
+- [codevetter.com](https://codevetter.com): CodeVetter (P0)
+- [posttrainllm.com](https://posttrainllm.com): PostTrainLLM (P0)
+- [heypace.app](https://heypace.app): Pace (P0)
+- [rolepatch.com](https://rolepatch.com): RolePatch (P1)
+- [sassmaker.com](https://sassmaker.com): SaaS Maker (P1)
+- [sarthakagrawal.dev](https://sarthakagrawal.dev): Sarthak Agrawal (P1)
+- [highsignal.app](https://highsignal.app): High Signal (P2)
+- [significanthobbies.com](https://significanthobbies.com): Significant Hobbies (P2)
+- [aliveville.com](https://aliveville.com): AliveVille (P2)
+- [karte.cc](https://karte.cc): Karte (P2)
 
 ## Optional
 

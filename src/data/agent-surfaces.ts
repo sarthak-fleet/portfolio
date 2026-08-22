@@ -1,5 +1,6 @@
 import { getCollection } from 'astro:content';
 
+import { catalogGroups, fleetCatalog } from './fleet-catalog';
 import { education, experience } from './experience';
 import { domains } from './expertise';
 import {
@@ -211,10 +212,12 @@ function renderProjects() {
   return [
     '# Projects',
     '',
-    'The selected products below are the primary public work. SaaS Maker is the canonical directory for the broader maintained fleet.',
+    'The selected products below are the primary public work. The full live fleet catalog follows — every maintained product, platform, and experiment with its tier, URL, and description.',
+    '',
+    '## Spotlight products',
     '',
     ...spotlightProducts.flatMap((product) => [
-      `## ${product.label}`,
+      `### ${product.label}`,
       '',
       product.description,
       '',
@@ -222,6 +225,28 @@ function renderProjects() {
       `- Source: ${product.repositoryUrl}`,
       `- Organization: ${product.organizationUrl}`,
       '',
+    ]),
+    '## Full fleet catalog',
+    '',
+    `${fleetCatalog.length} live projects across four tiers. SaaS Maker (https://sassmaker.com) is the canonical human-readable directory.`,
+    '',
+    ...catalogGroups.flatMap((group) => [
+      `### ${group.label}`,
+      '',
+      group.intro,
+      '',
+      ...group.entries.flatMap((entry) => {
+        const lines = [
+          `- **${entry.name}** (${entry.tier}, ${entry.priority}) — ${entry.description}`,
+          `  URL: ${entry.url}`,
+        ];
+        if (entry.repo) lines.push(`  Repo: ${entry.repo}`);
+        if (entry.domains.length > 1) {
+          lines.push(`  Domains: ${entry.domains.join(', ')}`);
+        }
+        lines.push('');
+        return lines;
+      }),
     ]),
   ].join('\n');
 }
