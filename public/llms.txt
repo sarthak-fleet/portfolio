@@ -2,7 +2,7 @@
 
 > Personal site of Sarthak Agrawal — AI infrastructure and product engineer. Portfolio, shipped products, and technical writing.
 
-Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal product fleet.
+Built on Astro, deployed on Cloudflare Pages.
 
 ## Machine-readable corpus
 
@@ -13,12 +13,13 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 ## Portfolio
 
 - [Home](https://sarthakagrawal.dev/): Hero, selected work, and contact
-- [Projects](https://sarthakagrawal.dev/projects): Full project archive; the landing page leads with four products plus SaaS Maker
+- [Projects](https://sarthakagrawal.dev/projects): Full project archive; the landing page leads with three products plus SaaS Maker
 - [About](https://sarthakagrawal.dev/about): Background, stack, and availability
 - [Résumé](https://sarthakagrawal.dev/resume): On-site résumé and PDF download
 - [Writing](https://sarthakagrawal.dev/blog): Devlog and technical posts
 - [Privacy](https://sarthakagrawal.dev/privacy): Privacy policy
-- [Fleet performance without Argo](https://sarthakagrawal.dev/blog/fleet-performance-without-argo): Case study on closing desktop LCP p75 under 500 ms across 23 Cloudflare sites
+- [Fleet performance without Argo](https://sarthakagrawal.dev/blog/fleet-performance-without-argo): Case study on closing desktop LCP p75 under 500 ms across Cloudflare sites
+- [Attention Is All You Need. Twice.](https://sarthakagrawal.dev/blog/attention-is-all-you-need-twice): LLMs as the production engine, marketing as the distribution engine
 
 ## Product fleet
 
@@ -27,33 +28,12 @@ Built on Astro, deployed on Cloudflare Pages. Part of the Foundry personal produ
 - [CodeVetter](https://codevetter.com): Desktop-first AI code review for agent-generated diffs
 - [PostTrainLLM](https://posttrainllm.com): Post-training and small-language-model learning workspace
 - [HeyPace](https://heypace.app): Local-only macOS voice agent
-- [High Signal](https://highsignal.app): Evidence-first signal log for AI infrastructure, markets, and domain intelligence
-- [SaaS Maker](https://sassmaker.com): Broader directory and operating layer for the full product fleet
+- [SaaS Maker](https://sassmaker.com): Directory and operating layer for the full product fleet
 
 ### Full directory
 
 - The broader project archive is maintained at [SaaS Maker](https://sassmaker.com)
-- [High Signal](https://highsignal.app): Public signal log for AI infrastructure, markets, and domain intelligence
-- [Aliveville](https://aliveville.com): Interactive AI world experiment
-- [Free AI](https://github.com/sass-maker/free-ai): OpenAI-compatible gateway for free-tier model providers
-- [Knowledge Base](https://github.com/sass-maker/knowledge-base): Private Agent Search over project-scoped corpora
-- [Reel Pipeline](https://github.com/sass-maker/reel-pipeline): AI short-form video generation pipeline
-- [Research Papers](https://github.com/High-Signal-App/research-papers): Academic paper platform and research data asset
-- [drank](https://github.com/High-Signal-App/drank): Domain Rating tracker for domain research
-- [Starboard](https://github.com/Codevetter/starboard): GitHub stars organizer and semantic search surface
-
-### Personal use
-
-- [RolePatch](https://rolepatch.com): AI resume tailoring against job descriptions
-- [Karte](https://karte.cc): AI link-in-bio and inbound assistant
-- [Significant Hobbies](https://significanthobbies.com): Hobby journey mapping and discovery
-- [Reader](https://github.com/Significant-Hobbies/reader): Personal reading and saved-article workflow
-- [SWE Interview Prep](https://github.com/Significant-Hobbies/swe-interview-prep): Interview practice workspace
-- [LoopTV](https://github.com/Significant-Hobbies/looptv): Ambient video and anime companion
-- [Anime List](https://anime.significanthobbies.com): Personal anime discovery and tracking surface
-- [Email Manager](https://mail.significanthobbies.com): Personal email operations workspace
 
 ## Optional
 
 - [GitHub](https://github.com/sarthakagrawal927): Source code and experiments
-- [Foundry docs](https://docs.sassmaker.com): Fleet operating manual

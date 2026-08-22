@@ -40,16 +40,6 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
       'An on-device Mac voice agent with screen-aware local context.',
   },
   {
-    id: 'hisignal',
-    label: 'High Signal',
-    name: 'High Signal',
-    url: 'https://highsignal.app',
-    organizationUrl: 'https://github.com/High-Signal-App',
-    repositoryUrl: 'https://github.com/High-Signal-App/high-signal',
-    description:
-      'An evidence-first daily brief for technology, markets, and infrastructure.',
-  },
-  {
     id: 'saas-maker',
     label: 'SaaS Maker',
     name: 'SaaS Maker',

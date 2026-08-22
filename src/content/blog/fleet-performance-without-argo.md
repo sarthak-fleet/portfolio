@@ -10,7 +10,7 @@ tags: [performance, cloudflare, astro, web-vitals]
 
 I ship a lot of small products — 23 live sites on Cloudflare Workers and Pages, mostly solo. The fleet had a split personality: `*.workers.dev` and `*.pages.dev` URLs were fast, but custom domains sat on a **400–1000 ms TTFB floor**. PageSpeed Insights gave me one number per URL. That number lied often enough that I built [psi-swarm](https://github.com/sass-maker/psi-swarm) to run Lighthouse many times and report **p50/p75/p90/p99** instead.
 
-This post is the narrative version. The structured case study with baseline, tactics, and results lives on [Foundry](https://sassmaker.com/case-study/fleet-performance).
+This post is the narrative version. The structured case study with baseline, tactics, and results lives on [SaaS Maker](https://sassmaker.com).
 
 ## The constraint
 
@@ -47,7 +47,7 @@ Five sites closed under 500 ms desktop LCP p75 in the first push. The remaining 
 ## Try the tooling
 
 - **[psi-swarm](https://github.com/sass-maker/psi-swarm)** — CLI + local UI; runs stay on your machine
-- **[Fleet performance case study](https://sassmaker.com/case-study/fleet-performance)** — condensed write-up on Foundry
-- **[Fleet products hub](https://sarthakagrawal.dev/projects)** — all seven owned domains in one place
+- **[SaaS Maker](https://sassmaker.com)** — the broader fleet directory
+- **[Fleet products hub](https://sarthakagrawal.dev/projects)** — all ten root domains in one place
 
 If you are running a personal product fleet on Cloudflare, the highest-leverage move is usually: **static HTML at `/`, measure p75 not p50, and delete the hero fade-in.** Everything else is incremental.

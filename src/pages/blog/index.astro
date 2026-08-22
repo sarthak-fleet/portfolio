@@ -8,16 +8,7 @@ const posts = (await getCollection('blog'))
   .filter((p) => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-const hasPosts = posts.length > 0;
 const dateFmt = new Intl.DateTimeFormat('en', { dateStyle: 'medium' });
-
-// Topics this section will cover once posts land.
-const planned = [
-  'designing for backpressure & graceful degradation',
-  'making LLM systems reliable, not just impressive',
-  'the database decisions you regret later',
-  'what running agents in production actually takes',
-];
 ---
 
 <BaseLayout
@@ -30,88 +21,22 @@ const planned = [
       title="Notes on systems & infrastructure."
     />
 
-    {hasPosts ? (
-        <ul class="mt-10 divide-y divide-line border-y border-line">
-          {posts.map((post) => (
-            <li>
-              <a
-                href={`/blog/${post.id}`}
-                class="group flex flex-col gap-1 py-5 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
-              >
-                <span class="font-medium text-fg transition-colors group-hover:text-accent">
-                  {post.data.title}
-                </span>
-                <span class="shrink-0 font-mono text-xs text-faint">
-                  {dateFmt.format(post.data.date)}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div class="mt-10">
-          {/* Terminal-style "coming soon" state */}
-          <div class="panel overflow-hidden font-mono text-[13px]">
-            <div class="flex items-center gap-2 border-b border-line bg-panel-2 px-3.5 py-2.5">
-              <span class="chrome-dot bg-[#ff5f57]" />
-              <span class="chrome-dot bg-[#febc2e]" />
-              <span class="chrome-dot bg-[#28c840]" />
-              <span class="ml-2 text-xs text-faint">~/writing</span>
-            </div>
-            <div class="space-y-1 px-4 py-4 leading-relaxed">
-              <p>
-                <span class="text-accent">guest@sarthak</span>
-                <span class="text-faint">:~$</span> ls ~/writing
-              </p>
-              <p class="text-muted">total 0 — no entries yet</p>
-              <p class="mt-2">
-                <span class="text-accent">guest@sarthak</span>
-                <span class="text-faint">:~$</span> cat status.txt
-              </p>
-              <p class="text-warn">drafting — first posts landing soon</p>
-            </div>
-          </div>
-
-          <p class="mt-8 text-pretty leading-relaxed text-muted">
-            This is where the long-form writing will live — notes on backend
-            systems, distributed infrastructure and AI engineering, written
-            from things I've actually had to build and operate.
-          </p>
-
-          <div class="mt-8">
-            <p class="kicker mb-3">// on the list</p>
-            <ul class="space-y-2">
-              {planned.map((topic) => (
-                <li class="flex gap-2.5 text-sm text-muted">
-                  <span class="mt-2 h-px w-3 shrink-0 bg-accent" />
-                  <span>{topic}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p class="mt-8 text-sm text-faint">
-            Until the first post ships, I'm most active on{' '}
-            <a
-              href="https://github.com/sarthakagrawal927"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-accent link-underline"
-            >
-              GitHub
-            </a>{' '}
-            and{' '}
-            <a
-              href="https://x.com/sarthakcodes"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-accent link-underline"
-            >
-              X
-            </a>
-            .
-          </p>
-        </div>
-      )}
+    <ul class="mt-10 divide-y divide-line border-y border-line">
+      {posts.map((post) => (
+        <li>
+          <a
+            href={`/blog/${post.id}`}
+            class="group flex flex-col gap-1 py-5 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+          >
+            <span class="font-medium text-fg transition-colors group-hover:text-accent">
+              {post.data.title}
+            </span>
+            <span class="shrink-0 font-mono text-xs text-faint">
+              {dateFmt.format(post.data.date)}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 </BaseLayout>

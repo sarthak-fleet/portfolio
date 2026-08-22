@@ -22,7 +22,6 @@ export const site = {
     linkedin: 'https://www.linkedin.com/in/sarthakagrawal927',
     github: 'https://github.com/sarthakagrawal927',
     x: 'https://x.com/sarthakcodes',
-    huggingFace: 'https://huggingface.co/sarthakagrawal927',
   },
   email: 'sarthakagrawal927@gmail.com',
   location: 'India',

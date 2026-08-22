@@ -2,7 +2,7 @@
  * Hand-curated project list — every entry was vetted by reading the actual
  * repo code, not just its name or GitHub description.
  *
- * Out of 100+ public repos, these 26 genuinely show AI/ML, backend, systems,
+ * Out of 100+ public repos, these 24 genuinely show AI/ML, backend, systems,
  * tooling or shipped-product engineering. Course solutions, learning repos,
  * boilerplate (e.g. `backpropagate` — an unmodified starter template) and
  * abandoned stubs are deliberately left out; they stay reachable via the
@@ -51,12 +51,7 @@ export const projectGroups: ProjectGroup[] = [
           'A strategy game where you describe your nation’s moves in plain English and an LLM plays referee.',
       },
       {
-        repo: 'reel-maker',
-        summary:
-          'Hand it a topic and it writes the script, makes the images, records a voiceover and renders the video.',
-      },
-      {
-        repo: 'stitch',
+        repo: 'image-stitching',
         summary:
           'Stitches a few video feeds into one panorama using SIFT feature matching and homography.',
       },
@@ -72,17 +67,12 @@ export const projectGroups: ProjectGroup[] = [
           'The backend every SaaS ends up rebuilding — feedback, waitlists, analytics — packaged as drop-in APIs.',
       },
       {
-        repo: 'click_vs_elastic',
+        repo: 'clickhouse-vs-elasticsearch',
         summary:
           'I loaded 10M rows into ClickHouse and Elasticsearch three ways each, just to see what’s actually faster.',
       },
       {
-        repo: 'truehire',
-        summary:
-          'Rates a candidate from their real GitHub history instead of taking a polished resume at face value.',
-      },
-      {
-        repo: 'agentMode',
+        repo: 'subreddit-research',
         summary:
           'Caches a subreddit and gives you AI summaries of it, with links back to the posts they came from.',
       },
