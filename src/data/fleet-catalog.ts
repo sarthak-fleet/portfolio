@@ -1,7 +1,7 @@
 /**
  * Full fleet catalog for LLM-readable surfaces only (llms.txt, llms-full.txt,
  * /api/ai). The human-facing /projects page uses the trimmed `fleet-products.ts`
- * with just core products. This file carries the complete live fleet — 50
+ * with just core products. This file carries the complete live fleet — 47
  * maintained projects across focus, active, secondary, and parked tiers — so
  * agents get the full picture without cluttering the HTML.
  *
@@ -550,18 +550,6 @@ export const fleetCatalog: readonly CatalogEntry[] = [
     domains: ['starboard.codevetter.com'],
     repo: 'https://github.com/Codevetter/starboard',
     description: 'Organize and semantically search your GitHub stars.',
-  },
-  {
-    id: 'saas-ideas',
-    name: 'SaaS Ideas',
-    tier: 'secondary',
-    priority: 'P4',
-    kind: 'product',
-    family: 'saas-ideas',
-    url: 'https://ideas.sassmaker.com',
-    domains: ['ideas.sassmaker.com'],
-    description:
-      'A curated directory of SaaS product ideas with market analysis.',
   },
   {
     id: 'what-it-takes-to-win',

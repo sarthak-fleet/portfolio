@@ -58,6 +58,10 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 
 ## Timeline
 
+- **2026-08-24 — Retired SaaS Ideas identity removed:** Removed the absorbed
+  SaaS Ideas product and legacy hostname from the portfolio's live Fleet and
+  agent-readable catalogs. The ideas catalog remains available only as SaaS
+  Maker's canonical `/ideas` surface.
 - **2026-08-12 — Fleet code-health adoption:** Removed five unreferenced source
   files and the unused Motion runtime dependency; added native coverage for
   GitHub repository normalization/selection and no-regression gates for format,

@@ -80,7 +80,6 @@ Built on Astro, deployed on Cloudflare Pages. The human-facing site is intention
 - [RolePatch](https://rolepatch.com): AI-assisted resume tailoring, role research, and interview preparation.
 - [Karte](https://karte.cc): AI link-in-bio that turns a profile into a conversation.
 - [Starboard](https://starboard.codevetter.com): Organize and semantically search your GitHub stars.
-- [SaaS Ideas](https://ideas.sassmaker.com): Curated directory of SaaS product ideas with market analysis.
 - [What It Takes to Win](https://paths.significanthobbies.com): Explore 2,585 documented early-breakthrough paths.
 
 ### Parked experiments
