@@ -1,0 +1,61 @@
+{
+  "$schema": "fleet.design-review.v1",
+  "version": 1,
+  "project": "portfolio",
+  "target": "IssuePages notes publication on the blog",
+  "mode": "preserve",
+  "register": "product",
+  "context": {
+    "product": "PROJECT_STATUS.md",
+    "design": "src/styles/global.css"
+  },
+  "direction": {
+    "references": [],
+    "probes": [],
+    "selected": "existing-design",
+    "approval": "not-required",
+    "before": "artifacts/design/before.png"
+  },
+  "evidence": {
+    "screenshots": [
+      {
+        "width": 390,
+        "path": "artifacts/design/after-390.png"
+      },
+      {
+        "width": 768,
+        "path": "artifacts/design/after-768.png"
+      },
+      {
+        "width": 1440,
+        "path": "artifacts/design/after-1440.png"
+      }
+    ],
+    "projectCheck": {
+      "command": "npm run quality",
+      "status": "pass"
+    },
+    "critique": {
+      "score": 36,
+      "maximum": 40
+    },
+    "audit": {
+      "score": 18,
+      "maximum": 20
+    },
+    "unresolved": {
+      "p0": 0,
+      "p1": 0
+    },
+    "detector": {
+      "posture": "advisory",
+      "findings": [
+        "The detector returned zero findings. Independent review resolved the responsive text-token collision, layout shift, mobile title wrapping, and runtime fallback; blocked-script fallback evidence is captured in artifacts/design/fallback-390.png."
+      ]
+    }
+  },
+  "ownerFeedback": {
+    "decision": "delegated",
+    "note": "Owner requested the integration, approved the direction, and delegated implementation in the established preserve lane."
+  }
+}

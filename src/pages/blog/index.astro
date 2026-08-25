@@ -9,6 +9,9 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const dateFmt = new Intl.DateTimeFormat('en', { dateStyle: 'medium' });
+const issuePagesOrigin = import.meta.env.DEV
+  ? 'http://localhost:8787'
+  : 'https://issues.sarthakagrawal.dev';
 ---
 
 <BaseLayout
@@ -40,4 +43,56 @@ const dateFmt = new Intl.DateTimeFormat('en', { dateStyle: 'medium' });
       ))}
     </ul>
   </section>
+
+  <section class="border-t border-line bg-panel/30">
+    <div class="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-24">
+      <div class="max-w-3xl">
+        <SectionHeader
+          kicker="// issue notes"
+          title="Working notes, published from GitHub."
+          heading="h2"
+        />
+        <p class="mt-5 max-w-2xl text-sm leading-7 text-fg sm:text-[1rem]">
+          Shorter ideas and experiments live in repository issues. I write and
+          edit them on GitHub; this reading view updates without waiting for a
+          site release.
+        </p>
+      </div>
+
+      <div
+        class="issue-notes-reader mt-10 min-h-[30rem] overflow-hidden border border-line bg-panel"
+      >
+        <script
+          is:inline
+          data-astro-rerun
+          async
+          src={`${issuePagesOrigin}/embed.js?v=20260826-2`}
+          data-repo="sarthakagrawal927/portfolio"
+          data-theme="inherit"
+          data-variant="minimal"
+          data-density="compact"
+          data-accent-light="#087f6f"
+          data-accent-dark="#48e5c2"
+          data-label="blog"
+          data-author="sarthakagrawal927"
+        ></script>
+        <p
+          class="issue-notes-fallback flex min-h-[30rem] items-center justify-center p-5 text-center text-sm leading-7 text-muted"
+        >
+          The embedded reader is loading or unavailable.
+          <a
+            class="ml-1 text-accent underline underline-offset-4"
+            href="https://github.com/sarthakagrawal927/portfolio/issues?q=is%3Aissue+label%3Ablog+author%3Asarthakagrawal927"
+            >Read the issue notes on GitHub.</a
+          >
+        </p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style is:global>
+  .issue-notes-reader:has([data-issue-pages-embed]) > .issue-notes-fallback {
+    display: none;
+  }
+</style>

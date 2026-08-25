@@ -1,6 +1,6 @@
 # sarthakagrawal — PROJECT STATUS
 
-Last updated: 2026-08-09
+Last updated: 2026-08-26
 
 ## Why / What
 
@@ -20,6 +20,9 @@ sarthakagrawal.dev is a personal Astro portfolio site for Sarthak Agrawal. It is
 
 - **GitHub API:** Build-time repo stats and project archive across `sarthakagrawal927` plus the six product organizations in `src/data/site.ts`. Optional `GITHUB_TOKEN` on Cloudflare Pages builds for API rate limits.
 - **Cloudflare Pages:** Static hosting; project name `sarthakagrawal` (`pages_build_output_dir: dist`).
+- **IssuePages:** Sandboxed, read-only publication of authored `blog`-labeled
+  GitHub issues on the writing index. The static portfolio never calls GitHub
+  at request time.
 - **LaTeX GitHub Action:** Resume PDF generation on push (`.github/workflows/resume.yml`).
 - **Ultracite/Biome:** Repository lint contract for Astro, React, TypeScript,
   scripts, and configuration files.
@@ -58,6 +61,10 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 
 ## Timeline
 
+- **2026-08-26 — Issue-native writing dogfood:** Added a theme-aware,
+  author-and-label-filtered IssuePages publication below the permanent MDX
+  essays and finished issues #28–30 as sourced writing. The rollout is tracked
+  in GitHub issue #31.
 - **2026-08-24 — Retired SaaS Ideas identity removed:** Removed the absorbed
   SaaS Ideas product and legacy hostname from the portfolio's live Fleet and
   agent-readable catalogs. The ideas catalog remains available only as SaaS
