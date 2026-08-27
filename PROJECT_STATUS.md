@@ -20,7 +20,7 @@ sarthakagrawal.dev is a personal Astro portfolio site for Sarthak Agrawal. It is
 
 - **GitHub API:** Build-time repo stats and project archive across `sarthakagrawal927` plus the six product organizations in `src/data/site.ts`. Optional `GITHUB_TOKEN` on Cloudflare Pages builds for API rate limits.
 - **Cloudflare Pages:** Static hosting; project name `sarthakagrawal` (`pages_build_output_dir: dist`).
-- **IssuePages:** Sandboxed, read-only publication of authored `blog`-labeled
+- **IssuePages:** Sandboxed, read-only publication of authored `issues`-labeled
   GitHub issues on the writing index. The static portfolio never calls GitHub
   at request time.
 - **LaTeX GitHub Action:** Resume PDF generation on push (`.github/workflows/resume.yml`).
