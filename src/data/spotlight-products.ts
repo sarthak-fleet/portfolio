@@ -17,7 +17,8 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     url: 'https://codevetter.com',
     organizationUrl: 'https://github.com/Codevetter',
     repositoryUrl: 'https://github.com/Codevetter/codevetter',
-    description: 'Execution-backed verification of whether a coding agent completed its task correctly.',
+    description:
+      'Execution-backed verification of whether a coding agent completed its task correctly.',
   },
   {
     id: 'posttrainllm',
