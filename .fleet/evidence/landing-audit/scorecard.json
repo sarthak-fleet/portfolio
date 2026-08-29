@@ -1,0 +1,54 @@
+{
+  "$schema": "fleet.landing-audit.v1",
+  "project": "sarthakagrawal-personal",
+  "priority": "P4",
+  "decision": "Maintenance",
+  "auditedAt": "2026-08-29",
+  "candidateUrl": "https://usage-modeling-cattle-offshore.trycloudflare.com/",
+  "productionUrl": "https://sarthakagrawal.dev/",
+  "releaseState": "The latest source, revised positioning, social card, agent-discovery surfaces, and shared footer composition are qualified through a temporary Cloudflare tunnel. They are not deployed by this audit.",
+  "implementationAction": "preserve",
+  "migrationCandidate": false,
+  "gates": {
+    "contentPurpose": {
+      "score": 99,
+      "status": "pass",
+      "evidence": "The first viewport now identifies Sarthak as an AI infrastructure and product engineer, names CodeVetter and Pace as the two flagships, distinguishes PostTrainLLM as the research lab, and describes SaaS Maker as the public directory and shared workshop rather than a private control plane. The current-focus section, product cards, case studies, resume, writing, and contact path support the dossier purpose of a durable professional record."
+    },
+    "designQuality": {
+      "score": 96,
+      "status": "pass",
+      "evidence": "The existing restrained dark technical system is distinctive, consistent, and appropriate for a personal engineering portfolio. The product hierarchy is legible before the evidence-heavy case-study section, and the revised 1200 by 630 social card now matches the visible positioning. Exact 390 and 1440 pixel checks found zero overflow or runtime errors and exactly one rendered project strip plus one Ask AI footer."
+    },
+    "seo": {
+      "score": 100,
+      "status": "pass",
+      "evidence": "The latest candidate passes all 15 SEO checks with no failures or warnings: exact title and description, canonical, complete Open Graph and Twitter metadata, raster 1200 by 630 social image, Person and ProfilePage JSON-LD, clean heading hierarchy, approximately 1,993 server-rendered words, and no broken internal links."
+    },
+    "geo": {
+      "score": 100,
+      "status": "pass",
+      "evidence": "The canonical production origin reports S-tier 100% in the Fleet agent-index audit. The latest source independently verifies 13 sitemap routes, 13 catalog entries, and 13 Markdown counterparts, including llms.txt, llms-full.txt, homepage Markdown, robots policy, sitemap, JSON-LD, and /api/ai. The temporary tunnel scores A only because its canonical sitemap intentionally points at the production host."
+    },
+    "performance": {
+      "score": 94,
+      "status": "pass",
+      "evidence": "PSI Swarm completed 4 of 4 coverage profiles with weighted LCP 1.41 seconds, CLS 0.002, and TBT 2 ms. LCP measured 5.06 seconds on deliberately constrained slow mobile, 1.32 seconds on mid mobile, 1.89 seconds on fast mobile, and 402 ms on desktop; the Core Web Vitals LCP gate is good. The remaining 32 KiB unused-JavaScript opportunity belongs to the optional command palette and is not proportionate to a major P4 maintenance rewrite."
+    }
+  },
+  "verification": {
+    "passed": [
+      "9/9 repository tests",
+      "workspace typecheck",
+      "Ultracite lint",
+      "Astro production build",
+      "13-route agent-surface contract check",
+      "latest-candidate browser checks at 390 and 1440 pixels",
+      "latest-candidate SEO audit",
+      "canonical GEO audit",
+      "latest-source PSI Swarm coverage profile",
+      "one project strip and one Ask AI footer"
+    ]
+  },
+  "minimumObserved": 94
+}
