@@ -11,7 +11,7 @@ interface Props {
 const {
   title,
   description = site.description,
-  image = '/og.svg',
+  image = '/og.png',
   type = 'website',
 } = Astro.props;
 
@@ -83,6 +83,9 @@ if (isHome) {
 <meta property="og:description" content={description}>
 <meta property="og:url" content={canonical}>
 <meta property="og:image" content={ogImage}>
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">

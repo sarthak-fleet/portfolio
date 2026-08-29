@@ -45,10 +45,9 @@ const work = (await getCollection('work'))
         <p
           class="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg"
         >
-          I'm {site.name}, an AI infrastructure and product engineer. I turn
-          model capabilities into systems people can trust: local code review,
-          post-training tools, private assistants, research signals, and the
-          operating layer behind them.
+          I'm {site.name}, an AI infrastructure and product engineer. CodeVetter
+          and Pace are my two flagship products; PostTrainLLM is the public research
+          lab, and SaaS Maker keeps the wider directory and shared workshop visible.
         </p>
 
         <div class="mt-8 flex flex-wrap items-center gap-4">
@@ -76,8 +75,8 @@ const work = (await getCollection('work'))
     <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
       <SectionHeader
         kicker="// current focus"
-        title="Three products, one platform."
-        intro="Three focused products — CodeVetter, PostTrainLLM, and Pace — with SaaS Maker as the directory and operating layer for everything else."
+        title="Two flagships. One research lab. One public workshop."
+        intro="CodeVetter verifies coding-agent outcomes and Pace is the private Mac assistant. PostTrainLLM publishes measured local-model work; SaaS Maker is the public directory and shared tooling workshop, not the private control plane."
       />
       <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {spotlightProducts.map((project) => (

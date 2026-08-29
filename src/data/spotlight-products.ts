@@ -17,7 +17,7 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     url: 'https://codevetter.com',
     organizationUrl: 'https://github.com/Codevetter',
     repositoryUrl: 'https://github.com/Codevetter/codevetter',
-    description: 'Local-first desktop AI code review for agent-generated code.',
+    description: 'Execution-backed verification of whether a coding agent completed its task correctly.',
   },
   {
     id: 'posttrainllm',
@@ -27,7 +27,7 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     organizationUrl: 'https://github.com/PostTrainLLM',
     repositoryUrl: 'https://github.com/PostTrainLLM/posttrainllm',
     description:
-      'A Mac-local LLM factory, runtime, and WebGPU learning playground.',
+      'A measured one-machine lab for bounded specialist language models and their evals.',
   },
   {
     id: 'heypace',
@@ -37,7 +37,7 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     organizationUrl: 'https://github.com/HeyPace',
     repositoryUrl: 'https://github.com/HeyPace/pace',
     description:
-      'An on-device Mac voice agent with screen-aware local context.',
+      'A private Mac assistant for fast voice-driven help grounded in what is on screen.',
   },
   {
     id: 'saas-maker',
@@ -47,6 +47,6 @@ export const spotlightProducts: readonly SpotlightProduct[] = [
     organizationUrl: 'https://github.com/sass-maker',
     repositoryUrl: 'https://github.com/sass-maker/saas-maker',
     description:
-      'The broader directory and operating layer for the full product fleet.',
+      'The public Fleet directory and reusable packages, skills, templates, and feedback workshop.',
   },
 ] as const;
