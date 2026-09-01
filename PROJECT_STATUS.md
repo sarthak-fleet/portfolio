@@ -1,6 +1,6 @@
 # sarthakagrawal — PROJECT STATUS
 
-Last updated: 2026-08-26
+Last updated: 2026-08-31
 
 ## Why / What
 
@@ -61,6 +61,10 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 
 ## Timeline
 
+- **2026-08-31 — Dedicated Clarity instrumentation:** Wired the portfolio's
+  existing Microsoft Clarity project through the shared site layout and made
+  the PostHog and Clarity collection boundary explicit on `/privacy`; source is
+  ready but production remains unchanged until a separately approved deploy.
 - **2026-08-26 — Issue-native writing dogfood:** Added a theme-aware,
   author-and-label-filtered IssuePages publication below the permanent MDX
   essays and finished issues #28–30 as sourced writing. The rollout is tracked

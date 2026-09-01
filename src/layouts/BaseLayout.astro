@@ -214,6 +214,12 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
     </script>
     <Head title={title} description={description} image={image} type={type} />
     <ClientRouter />
+    <script
+      is:inline
+      async
+      src="https://www.clarity.ms/tag/y6bw8jogxg"
+      onload="window.clarity('set', 'project_id', 'sarthakagrawal-personal')"
+    ></script>
     <script>
       import { emitPageView } from '../lib/product-analytics';
       emitPageView();
@@ -247,7 +253,6 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
       is:inline
       src="https://sassmaker.com/ai-chat-footer.js"
       data-name="Sarthak Agrawal"
-      data-compose="false"
       crossorigin="anonymous"
       defer
     ></script>
