@@ -1,6 +1,6 @@
 # sarthakagrawal — PROJECT STATUS
 
-Last updated: 2026-08-31
+Last updated: 2026-09-05
 
 ## Why / What
 
@@ -32,11 +32,11 @@ sarthakagrawal.dev is a personal Astro portfolio site for Sarthak Agrawal. It is
 
 ### Internal (fleet)
 
-- **Fleet product data:** `src/data/spotlight-products.ts` — the five-entry spotlight contract mirrored from `fleet-ops/config/spotlight-products.json`; `/projects` retains the broader archive.
+- **Fleet product data:** `src/data/spotlight-products.ts` — the four-entry spotlight contract (CodeVetter, PostTrainLLM, HeyPace, SaaS Maker). It is the canonical definition; the former `fleet-ops/config/spotlight-products.json` mirror no longer exists (its sync scripts are preserved under `saas-maker/tooling/preserved/legacy-fleet-tooling/`). `/projects` retains the broader archive.
 
 ### Stack & commands
 
-**Stack:** Astro 5 static · Tailwind v4 (`@tailwindcss/vite`) · Lightning CSS transformer/minifier · React 19 islands (`motion`, `cmdk`) · MDX collections (`work`, `blog`) · `@fontsource-variable/geist` · `@astrojs/sitemap`.
+**Stack:** Astro 5 static · Tailwind v4 (`@tailwindcss/vite`) · Lightning CSS transformer/minifier · React 19 island (`cmdk`) · MDX collections (`work`, `blog`) · `@fontsource-variable/geist` · `@astrojs/sitemap`.
 
 | Command | Purpose |
 | --- | --- |
@@ -53,7 +53,7 @@ Node pinned in `.nvmrc` (22). Pushes to `main` run the complete quality and
 static-build CI gate; production deploys use the manual `Portfolio CI / Deploy`
 workflow.
 
-**Env:** Optional `GITHUB_TOKEN` on Cloudflare Pages builds for API rate limits. Config: `wrangler.jsonc` · `astro.config.mjs` · `resume.tex`.
+**Env:** Builds run in GitHub Actions, not Cloudflare Pages Git builds. `src/lib/github.ts` reads an optional `GITHUB_TOKEN` to raise API rate limits; `deploy.yml` does not currently set one and the fetch degrades gracefully. Config: `wrangler.jsonc` · `astro.config.mjs` · `resume.tex`.
 
 **Entrypoints:** `src/data/*.ts` · `src/content/work/*.mdx` · `src/content/blog/` · `src/lib/github.ts`.
 
@@ -61,6 +61,10 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 
 ## Timeline
 
+- **2026-09-05 — Docs reconciled with source:** README and this status now
+  describe the four-entry spotlight (High Signal removed 2026-08-29), the
+  `cmdk`-only island, the `npm run quality` push gate, the dispatch-only deploy,
+  and the `/privacy` and agent-surface routes.
 - **2026-08-31 — Dedicated Clarity instrumentation:** Wired the portfolio's
   existing Microsoft Clarity project through the shared site layout and made
   the PostHog and Clarity collection boundary explicit on `/privacy`; source is
@@ -102,7 +106,7 @@ Performance choices: inline all stylesheets (psi-swarm LCP fix); `build.format: 
 | Canonical config | `astro.config.mjs` `site` + `src/data/site.ts` `url` |
 | Sitemap | Generated via `@astrojs/sitemap` |
 | LLM index | `public/llms.txt` |
-| Resume PDF | `https://sarthakagrawal.dev/resume.pdf` (after GitHub Action runs) |
+| Resume PDF | `https://sarthakagrawal.dev/resume.pdf` (rebuilt by `.github/workflows/resume.yml`) |
 
 Cloudflare Pages project name: `sarthakagrawal` (`pages_build_output_dir: dist`).
 
@@ -114,8 +118,8 @@ Cloudflare Pages project name: `sarthakagrawal` (`pages_build_output_dir: dist`)
   contract. GitHub data-selection behavior has 100% line, branch, and function
   coverage; legacy format, complexity, and Astro dependency debt is ratcheted
   against repository issue #23.
-- Ultracite/Biome lint contract covers 46 applicable Astro, React, TypeScript,
-  script, and configuration files with zero findings and runs in build-only CI.
+- Ultracite/Biome lint contract covers the Astro, React, TypeScript, script,
+  and configuration files with zero findings and runs inside the `npm run quality` CI gate.
 - Build time: Astro 5 static compiles `src/data/*.ts`, MDX case studies/blog, optional GitHub API fetch (`src/lib/github.ts`).
 - Static `dist/` with `inlineStylesheets: always`, `format: file` → Cloudflare Pages (`pages_build_output_dir: dist`).
 - Live site: `https://sarthakagrawal.dev` — no server runtime.

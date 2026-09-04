@@ -1,12 +1,12 @@
 # sarthakagrawal.dev
 
 Personal site & portfolio for **Sarthak Agrawal — AI Infrastructure & Product
-Engineer**. *I build AI infrastructure — and the products that run on it.*
+Engineer**. *I build dependable AI products, from infrastructure to interface.*
 
 A dark, "systems" aesthetic built to make one thing obvious: this person builds
 AI infrastructure and ships the products that use it. The landing page leads
-with CodeVetter, PostTrainLLM, HeyPace, High Signal, and SaaS Maker; the full
-project archive remains available at `/projects`. The site includes a focused
+with CodeVetter, PostTrainLLM, HeyPace, and SaaS Maker; the full project
+archive remains available at `/projects`. The site includes a focused
 homepage, engineering case studies, technical writing, a compact contact
 footer, and a live GitHub-sourced projects archive.
 
@@ -16,7 +16,7 @@ footer, and a live GitHub-sourced projects archive.
 - **Tailwind CSS v4** — via the `@tailwindcss/vite` plugin; tokens in `src/styles/global.css`
 - **React 19 islands** — the command palette hydrates while core pages remain static
 - **MDX content collections** — case studies (`work`) and writing (`blog`)
-- **`motion` + `cmdk`** — animation primitives & the command menu
+- **`cmdk`** — the command menu (the only hydrated island)
 - Deployed on **Cloudflare Pages**
 
 ## Develop
@@ -40,7 +40,9 @@ Node version is pinned in `.nvmrc` (22).
 | `/projects` | Full fleet archive, auto-synced from GitHub at build, with SaaS Maker as the broader directory |
 | `/about` | Bio, full experience timeline, education, toolbox |
 | `/resume` | On-site résumé + "Download PDF" |
-| `/blog` | Technical writing with an AI-authorship disclosure on every article |
+| `/blog` | Technical writing with an AI-authorship disclosure on every article, plus IssuePages notes |
+| `/privacy` | Analytics disclosure (PostHog and Microsoft Clarity boundary) |
+| `/llms.txt`, `/llms-full.txt`, `/api/ai`, `*.md` | Agent-readable surfaces, one Markdown counterpart per sitemap route |
 
 ## Editing content
 
@@ -64,8 +66,8 @@ The `/projects` page and home stats pull from the GitHub API at build time
 
 `resume.tex` is the source of truth. A GitHub Action
 (`.github/workflows/resume.yml`) compiles it to `public/resume.pdf` on every
-push that touches it — no local LaTeX install needed. The `/resume` page shows
-a "Download PDF" button once that file exists (after the first push to GitHub).
+push that touches it — no local LaTeX install needed. The `/resume` page links
+to that file.
 
 To preview the PDF locally before pushing, compile `resume.tex` any way you like
 (e.g. [Overleaf](https://overleaf.com)) and drop the result at
@@ -74,30 +76,23 @@ To preview the PDF locally before pushing, compile `resume.tex` any way you like
 > Note: the phone number is in the PDF but intentionally **not** on the public
 > `/resume` web page. Add it in `src/pages/resume.astro` if you want it shown.
 
-## Before going live
-
-- [x] Set the real domain in `astro.config.mjs` (`site`) and `src/data/site.ts` (`url`)
-- [ ] Push to GitHub so the résumé Action generates `public/resume.pdf`
-- [ ] Optional: convert `public/og.svg` → `og.png` for the richest social
-      previews — `npx svgexport public/og.svg public/og.png 1200:630`, then
-      point `image` in `src/components/astro/Head.astro` at `/og.png`
-
 ## Deploy — Cloudflare Pages
 
 Static site (`output: 'static'`) — deployment is just static assets.
 
-Pushes to `main` run build-only CI. Production deployment is manual: dispatch
-the `Portfolio CI / Deploy` GitHub Actions workflow after the fleet deploy
-guard passes.
+Every push to `main` and every pull request runs the full `npm run quality`
+gate (format, lint, types, coverage, build, agent-surface contract, and the
+code-health ratchets) in `.github/workflows/deploy.yml`. Nothing is deployed
+on push.
 
-**Dashboard:** create a Pages project from the Git repo with:
+Production deployment is manual: dispatch the `Portfolio CI / Deploy` workflow.
+It rebuilds, then publishes `dist/` to the Cloudflare Pages project
+`sarthakagrawal` with `wrangler pages deploy` using the `CLOUDFLARE_API_TOKEN`
+repo secret. Without that secret the dispatch builds and skips the deploy.
 
-- Build command: `npm run build`
-- Build output directory: `dist`
-- Node version: `22` (auto-detected from `.nvmrc`)
+**Local CLI alternative:** `npx wrangler pages deploy dist` (config in
+`wrangler.jsonc`).
 
-**CLI:** `npx wrangler pages deploy dist` (config is in `wrangler.jsonc`).
-
-Optional: set a `GITHUB_TOKEN` build env var to raise the GitHub API rate limit
-used by the build-time stats & projects list (it falls back gracefully without
-one).
+The build-time GitHub fetch (`src/lib/github.ts`) reads an optional
+`GITHUB_TOKEN` env var to raise the API rate limit. The workflow does not
+currently set one; the fetch falls back gracefully without it.
