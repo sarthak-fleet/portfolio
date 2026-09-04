@@ -25,22 +25,19 @@ const baselines = {
   complexity: { violations: 0, maxCcn: 13, maxLength: 92, maxParams: 2 },
   duplication: { clones: 0, duplicatedLines: 0, percentage: 0 },
   suppressions: 0,
-  dependencies: { criticalIds: 0, highIds: 13, highFindings: 8 },
+  dependencies: { criticalIds: 0, highIds: 10, highFindings: 7 },
 };
 const acceptedHigh = new Set([
   'GHSA-28wg-ghj8-5hjv',
   'GHSA-2p49-hgcm-8545',
   'GHSA-2pvr-wf23-7pc7',
   'GHSA-2v37-7h3g-55p8',
-  'GHSA-4c8g-83qw-93j6',
   'GHSA-52cp-r559-cp3m',
   'GHSA-5p4m-2wfm-xmqj',
-  'GHSA-7p8r-x3mc-p8w7',
   'GHSA-8hv8-536x-4wqp',
   'GHSA-f88m-g3jw-g9cj',
   'GHSA-fx2h-pf6j-xcff',
   'GHSA-r28c-9q8g-f849',
-  'GHSA-v2hh-gcrm-f6hx',
 ]);
 
 function output(message) {
