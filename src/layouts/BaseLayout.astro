@@ -224,6 +224,7 @@ const { title, description, image, type, hideFooter = false } = Astro.props;
       import { emitPageView } from '../lib/product-analytics';
       emitPageView();
     </script>
+    <script is:inline src="/app-health-log.js" defer></script>
   </head>
   <body class="min-h-screen">
     <a
