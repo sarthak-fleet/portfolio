@@ -5,5 +5,8 @@
     "@biomejs/biome",
     "jscpd",
     "lightningcss"
+  ],
+  "ignore": [
+    "public/app-health-log.js"
   ]
 }
