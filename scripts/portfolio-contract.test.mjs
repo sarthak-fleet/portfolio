@@ -25,10 +25,25 @@ async function readHeadSource() {
 
 test('spotlight follows only shareable primary work and the directory entry', async () => {
   const source = await readSpotlightSource();
-  const catalog = JSON.parse(await readFile(`${ROOT}/src/data/fleet-public.json`, 'utf8'));
-  assert.equal(catalog.directory.every((project) => project.shareable === true), true);
-  assert.equal(catalog.directory.some((project) => ['chess', 'journal'].includes(project.id)), false);
-  assert.deepEqual(catalog.products.filter((project) => project.spotlight).map((project) => project.lifecycle), ['primary']);
+  const catalog = JSON.parse(
+    await readFile(`${ROOT}/src/data/fleet-public.json`, 'utf8')
+  );
+  assert.equal(
+    catalog.directory.every((project) => project.shareable === true),
+    true
+  );
+  assert.equal(
+    catalog.directory.some((project) =>
+      ['chess', 'journal'].includes(project.id)
+    ),
+    false
+  );
+  assert.deepEqual(
+    catalog.products
+      .filter((project) => project.spotlight)
+      .map((project) => project.lifecycle),
+    ['primary']
+  );
   assert.match(source, /project.spotlight \|\| project.id === 'saas-maker'/);
 });
 

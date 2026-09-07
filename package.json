@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "homepage": "https://sarthakagrawal.dev",
-  "description": "Sarthak Agrawal — AI Infrastructure Engineer. Personal site & portfolio.",
+  "description": "Sarthak Agrawal \u2014 AI Infrastructure Engineer. Personal site & portfolio.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -25,7 +25,9 @@
     "quality:dependencies": "node scripts/check-code-health.mjs dependencies",
     "quality:suppressions": "node scripts/check-code-health.mjs suppressions",
     "quality:hygiene": "node scripts/check-code-health.mjs hygiene",
-    "quality": "npm run format:check && npm run lint && npm run typecheck && npm run test:coverage && npm run build && node scripts/check-agent-surfaces.mjs && npm run quality:unused && npm run quality:complexity && npm run quality:duplication && npm run quality:cycles && npm run quality:dependencies && npm run quality:suppressions && npm run quality:hygiene"
+    "quality": "npm run format:check && npm run lint && npm run typecheck && npm run test:coverage && npm run build && node scripts/check-agent-surfaces.mjs && npm run quality:unused && npm run quality:complexity && npm run quality:duplication && npm run quality:cycles && npm run quality:dependencies && npm run quality:suppressions && npm run quality:hygiene",
+    "catalog:sync-public": "node scripts/sync-fleet-public.mjs",
+    "catalog:check-public": "node scripts/sync-fleet-public.mjs --check"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.6",

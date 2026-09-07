@@ -1,8 +1,6 @@
 {
   "schemaVersion": 5,
-  "generatedFrom": [
-    "site-health/apps/backend/config/projects.json"
-  ],
+  "generatedFrom": ["site-health/apps/backend/config/projects.json"],
   "historySemantics": "firstCommitAt and latestCommitAt are dates from the currently retained Git history. They are not incorporation, launch, or retirement dates.",
   "directory": [
     {
@@ -20,26 +18,14 @@
       },
       "kind": "product",
       "form": "Research platform",
-      "platforms": [
-        "Web",
-        "Local"
-      ],
-      "technologies": [
-        "Astro",
-        "Python",
-        "Rust",
-        "Cloudflare Pages"
-      ],
+      "platforms": ["Web", "Local"],
+      "technologies": ["Astro", "Python", "Rust", "Cloudflare Pages"],
       "group": "featured",
       "lifecycle": "primary",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages"
-      ],
-      "domains": [
-        "posttrainllm.com"
-      ],
+      "deploymentProviders": ["Cloudflare Pages"],
+      "domains": ["posttrainllm.com"],
       "url": "https://posttrainllm.com",
       "repositoryUrl": "https://github.com/PostTrainLLM/posttrainllm",
       "changelogUrl": "https://posttrainllm.com/changelog",
@@ -62,25 +48,14 @@
       },
       "kind": "product",
       "form": "Web app",
-      "platforms": [
-        "Web"
-      ],
-      "technologies": [
-        "Next.js",
-        "TypeScript",
-        "Cloudflare Workers",
-        "D1"
-      ],
+      "platforms": ["Web"],
+      "technologies": ["Next.js", "TypeScript", "Cloudflare Workers", "D1"],
       "group": "current",
       "lifecycle": "active",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Workers"
-      ],
-      "domains": [
-        "live.significanthobbies.com"
-      ],
+      "deploymentProviders": ["Cloudflare Workers"],
+      "domains": ["live.significanthobbies.com"],
       "url": "https://live.significanthobbies.com",
       "repositoryUrl": "https://github.com/Significant-Hobbies/live",
       "changelogUrl": "https://live.significanthobbies.com/changelog",
@@ -103,27 +78,14 @@
       },
       "kind": "product",
       "form": "Web directory and service",
-      "platforms": [
-        "Web",
-        "API"
-      ],
-      "technologies": [
-        "Astro",
-        "Cloudflare",
-        "D1",
-        "IssuePages"
-      ],
+      "platforms": ["Web", "API"],
+      "technologies": ["Astro", "Cloudflare", "D1", "IssuePages"],
       "group": "current",
       "lifecycle": "active",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages",
-        "Cloudflare Workers"
-      ],
-      "domains": [
-        "sassmaker.com"
-      ],
+      "deploymentProviders": ["Cloudflare Pages", "Cloudflare Workers"],
+      "domains": ["sassmaker.com"],
       "url": "https://sassmaker.com",
       "repositoryUrl": "https://github.com/sass-maker/saas-maker",
       "changelogUrl": "https://sassmaker.com/changelog",
@@ -146,25 +108,14 @@
       },
       "kind": "product",
       "form": "Web app",
-      "platforms": [
-        "Web"
-      ],
-      "technologies": [
-        "React",
-        "Vite",
-        "TypeScript",
-        "Cloudflare Pages"
-      ],
+      "platforms": ["Web"],
+      "technologies": ["React", "Vite", "TypeScript", "Cloudflare Pages"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages"
-      ],
-      "domains": [
-        "git.significanthobbies.com"
-      ],
+      "deploymentProviders": ["Cloudflare Pages"],
+      "domains": ["git.significanthobbies.com"],
       "url": "https://git.significanthobbies.com",
       "repositoryUrl": "https://github.com/sass-maker/gitstat",
       "changelogUrl": "https://git.significanthobbies.com/changelog",
@@ -187,26 +138,14 @@
       },
       "kind": "product",
       "form": "Podcast intelligence web app",
-      "platforms": [
-        "Web",
-        "API"
-      ],
-      "technologies": [
-        "Astro",
-        "Hono",
-        "Cloudflare Workers",
-        "D1"
-      ],
+      "platforms": ["Web", "API"],
+      "technologies": ["Astro", "Hono", "Cloudflare Workers", "D1"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Workers"
-      ],
-      "domains": [
-        "podcasts.highsignal.app"
-      ],
+      "deploymentProviders": ["Cloudflare Workers"],
+      "domains": ["podcasts.highsignal.app"],
       "url": "https://podcasts.highsignal.app",
       "repositoryUrl": "https://github.com/Significant-Hobbies/on-record",
       "changelogUrl": "https://podcasts.highsignal.app/changelog",
@@ -229,26 +168,14 @@
       },
       "kind": "experiment",
       "form": "Issue-backed publishing website",
-      "platforms": [
-        "Web",
-        "GitHub"
-      ],
-      "technologies": [
-        "Hono",
-        "TypeScript",
-        "Cloudflare Workers",
-        "D1"
-      ],
+      "platforms": ["Web", "GitHub"],
+      "technologies": ["Hono", "TypeScript", "Cloudflare Workers", "D1"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Workers"
-      ],
-      "domains": [
-        "issues.sarthakagrawal.dev"
-      ],
+      "deploymentProviders": ["Cloudflare Workers"],
+      "domains": ["issues.sarthakagrawal.dev"],
       "url": "https://issues.sarthakagrawal.dev",
       "repositoryUrl": "https://github.com/sarthakagrawal927/issue-pages",
       "changelogUrl": "https://issues.sarthakagrawal.dev/changelog",
@@ -271,25 +198,14 @@
       },
       "kind": "product",
       "form": "Research library",
-      "platforms": [
-        "Web"
-      ],
-      "technologies": [
-        "Astro",
-        "Python",
-        "React",
-        "TypeScript"
-      ],
+      "platforms": ["Web"],
+      "technologies": ["Astro", "Python", "React", "TypeScript"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages"
-      ],
-      "domains": [
-        "papers.highsignal.app"
-      ],
+      "deploymentProviders": ["Cloudflare Pages"],
+      "domains": ["papers.highsignal.app"],
       "url": "https://papers.highsignal.app",
       "repositoryUrl": "https://github.com/High-Signal-App/research-papers",
       "changelogUrl": "https://papers.highsignal.app/changelog",
@@ -312,25 +228,14 @@
       },
       "kind": "experiment",
       "form": "Interactive experiment",
-      "platforms": [
-        "Web"
-      ],
-      "technologies": [
-        "Astro",
-        "React",
-        "Three.js",
-        "Cloudflare Pages"
-      ],
+      "platforms": ["Web"],
+      "technologies": ["Astro", "React", "Three.js", "Cloudflare Pages"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages"
-      ],
-      "domains": [
-        "materia.significanthobbies.com"
-      ],
+      "deploymentProviders": ["Cloudflare Pages"],
+      "domains": ["materia.significanthobbies.com"],
       "url": "https://materia.significanthobbies.com",
       "repositoryUrl": "https://github.com/Significant-Hobbies/materia",
       "changelogUrl": "https://materia.significanthobbies.com/changelog",
@@ -353,26 +258,14 @@
       },
       "kind": "product",
       "form": "Web app",
-      "platforms": [
-        "Web",
-        "TV"
-      ],
-      "technologies": [
-        "Astro",
-        "React",
-        "Vite",
-        "Cloudflare Pages"
-      ],
+      "platforms": ["Web", "TV"],
+      "technologies": ["Astro", "React", "Vite", "Cloudflare Pages"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages"
-      ],
-      "domains": [
-        "tv.significanthobbies.com"
-      ],
+      "deploymentProviders": ["Cloudflare Pages"],
+      "domains": ["tv.significanthobbies.com"],
       "url": "https://tv.significanthobbies.com",
       "repositoryUrl": "https://github.com/Significant-Hobbies/looptv",
       "changelogUrl": "https://tv.significanthobbies.com/changelog",
@@ -395,26 +288,14 @@
       },
       "kind": "product",
       "form": "Web app",
-      "platforms": [
-        "Web",
-        "API"
-      ],
-      "technologies": [
-        "Next.js",
-        "React",
-        "Cloudflare Workers",
-        "D1"
-      ],
+      "platforms": ["Web", "API"],
+      "technologies": ["Next.js", "React", "Cloudflare Workers", "D1"],
       "group": "current",
       "lifecycle": "active",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Workers"
-      ],
-      "domains": [
-        "starboard.codevetter.com"
-      ],
+      "deploymentProviders": ["Cloudflare Workers"],
+      "domains": ["starboard.codevetter.com"],
       "url": "https://starboard.codevetter.com",
       "repositoryUrl": "https://github.com/Codevetter/starboard",
       "changelogUrl": "https://starboard.codevetter.com/changelog",
@@ -437,23 +318,14 @@
       },
       "kind": "experiment",
       "form": "Food directory",
-      "platforms": [
-        "Web"
-      ],
-      "technologies": [
-        "Astro",
-        "Cloudflare Pages"
-      ],
+      "platforms": ["Web"],
+      "technologies": ["Astro", "Cloudflare Pages"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages"
-      ],
-      "domains": [
-        "veg-protein-food.significanthobbies.com"
-      ],
+      "deploymentProviders": ["Cloudflare Pages"],
+      "domains": ["veg-protein-food.significanthobbies.com"],
       "url": "https://veg-protein-food.significanthobbies.com",
       "repositoryUrl": "https://github.com/Significant-Hobbies/veg-protein-food",
       "changelogUrl": "https://veg-protein-food.significanthobbies.com/changelog",
@@ -476,24 +348,14 @@
       },
       "kind": "product",
       "form": "Research publication",
-      "platforms": [
-        "Web"
-      ],
-      "technologies": [
-        "Astro",
-        "TypeScript",
-        "Cloudflare Pages"
-      ],
+      "platforms": ["Web"],
+      "technologies": ["Astro", "TypeScript", "Cloudflare Pages"],
       "group": "current",
       "lifecycle": "active",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages"
-      ],
-      "domains": [
-        "paths.significanthobbies.com"
-      ],
+      "deploymentProviders": ["Cloudflare Pages"],
+      "domains": ["paths.significanthobbies.com"],
       "url": "https://paths.significanthobbies.com",
       "repositoryUrl": "https://github.com/Significant-Hobbies/what-it-takes-to-win",
       "changelogUrl": "https://paths.significanthobbies.com/changelog",
@@ -516,25 +378,14 @@
       },
       "kind": "product",
       "form": "Portfolio website",
-      "platforms": [
-        "Web"
-      ],
-      "technologies": [
-        "Astro",
-        "React",
-        "Cloudflare Pages",
-        "IssuePages"
-      ],
+      "platforms": ["Web"],
+      "technologies": ["Astro", "React", "Cloudflare Pages", "IssuePages"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Pages"
-      ],
-      "domains": [
-        "sarthakagrawal.dev"
-      ],
+      "deploymentProviders": ["Cloudflare Pages"],
+      "domains": ["sarthakagrawal.dev"],
       "url": "https://sarthakagrawal.dev",
       "repositoryUrl": "https://github.com/sarthakagrawal927/portfolio",
       "changelogUrl": "https://sarthakagrawal.dev/changelog",
@@ -557,27 +408,14 @@
       },
       "kind": "product",
       "form": "Android app and dashboard",
-      "platforms": [
-        "Android",
-        "Web",
-        "API"
-      ],
-      "technologies": [
-        "React Native",
-        "MapLibre",
-        "Cloudflare Workers",
-        "D1"
-      ],
+      "platforms": ["Android", "Web", "API"],
+      "technologies": ["React Native", "MapLibre", "Cloudflare Workers", "D1"],
       "group": "past",
       "lifecycle": "inactive",
       "shareable": true,
       "deployed": true,
-      "deploymentProviders": [
-        "Cloudflare Workers"
-      ],
-      "domains": [
-        "field-track.sassmaker.com"
-      ],
+      "deploymentProviders": ["Cloudflare Workers"],
+      "domains": ["field-track.sassmaker.com"],
       "url": "https://field-track.sassmaker.com",
       "repositoryUrl": "https://github.com/sass-maker/field-track",
       "changelogUrl": "https://field-track.sassmaker.com/changelog",

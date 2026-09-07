@@ -10,5 +10,14 @@ export type RootDomain = {
 };
 
 export const rootDomains: readonly RootDomain[] = fleetCatalog
-  .filter((project) => project.domains[0] && project.domains[0].split('.').length === 2)
-  .map((project) => ({ domain: project.domains[0], name: project.name, url: project.url, blurb: project.description, tier: project.tier === 'focus' ? 'p0' : 'p1' }));
+  .filter(
+    (project) =>
+      project.domains[0] && project.domains[0].split('.').length === 2
+  )
+  .map((project) => ({
+    domain: project.domains[0],
+    name: project.name,
+    url: project.url,
+    blurb: project.description,
+    tier: project.tier === 'focus' ? 'p0' : 'p1',
+  }));

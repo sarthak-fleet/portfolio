@@ -21,21 +21,43 @@ export type CatalogGroup = {
   entries: CatalogEntry[];
 };
 
-export const fleetCatalog: readonly CatalogEntry[] = publicCatalog.directory.map((project) => ({
-  id: project.id,
-  name: project.name,
-  tier: project.lifecycle === 'primary' ? 'focus' : project.lifecycle === 'active' ? 'active' : 'parked',
-  priority: project.lifecycle === 'primary' ? 'P1' : 'P2',
-  kind: project.kind as CatalogEntry['kind'],
-  family: project.id,
-  url: project.url ?? project.repositoryUrl ?? 'https://sassmaker.com/projects',
-  domains: project.domains,
-  repo: project.repositoryUrl,
-  description: project.description,
-}));
+export const fleetCatalog: readonly CatalogEntry[] =
+  publicCatalog.directory.map((project) => ({
+    id: project.id,
+    name: project.name,
+    tier:
+      project.lifecycle === 'primary'
+        ? 'focus'
+        : project.lifecycle === 'active'
+          ? 'active'
+          : 'parked',
+    priority: project.lifecycle === 'primary' ? 'P1' : 'P2',
+    kind: project.kind as CatalogEntry['kind'],
+    family: project.id,
+    url:
+      project.url ?? project.repositoryUrl ?? 'https://sassmaker.com/projects',
+    domains: project.domains,
+    repo: project.repositoryUrl,
+    description: project.description,
+  }));
 
 export const catalogGroups: readonly CatalogGroup[] = [
-  { tier: 'focus', label: 'Featured', intro: 'Shareable work from my primary focus.', entries: fleetCatalog.filter((project) => project.tier === 'focus') },
-  { tier: 'active', label: 'Current work', intro: 'Working public experiments receiving active attention.', entries: fleetCatalog.filter((project) => project.tier === 'active') },
-  { tier: 'parked', label: 'More experiments · paused', intro: 'Useful retained work without an active development commitment.', entries: fleetCatalog.filter((project) => project.tier === 'parked') },
+  {
+    tier: 'focus',
+    label: 'Featured',
+    intro: 'Shareable work from my primary focus.',
+    entries: fleetCatalog.filter((project) => project.tier === 'focus'),
+  },
+  {
+    tier: 'active',
+    label: 'Current work',
+    intro: 'Working public experiments receiving active attention.',
+    entries: fleetCatalog.filter((project) => project.tier === 'active'),
+  },
+  {
+    tier: 'parked',
+    label: 'More experiments · paused',
+    intro: 'Useful retained work without an active development commitment.',
+    entries: fleetCatalog.filter((project) => project.tier === 'parked'),
+  },
 ];
