@@ -19,14 +19,14 @@ const bucketSummary = fleetProductGroups
 
 <BaseLayout
   title="Projects"
-  description={`Ten root domains and open-source projects by ${site.name} — CodeVetter, PostTrainLLM, Pace, and the rest of the fleet.`}
+  description={`Working experiments and open-source projects by ${site.name} — public demonstrations and reference work.`}
 >
   <section class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
     <SectionHeader
       kicker="// fleet"
       title="The product fleet."
       heading="h1"
-      intro={`The landing page stays precise with three products plus SaaS Maker. This is the full archive: ${bucketSummary}, ${fleetProjectCount} active entries total. For the canonical directory and product pages, visit SaaS Maker.`}
+      intro={`The public selection contains working experiments: ${bucketSummary}, ${fleetProjectCount} shareable entries total. For the canonical directory and product pages, visit SaaS Maker.`}
     />
 
     <div
@@ -48,9 +48,9 @@ const bucketSummary = fleetProductGroups
 
     <div class="mt-14">
       <SectionHeader
-        kicker="// ten root domains"
+        kicker="// public roots"
         title="Canonical roots."
-        intro="Every root brand that should own search for its name. P0 products get active visibility work first."
+        intro="Public roots represented in the verified selection."
       />
       <ul class="mt-10 grid gap-3 sm:grid-cols-2">
         {rootDomains.map((root) => (
@@ -117,8 +117,8 @@ const bucketSummary = fleetProductGroups
     <div class="mt-16">
       <SectionHeader
         kicker="// open source"
-        title="The work worth your time."
-        intro={`I've got ${totalCount} public repos. Most are experiments or learning projects, so instead of dumping the lot, here are the ones worth a look — picked by reading the code, not the README.`}
+        title="Explore the source."
+        intro={`Source repositories for the verified public selection. My GitHub archive contains ${totalCount} public repositories, including older work outside this selection.`}
       />
     </div>
 

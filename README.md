@@ -96,3 +96,11 @@ repo secret. Without that secret the dispatch builds and skips the deploy.
 The build-time GitHub fetch (`src/lib/github.ts`) reads an optional
 `GITHUB_TOKEN` env var to raise the API rate limit. The workflow does not
 currently set one; the fetch falls back gracefully without it.
+
+## Portfolio projection
+
+Public project lists use `src/data/fleet-public.json`, copied from SaaS Maker’s privacy-filtered canonical projection. After syncing the SaaS Maker catalog, run `node scripts/sync-fleet-public.mjs` here, then `npm run check` and `npm run test:contract`. Use `node scripts/sync-fleet-public.mjs --check` to verify parity. Never copy the private Site Health catalog into this repository.
+
+## Retained publication drafts
+
+GitHub issues #28, #29, #30 and #33 are writing drafts, not engineering tasks. They remain the original manuscript/discussion records; publishing or closing them requires editorial completion. The portfolio cleanup does not mark them done.
