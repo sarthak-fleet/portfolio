@@ -1,6 +1,16 @@
 # sarthakagrawal — PROJECT STATUS
 
-Last updated: 2026-09-05
+Last updated: 2026-09-07
+
+## Public selection release — 2026-09-07
+
+Deployed `568ab963f33917e2fd8f946851ed2f74bf62c7c0` through the successful
+manual Actions upload as Pages `80d37be0-94f9-49da-b45d-b725f7fe08c5`.
+The existing public projection contains 21 verified entries. Full repository
+quality and exact CI passed; hosted desktop/mobile homepage focus, Projects
+and About navigation, mobile command menu and exclusion checks passed.
+No credentials, account data, resume workflow or editorial issues changed.
+[Release evidence and rollback](artifacts/releases/2026-09-07/README.md).
 
 ## Why / What
 

@@ -97,6 +97,12 @@ The build-time GitHub fetch (`src/lib/github.ts`) reads an optional
 `GITHUB_TOKEN` env var to raise the API rate limit. The workflow does not
 currently set one; the fetch falls back gracefully without it.
 
+## Latest public release
+
+The September 7 verified 21-entry selection is live. Desktop/mobile homepage,
+project directory and command-menu navigation passed; Chess and Journal are
+absent from the public selection. [Deployment and browser receipt](artifacts/releases/2026-09-07/README.md).
+
 ## Portfolio projection
 
 Public project lists use `src/data/fleet-public.json`, copied from SaaS Maker’s privacy-filtered canonical projection. After syncing the SaaS Maker catalog, run `node scripts/sync-fleet-public.mjs` here, then `npm run check` and `npm run test:contract`. Use `node scripts/sync-fleet-public.mjs --check` to verify parity. Never copy the private Site Health catalog into this repository.

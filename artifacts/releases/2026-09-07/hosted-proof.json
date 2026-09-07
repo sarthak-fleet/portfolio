@@ -1,0 +1,28 @@
+[
+  {
+    "width": 1440,
+    "directoryCount": 21,
+    "primaryFocus": "CodeVetter and PostTrainLLM",
+    "spotlight": ["PostTrainLLM", "SaaS Maker"],
+    "excludedPromotionChecks": true,
+    "projectsNavigation": true,
+    "aboutNavigation": true,
+    "overflow": {
+      "viewport": 1440,
+      "document": 1440
+    }
+  },
+  {
+    "width": 390,
+    "directoryCount": 21,
+    "primaryFocus": "CodeVetter and PostTrainLLM",
+    "spotlight": ["PostTrainLLM", "SaaS Maker"],
+    "excludedPromotionChecks": true,
+    "projectsNavigation": true,
+    "aboutNavigation": true,
+    "overflow": {
+      "viewport": 390,
+      "document": 390
+    }
+  }
+]
